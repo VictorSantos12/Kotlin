@@ -110,4 +110,59 @@ Experimente executar alguma operações ou printar algumas mensagens em string:
     >>> println("Welcome to the Kotlin interactive")
     Welcome to the Kotlin interactive
 
+
 <h2>Características Básicas</h2>
+
+
+Sendo multoparadigma, o Kotlin é uma linguagem totalmente orientada a objetos que conta com features da programação funcional. Como foi feita para ser compatível com o JVM, muitas características do Java podem ser encontradas nela e a comparação entre ambas é constante. Partindo dessa comparação, uma qualidade que  acentua a qualidade do Kotlin é que ele consegue ser mais produtivo e reduz em 40% o código que o Java necessitaria para criar determinada rotina.
+
+O Kotlin é uma linguagem estaticamente tipada, ou seja, a definição de tipos só pode ser inferida uma vez, fazendo com que o elemento tipado se restrinja ao tipo inferido. Tal característica a tornam mais rigida e segura em termos de processamento. Outras características destacaveis são:
+
+<h3>Interoperabilidade</h3>
+
+Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem qualquer impedimento. Outra vantegem que a interoperabilidade permite é utilizar as bibliotecas Java em um código Kotlin, já que ambas as linguagens são executadas pelas mesmas APIs.
+
+<h3>Sintaxe</h3>
+
+A sintaxe do Java é bastante criticada pois exige uma série de declarações e definições de acesso que não são necessárias em muitas linguagens populares, uma delas é o próprio Kotlin. Um exemplo disso para comparação é a declaração de um simples Hello World:
+
+    // Java                                          // Kotlin
+                                                                 
+    class HelloWrold {                               fun main(args : Array<String>) {
+        public static void main(String[] args) {         println("Hello, World!")
+            System.out.println("hELLO, World!");     }
+        }
+    }
+
+<h3>Null Safety</h3>
+
+Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um recurso de segurança void bastante usual. O Null Safety permite declarar a nulidade ou nullability do código com base em seu tipo, sendo utilizado para evitar erros ao valorar elemntos com tipos restritos através do marcador ```?```. Exemplos:
+
+    var stringValue: String = “Hello World!”
+    stringValue= null; // error
+    
+    var stringValue: String? = “Hello World!”
+    stringValue = null // ok
+
+
+<h1>Sintaxe Básica</h1>
+
+
+A seguir iremos abordar a base e um pouco além do que compõe a sintaxe e estrutura do Kotlin, como declarar e utilizar seus componentes utilizando exemplos práticos e como tais elementos seriam declarados em Java para fins de comparação:
+
+
+<h2>Packages e Importação de Arquivos</h2>
+
+
+Para utilizar recursos externos no Kotlin utilizamos a declaração de uso ou a definição de import:
+
+    package my.demo
+    
+    import kotlin.text.*
+    
+    // ...
+
+Não é necessário combinar diretórios e pacotes: os arquivos de origem podem ser colocados arbitrariamente no sistema de arquivos.
+
+
+<h2>Entry Point</h2>
