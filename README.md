@@ -30,20 +30,29 @@ Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, f
 
 O VSCode é imprescindível para escrever e compilar o código Kotlin de forma simples e rápida. Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
 
-<div>
-  <img width="40%" src="https://user-images.githubusercontent.com/61476935/154200841-084b114e-b16a-4039-b1b6-eae294acd78f.png">
-  <img width="40%" src="https://user-images.githubusercontent.com/61476935/154200796-f7c8063e-a990-45fc-b455-790659558c6f.png">
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/154277332-2a833dba-a43f-4cc2-bf52-96f9765fb61e.png">
 </div>
 
+A Extension Kotlin dá suporte a sintaxe dá linguagem, além de adicionar features básicas que irão auxiliar na aua escrita e uso no VSCode.
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/154277377-8d694823-555a-4cca-8a4a-e7aeb6e182b6.png">
+</div>
+
+A Extension Code Runner é bastante utilizada para compilar snippets ou arquivos escritos em diversas linguagens. Ela será a responsável por compilar os arquivos .kt criados.
+
+<h2>Kotlinc</h2>
+
+O Kotlin Compiler, ou Kotlinc, é necessário no processo de compilação pois no Kotlin em si não é interpretado pelo sistema operacional. A ferramenta pode ser obtida seguindo os passos descritos no link abaixo:
 
 - [Kotlin Compiler](https://kotlinlang.org/docs/native-command-line-compiler.html)
 
+Após o fim da instalação do arquivo zip ```kotlin-compiler-0.0.0.zip```, extraia o documento e o anexe a um diretório de sua preferência, exemplo: C:\Kotlin. 
 
-O Kotlin Compiler ou Kotlinc, será a responsável por compilar o código gerado. O link acima mostra como obter a versão mais recente da ferramenta, a qual será obtida a partir do download de uma zip file que pode ser identificada da seguinte forma: ```kotlin-compiler-0.0.0.zip```. Após o fim da instalação, extraia o documento e o anexe a um diretório de sua preferência, exemplo: C:\Kotlin. 
+No arquivo Kotlinc há um diretório bin, o qual contém a ferramenta, e, para que seja possível executar o compiler globalmente, adicione uma nova variável de ambiente a variável Path contendo o caminho até a pasta bin. Exemplo: C:\Kotlin\kotlinc\bin.
 
-No arquivo Kotlinc há um diretório bin, o qual contém a ferramenta. Para que seja possível executar o compiler globalmente, adicione uma nova variável de ambiente a variável Path contendo o caminho até a pasta bin. Exemplo: C:\Kotlin\kotlinc\bin.
-
-Após a criação da nova variável de ambiente, reinicie o computador para que a mesma seja lida, já sendo possível, em seguida, utilizar o Kotlin Compiler. Para atestar sua instalção, acessa o terminal de comando e execute:
+Após a criação da nova variável de ambiente, reinicie o computador para que a mesma seja lida, já sendo possível, em seguida, utilizar o Kotlin Compiler. Para atestar sua instalação, acessa o terminal de comando e execute:
 
     kotlinc -version 
 
@@ -51,9 +60,9 @@ O resultado deve ser semelhante ao seguinte:
 
     info: kotlinc-jvm 1.6.10 (JRE 1.8.0_211-b12)
 
-Obs.: Para que esse processo seja possível, é preciso ter uma versão igual ou superior a <i>Java 1.8</i>, do contrário não será possível fazer uso do Kotlin.
+Obs.: Para que esse processo seja possível, é preciso ter uma versão igual ou superior a <i> 1.8</i> do <i>jdk</i>, do contrário não será possível fazer uso do Kotlin.
 
-Após montar o ambiente de desenvolvimento, iremos abordar os aspectos que definem o Kotlin, como sua sintaxe, tipagem e paradigmas que a linguagem abrange.
+Tendo concluído o processo de criação do ambiente de desenvolvimento, iremos abordar os aspectos que definem o Kotlin, como sua sintaxe, tipagem e paradigmas que a linguagem abrange.
 
 
 <h2>Hello World</h2>
@@ -72,5 +81,33 @@ Como output teremos o seguinte resultado:
     
     [Done] exited with code=0 in 3.62 seconds
 
+Outra forma de obter o resultado é gerando um arquivo em java a partir da file .Kt. No terminal, acesse o diretório em que o arquivo deve ser gerado e execute o comando a seguir:
+
+    kotlinc main.kt -include-runtime -d main.jar
+
+Um arquivo main.jar será gerado. Para executá-lo use o comando a seguir:
+
+    java -jar main.jar
+
+Como resultado temos:
+
+    Hello, world!
+
+Além disso, também é possível acessar o Kotlin interactive e executar algumas operações fazendo run da palavra-chave ```kotlin``` no terminal. Como resultado temos um compiler que faz uso da jvm:
+
+    Welcome to Kotlin version 1.6.10 (JRE 1.8.0_211-b12)
+    Type :help for help, :quit for quit
+    >>>
+
+Experimente executar alguma operações ou printar algumas mensagens em string:
+     
+    >>> var a = 16 * 15
+    >>> a
+    res4: kotlin.Int = 240
+
+<br>
+
+    >>> println("Welcome to the Kotlin interactive")
+    Welcome to the Kotlin interactive
 
 <h2>Características Básicas</h2>
