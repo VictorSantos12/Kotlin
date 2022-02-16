@@ -151,18 +151,48 @@ Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um re
 A seguir iremos abordar a base e um pouco além do que compõe a sintaxe e estrutura do Kotlin, como declarar e utilizar seus componentes utilizando exemplos práticos e como tais elementos seriam declarados em Java para fins de comparação:
 
 
-<h2>Packages e Importação de Arquivos</h2>
+<h2>Packages e Importações</h2>
 
 
-Para utilizar recursos externos no Kotlin utilizamos a declaração de uso ou a definição de import:
+Uma file kotlin normalmente inicia coma uma declaração de package:
 
-    package my.demo
+    package org.example
     
-    import kotlin.text.*
+    fun printMessage() { /*...*/ }
+    class Message { /*...*/ }
     
     // ...
 
-Não é necessário combinar diretórios e pacotes: os arquivos de origem podem ser colocados arbitrariamente no sistema de arquivos.
+Todo o conteúdo de uma um arquivo fonte, sejam classes ou funções, está incluído na declaração do package. Por exmplo, a chamada completa da função <i>printMessage()</i> é ```org.example.printMessage```, já a instância completa da classe <i>Message</i> seria ```org.example.Message```.
+
+Se o package não for especificado, o conteúdo desse arquivo pertencerá ao pacote padrão sem nome.
+
+
+<h2>Imports Padrão</h2>
+
+
+Em qualquer arquivo Kotlin há uma série de packages importados por padão, eles são:
+
+- [kotlin.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/): Principais funções e tipos disponíveis em todas a plataformas cujo Kotlin está presente.
+- [kotlin.annotation.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/): Suporte de biblioteca para o recurso de anotação Kotlin.
+- [kotlin.collections.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/): Collection types, como Iterable, Collection, List, Set, Map e funções de extensão e nível superior relacionadas.
+- [kotlin.comparisons.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/)
+- [kotlin.io.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/)
+- [kotlin.ranges.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/)
+- [kotlin.sequences.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/)
+- [kotlin.text.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/)
+
+Alguns packages adicionais são importados de acordo com a plataforma em questão:
+
+JVM:
+
+- java.lang.*
+
+- [kotlin.jvm.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/)
+
+JS:
+
+- [kotlin.js.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/)
 
 
 <h2>Entry Point</h2>
