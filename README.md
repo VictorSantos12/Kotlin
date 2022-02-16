@@ -22,7 +22,7 @@ Como já foi mencionado o desenvolvimento de aplicações android é atualmente 
 <h2>Ambiente de Desenvolvimento</h2>
 
 
-Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de inúmeras ferramentas, a melhor opção é utilizar o [VSCode](https://code.visualstudio.com/). O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o [Android Studio](https://developer.android.com/studio) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), que são alternativas; mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
+Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de inúmeras ferramentas, a melhor opção é utilizar o VSCode. O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o [Android Studio](https://developer.android.com/studio) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), que são alternativas; mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
 
 Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
 
@@ -31,13 +31,13 @@ Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, f
 O VSCode é imprescindível para escrever e compilar o código Kotlin de forma simples e rápida. Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/154277332-2a833dba-a43f-4cc2-bf52-96f9765fb61e.png">
+  <img src="https://user-images.githubusercontent.com/61476935/154277332-2a833dba-a43f-4cc2-bf52-96f9765fb61e.png">
 </div>
 
 A Extension Kotlin dá suporte a sintaxe dá linguagem, além de adicionar features básicas que irão auxiliar na aua escrita e uso no VSCode.
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/154277377-8d694823-555a-4cca-8a4a-e7aeb6e182b6.png">
+  <img src="https://user-images.githubusercontent.com/61476935/154277377-8d694823-555a-4cca-8a4a-e7aeb6e182b6.png">
 </div>
 
 A Extension Code Runner é bastante utilizada para compilar snippets ou arquivos escritos em diversas linguagens. Ela será a responsável por compilar os arquivos .kt criados.
