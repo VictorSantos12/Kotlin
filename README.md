@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/static/v1?label=Kotlin&message=Language&color=purple&style=for-the-badge&logo=Kotlin"/>
 
 
-O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir a linguagem Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalment mobile. O Kotlin é ainda mais popular por ser facilmente compilado e executado na JVM(Java Virtual Machine), o que permite utilizá-lo em códigos baseados em Java e vice-versa.
+O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalment mobile. Isso se dá pois a linguagem é facilmente compilada e executada na JVM(Java Virtual Machine), o que permite utilizá-la em códigos baseados em Java e vice-versa, o que conta como um dos fatores que contribuem para sua popularidade.
 
 Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um porjeto open-source e é suportada por ferramentas como o Android Studio e aplicações Android em geral desde 2017, passando a ser sua preferred language em 2019.
 
@@ -22,17 +22,17 @@ Como já foi mencionado o desenvolvimento de aplicações android é atualmente 
 <h2>Ambiente de Desenvolvimento</h2>
 
 
-Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de inúmeras ferramentas, a melhor opção é utilizar o [VSCode](https://code.visualstudio.com/). O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o Android Studio ou IntelliJ IDEA, mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
+Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de inúmeras ferramentas, a melhor opção é utilizar o [VSCode](https://code.visualstudio.com/). O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o [Android Studio](https://developer.android.com/studio) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), que são alternativas; mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
 
-Com isso, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
+Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
 
 - [VSCode](https://code.visualstudio.com/)
 
 O VSCode é imprescindível para escrever e compilar o código Kotlin de forma simples e rápida. Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
 
 <div>
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/154200841-084b114e-b16a-4039-b1b6-eae294acd78f.png">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/154200796-f7c8063e-a990-45fc-b455-790659558c6f.png">
+  <img width="40%" src="https://user-images.githubusercontent.com/61476935/154200841-084b114e-b16a-4039-b1b6-eae294acd78f.png">
+  <img width="40%" src="https://user-images.githubusercontent.com/61476935/154200796-f7c8063e-a990-45fc-b455-790659558c6f.png">
 </div>
 
 
