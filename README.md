@@ -31,13 +31,13 @@ Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, f
 O VSCode é imprescindível para escrever e compilar o código Kotlin de forma simples e rápida. Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/154277332-2a833dba-a43f-4cc2-bf52-96f9765fb61e.png">
+  <img src="https://user-images.githubusercontent.com/61476935/154381629-75b90545-4b7d-4836-a517-950cb7e3510d.png">
 </div>
 
 A Extension Kotlin dá suporte a sintaxe dá linguagem, além de adicionar features básicas que irão auxiliar na aua escrita e uso no VSCode.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/154277377-8d694823-555a-4cca-8a4a-e7aeb6e182b6.png">
+  <img src="https://user-images.githubusercontent.com/61476935/154381781-c6bb6927-37dd-4841-83aa-a2fd27f6f473.png">
 </div>
 
 A Extension Code Runner é bastante utilizada para compilar snippets ou arquivos escritos em diversas linguagens. Ela será a responsável por compilar os arquivos .kt criados.
@@ -193,6 +193,12 @@ JVM:
 JS:
 
 - [kotlin.js.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/)
+
+
+<h2>Imports</h2>
+
+
+
 
 
 <h2>Entry Point</h2>
