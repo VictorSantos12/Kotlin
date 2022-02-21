@@ -128,13 +128,13 @@ Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem 
 
 <h3>Concisão</h3>
 
-A sintaxe do Java é bastante criticada pois exige uma série de declarações e definições de acesso que não são necessárias em muitas linguagens populares, uma delas é o próprio Kotlin. Um exemplo disso é a declaração de um simples Hello World:
+A sintaxe do Java é muitas vezes criticada pois exige uma série de declarações e definições de acesso que não são necessárias em muitas linguagens populares. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
 
     // Java                                          // Kotlin
                                                                  
     class HelloWrold {                               fun main(args : Array<String>) {
         public static void main(String[] args) {         println("Hello, World!")
-            System.out.println("hELLO, World!");     }
+            System.out.println("Hello, World!");     }
         }
     }
 
@@ -147,6 +147,10 @@ Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um re
     
     var stringValue: String? = “Hello World!”
     stringValue = null // ok
+
+<h3>Coroutines</h3>
+
+As coroutines são um design pattern utilizado para simplificar a execução de código assíncrono no Kotlin. Diferente de outras linguagens que definem ```async``` e ```await``` como palavras-chave da execução assíncrona de promises, o Kotlin faz uso do conceito de <i>suspending function</i>, que provê um meio mais seguro e menos propenso a erros de executar operações não síncronas. Tal assunto será mais bem abordado posteriormente.
 
 
 <h1>Sintaxe Básica</h1>
