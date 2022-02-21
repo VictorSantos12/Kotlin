@@ -171,7 +171,7 @@ Uma file kotlin normalmente inicia coma uma declaração de package:
     
     // ...
 
-Todo o conteúdo de uma um arquivo fonte, sejam classes ou funções, está incluído na declaração do package. Por exmplo, a chamada completa da função <i>printMessage()</i> é ```org.example.printMessage```, já a instância completa da classe <i>Message</i> seria ```org.example.Message```.
+Todo o conteúdo de uma um arquivo fonte, sejam classes ou funções, está incluído na declaração do package. Por exemplo, a chamada completa da função <i>printMessage()</i> é ```org.example.printMessage```, já a instância completa da classe <i>Message</i> seria ```org.example.Message```.
 
 Se o package não for especificado, o conteúdo desse arquivo pertencerá ao pacote padrão sem nome.
 
@@ -184,11 +184,11 @@ Em qualquer arquivo Kotlin há uma série de packages importados por padão, ele
 - [kotlin.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/): Principais funções e tipos disponíveis em todas a plataformas cujo Kotlin está presente.
 - [kotlin.annotation.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/): Suporte de biblioteca para o recurso de anotação Kotlin.
 - [kotlin.collections.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/): Collection types, como Iterable, Collection, List, Set, Map e funções de extensão e nível superior relacionadas.
-- [kotlin.comparisons.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/)
-- [kotlin.io.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/)
-- [kotlin.ranges.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/)
-- [kotlin.sequences.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/)
-- [kotlin.text.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/)
+- [kotlin.comparisons.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/): Funções auxiliares para criar instâncias do Comparator, cuja função é definir igualdade ou distinção entre elementos.
+- [kotlin.io.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/): IO API para trabalhar com arquivos e streams.
+- [kotlin.ranges.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/): Funções de progressão e extensão de alto-nível. Normalmente utilizadas em operações executadas uma determina quantidade de vezes.
+- [kotlin.sequences.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/): Definição de tipo de avaliação aplicada a collection que serão avaliadas lentamente.
+- [kotlin.text.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/): Funções utilizadas para trabalhar com textos e expressões regulares.
 
 Alguns packages adicionais são importados de acordo com a plataforma em questão:
 
@@ -206,7 +206,44 @@ JS:
 <h2>Imports</h2>
 
 
+Além das importações padrão, cada arquivo pode conter suas próprias diretivas de importação. Com isso é possível ser específico ao fazer o import de determinado recurso. Por exemplo:
 
+    import org.example.Model // Model agora está acessível
+
+Também é possível ser mais abrangente:
+
+    import org.example.* // Todos os recursos diponíveis em 'org.example' passam a ser acessíveis
+
+Além disso, se determinado recurso importado ocasiona um conflito de identificador nominal, é possível definir seu acesso através da palavra-chave ```as``` seguida de um nome que represente localmente a entidade importada:
+
+    import org.example.Model // Model está acessível
+    import org.test.Model as testModel // testModel disponibiliza 'org.test.Model'
 
 
 <h2>Entry Point</h2>
+
+
+A execução de uma aplicação em Kotlin sempre será iniciada a partir da ```main``` function.
+
+    fun main() {
+        println("Hello world!")
+    }
+
+
+<h2>Print & Println</h2>
+
+
+A função ```print``` retorna o argumento nela passado como output:
+
+    print("Hello ")
+    print("world!")
+
+>Hello world!
+
+Já a função ```println``` tem a mesma função com o adicional de aincluir uma quebra de linha em seu output:
+
+    println("Hello world!")
+    println(42)
+
+>Hello world!
+>42
