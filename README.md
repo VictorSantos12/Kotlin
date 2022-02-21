@@ -187,7 +187,7 @@ Em qualquer arquivo Kotlin há uma série de packages importados por padão, ele
 - [kotlin.comparisons.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/): Funções auxiliares para criar instâncias do Comparator, cuja função é definir igualdade ou distinção entre elementos.
 - [kotlin.io.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/): IO API para trabalhar com arquivos e streams.
 - [kotlin.ranges.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/): Funções de progressão e extensão de alto-nível. Normalmente utilizadas em operações executadas uma determina quantidade de vezes.
-- [kotlin.sequences.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/): Definição de tipo de avaliação aplicada a collection que serão avaliadas lentamente.
+- [kotlin.sequences.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/): Definição de tipo de avaliação aplicada a collections que serão avaliadas lentamente.
 - [kotlin.text.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/): Funções utilizadas para trabalhar com textos e expressões regulares.
 
 Alguns packages adicionais são importados de acordo com a plataforma em questão:
@@ -279,6 +279,110 @@ Em alternativa, também é possível omitir o tipo inferido a função:
     }
 
 
+<h2>Tipos Básicos</h2>
+
+
+No Kotlin, basicamente tudo é um objeto, de modo que é possível chamar qualquer mebro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>boolenas</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. A seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
+
+
+<h2>Numbers</h2>
+
+
+O Kotlin porvê uma série de built-in types para representar valores numéricos, sendo estes divididos em dois tipos distintos:
+
+<h3>Intenger</h3>
+
+Intengers são valores inteiros, que no Kotlin podem ser representados de quatro formas distintas com base em seu tamanho:
+
+Type    | Size(bits) |  Min value                                     |  Max value
+------- | ---------- | ---------------------------------------------- | -----------------------------------------------
+ Byte   |   8        |  -128                                          |  127
+ Short  |   16       |  -32768                                        |  32767
+ Int    |   32       |  -2,147,483,648 (-2<sup>31</sup>)              |  2,147,483,647 (2<sup>31</sup> - 1)
+ Long   |   64       |  -9,223,372,036,854,775,808 (-2<sup>63</sup>)  |  9,223,372,036,854,775,807 (2<sup>63</sup> - 1)
+
+Todas as variáveis inicializadas com valores inteiros que não excedam o valor máximo definido para o identificador ```Int``` são inicializados como int. Caso o valor inicial exceda o valor mínimo, a variável é definida como ```Long```. Para especificar um valor Long explicitamente, é preciso adicionar o sufixo <i>L</i> ao valor atribuído:
+
+    val one = 1 // Int
+    val threeBillion = 3000000000 // Long
+    val oneLong = 1L // Long
+    val oneByte: Byte = 1
+
+<h3>Floating-point</h3>
+
+Para números decimais, o Kotlin provê os floating-point types <i>Float</i> e <i>Double</i>. De acordo com o padrão [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754), valores decimais se diferenciam por sua posição decimal, que é a quantidade de dígitos que os mesmos podem conter. Foat reflete o IEEE 754 <i>single precision</i>, enquanto Double provê <i>double precision</i>:
+
+Type    | Size(bits) | Bits significativos | Bits de expoente | Digitos decimais 
+------- | ---------- | ------------------- | ---------------- | -----------------
+ Float  |  32        |  24                 |  8               |  6-7
+ Double |  64        |  53                 |  11              |  15-16
+
+É possível inicializar variáveis Double e Float com números fracionados, sendo separados por ponto. Para vairiáveis com inferência de tipo defina por um número decimal, por padrão lhe será atribuída o tipo <i>Double</i>:
+
+    val pi = 3.14 // Double
+    // val one: Double = 1 // Error: type mismatch
+    val oneDouble = 1.0 // Double
+
+Para especificar explicitamente o tipo <i>Float</i> em uma variável, é preciso adcionar o sufixo <i>f</i> ou <i>F</i> ao valor atribuído. Se um valor contém mais de 6-7 dígitos, ele é arredondado:
+
+    val e = 2.7182818284 // Double
+    val eFloat = 2.7182818284f // Float, actual value is 2.7182817
+
+Note que diferente de algumas linguagens, no Kotlin, não há conversões de ampliação implícitas para números. Por exemplo, uma função com um parâmetro do tipo <i>Double</i> não pode receber valores do tipo <i>Float</i>, <i>Int</i>, ou qualquer outro tipo numérico, apenas <i>Double</i>:
+
+    fun main() {
+
+        fun printDouble(d: Double) { print(d) }
+    
+        val i = 1
+        val d = 1.0
+        val f = 1.0f
+    
+        printDouble(d)
+        printDouble(i) // Error: Type mismatch
+        printDouble(f) // Error: Type mismatch
+
+    }
+
+Para converter tais valores, o Kotlin disponibiliza as Explicit conversions, as quais serão abordadas a seguir.
+
+
+<h2>Explicit Conversions</h2>
+
+
+Devido a diferentes representações, os tipos numéricos menores não são subtipos dos maiores, como Int é diferente de Long. Tal diferenciação permite manter a identidade de cada tipo restrita a si, e destacar essa característica evitar possíveis confusões futuras. Uma consequência dessa diferença é que não é possível converter tipos menos em maiores de forma implicita. O que define a necessidade de utilizar a uma conversão explicita. Exemplo:
+
+    val b: Byte = 1 // OK, literais são verificados estaticamente
+    // val i: Int = b // ERROR
+    val i1: Int = b.toInt()
+
+Todos os tipos numéricos possuem suporte para serem convertidos em outros tipos numéricos:
+
+- toByte(): Byte
+
+- toShort(): Short
+
+- toInt(): Int
+
+- toLong(): Long
+
+- toFloat(): Float
+
+- toDouble(): Double
+
+- toChar(): Char
+
+Em muitos casos, não é necessário utilizar explicit conversion porque o tipo é inferido pelo contexo. Em operações aritméticas por exemplo, as conversões são aopropriadas automaticamente: 
+
+    val l = 1L + 3 // Long + Int => Long
+
+
+<h2>Operações</h2>
+
+
+
+
+
 <h2>Variáveis</h2>
 
 
@@ -316,6 +420,3 @@ Variáveis cujo valor pode ser redefinido durante o fluxo de execução são def
 Como resultado da execução teriamos:
 
 >2
-
-
-<h2>Tipos Básicos</h2>
