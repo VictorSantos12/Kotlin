@@ -300,7 +300,7 @@ Caso uma val receba um outro valor durante o fluxo de execução, como no exempl
 
 Como resultado da execução teriamos:
 
->main.kt:4:4: error: val cannot be reassigned
+>main.kt:4:4: error: val cannot be reassigned<br>
 >   a = 2;
 >   ^
 
