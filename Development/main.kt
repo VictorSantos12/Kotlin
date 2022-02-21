@@ -1,3 +1,6 @@
+val a = 1;
+
 fun main() {
-    println("Hello, world!")
+   a = 2;
+   print(a);
 }

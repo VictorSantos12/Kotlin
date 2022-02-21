@@ -282,14 +282,37 @@ Em alternativa, também é possível omitir o tipo inferido a função:
 <h2>Variáveis</h2>
 
 
-Variáveis locais são declaradas precedidas da plavra-chave ```val```. Essas seriam chamadas ```const``` em outras linguagens já que podem ser valoradas uma vez apenas:
+Variáveis locais são declaradas precedidas da palavra-chave ```val```. Essas seriam chamadas ```consts``` em outras linguagens já que podem ser valoradas uma vez apenas:
 
     val a: Int = 1  // atribuição imadiata
     val b = 2   // tipo `Int` inferido pelo valor atribuído
     val c: Int  // Tipo necessário quando nenhum inicializador é fornecido
     c = 3       // atribuição adiada
 
+Caso uma val receba um outro valor durante o fluxo de execução, como no exemplo a seguir, uma exception será lançada:
+
+    val a = 1;
+    
+    fun main() {
+       a = 2;
+       print(a);
+    }
+
+Como resultado da execução teriamos:
+
+>main.kt:4:4: error: val cannot be reassigned
+>   a = 2;
+>   ^
+
 Variáveis cujo valor pode ser redefinido durante o fluxo de execução são definidas com a palavra-chave ```var```:
 
-    var x = 5 // tipo `Int` inferido pelo valor atribuído
-    x += 1
+    var a = 1; 
+
+    fun main() {
+       a = 2;
+       print(a);
+    }
+
+Como resultado da execução teriamos:
+
+>2
