@@ -62,7 +62,7 @@ Após a criação da nova variável de ambiente, reinicie o computador para que 
 
 O resultado deve ser semelhante ao seguinte:
 
-    info: kotlinc-jvm 1.6.10 (JRE 1.8.0_211-b12)
+>info: kotlinc-jvm 1.6.10 (JRE 1.8.0_211-b12)
 
 Obs.: Para que esse processo seja possível, é preciso ter uma versão igual ou superior a <i> 1.8</i> do <i>jdk</i>, do contrário não será possível fazer uso do Kotlin.
 
@@ -72,7 +72,7 @@ Tendo concluído o processo de criação do ambiente de desenvolvimento, iremos 
 <h2>Hello World</h2>
 
 
-Uma forma prática de entender a estrutura mais básica de uma linguagem de programação é o popular Hello World. Sendo assim, em uma file hellWorld.kt, execute as seguintes linhas de código:
+Uma forma prática de entender a estrutura mais básica de uma linguagem de programação é o popular Hello World. Sendo assim, em uma file main.kt, execute as seguintes linhas de código:
 
     fun main() {
         println("Hello, world!")
@@ -80,12 +80,12 @@ Uma forma prática de entender a estrutura mais básica de uma linguagem de prog
 
 Como output teremos o seguinte resultado:
 
-    [Running] cd "c:\..\..\..\..\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar
-    Hello, world!
-    
-    [Done] exited with code=0 in 3.62 seconds
+>[Running] cd "c:\..\..\..\..\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar
+>Hello, world!
 
-Outra forma de obter o resultado é gerando um arquivo em java a partir da file .Kt. No terminal, acesse o diretório em que o arquivo deve ser gerado e execute o comando a seguir:
+>[Done] exited with code=0 in 3.62 seconds
+
+Outra forma de obter o resultado é gerando um arquivo em java a partir da file .Kt. Para isso, no terminal, acesse o diretório em que o arquivo deve ser gerado e execute o comando a seguir:
 
     kotlinc main.kt -include-runtime -d main.jar
 
@@ -95,7 +95,7 @@ Um arquivo main.jar será gerado. Para executá-lo use o comando a seguir:
 
 Como resultado temos:
 
-    Hello, world!
+>Hello, world!
 
 Além disso, também é possível acessar o Kotlin interactive e executar algumas operações fazendo run da palavra-chave ```kotlin``` no terminal. Como resultado temos um compiler que faz uso da jvm:
 
