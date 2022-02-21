@@ -252,3 +252,44 @@ A execução do exemplo acima teria o seguinte output:
 >Hello world!
 >
 >42
+
+
+<h2>Funções</h2>
+
+As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args entre parênteses e por último a inferência de tipo retornado pela mesma: 
+
+    fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
+
+Uma função inda pode ter um omissão do seu escopo, tendo a expressão que a função executa o substituindo:
+
+    fun sum(a: Int, b: Int) = a + b
+
+Funções Kotlin também podem te um type genêrico, este sendo chamdo de ```Unit```:
+
+    fun printSum(a: Int, b: Int) {
+        println("sum of $a and $b is ${a + b}")
+    }
+
+Em alternativa, também é possível omitir o tipo inferido a função:
+
+    fun printSum(a: Int, b: Int) {
+        println("sum of $a and $b is ${a + b}")
+    }
+
+
+<h2>Variáveis</h2>
+
+
+Variáveis locais são declaradas precedidas da plavra-chave ```val```. Essas seriam chamadas ```const``` em outras linguagens já que podem ser valoradas uma vez apenas:
+
+    val a: Int = 1  // atribuição imadiata
+    val b = 2   // tipo `Int` inferido pelo valor atribuído
+    val c: Int  // Tipo necessário quando nenhum inicializador é fornecido
+    c = 3       // atribuição adiada
+
+Variáveis cujo valor pode ser redefinido durante o fluxo de execução são definidas com a palavra-chave ```var```:
+
+    var x = 5 // tipo `Int` inferido pelo valor atribuído
+    x += 1
