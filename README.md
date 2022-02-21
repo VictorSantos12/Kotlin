@@ -238,12 +238,16 @@ A função ```print``` retorna o argumento nela passado como output:
     print("Hello ")
     print("world!")
 
+A execução do exemplo acima teria o seguinte output:
+
 >Hello world!
 
 Já a função ```println``` tem a mesma função com o adicional de aincluir uma quebra de linha em seu output:
 
     println("Hello world!")
     println(42)
+
+A execução do exemplo acima teria o seguinte output:
 
 >Hello world!
 >
