@@ -5,9 +5,9 @@
 <img src="https://img.shields.io/static/v1?label=Kotlin&message=Language&color=purple&style=for-the-badge&logo=Kotlin"/>
 
 
-O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalment mobile. Isso se dá pois a linguagem é facilmente compilada e executada na JVM(Java Virtual Machine), o que permite utilizá-la em códigos baseados em Java e vice-versa, o que conta como um dos fatores que contribuem para sua popularidade.
+O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalmente mobile. Isso se dá pois a linguagem foi criada para para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tâ-la presente em basicamente qualquer ambiente em que o Java é executado.
 
-Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um porjeto open-source e é suportada por ferramentas como o Android Studio e aplicações Android em geral desde 2017, passando a ser sua preferred language em 2019.
+Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria surgiu em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language da plataforma em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source.
 
 
 <!-- <h1>Kotlin Multiplataform</h1> -->
@@ -22,7 +22,7 @@ Como já foi mencionado o desenvolvimento de aplicações android é atualmente 
 <h2>Ambiente de Desenvolvimento</h2>
 
 
-Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de inúmeras ferramentas, a melhor opção é utilizar o VSCode. O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o [Android Studio](https://developer.android.com/studio) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), que são alternativas; mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
+Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de ferramentas custozas, a melhor opção é utilizar o VSCode. O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o [Android Studio](https://developer.android.com/studio) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), que são alternativas, mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
 
 Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
 
@@ -34,21 +34,23 @@ O VSCode é imprescindível para escrever e compilar o código Kotlin de forma s
   <img src="https://user-images.githubusercontent.com/61476935/154381629-75b90545-4b7d-4836-a517-950cb7e3510d.png">
 </div>
 
-A Extension Kotlin dá suporte a sintaxe dá linguagem, além de adicionar features básicas que irão auxiliar na aua escrita e uso no VSCode.
+A extensão Kotlin dá suporte a sintaxe dá linguagem, além de adicionar features básicas que irão auxiliar na aua escrita e uso no VSCode.
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/154381781-c6bb6927-37dd-4841-83aa-a2fd27f6f473.png">
 </div>
 
-A Extension Code Runner é bastante utilizada para compilar snippets ou arquivos escritos em diversas linguagens. Ela será a responsável por compilar os arquivos .kt criados.
+A extensão Code Runner é bastante utilizada para compilar snippets ou arquivos escritos em diversas linguagens. Ela será a responsável por compilar os arquivos .kt criados.
 
 <h2>Kotlinc</h2>
 
-O Kotlin Compiler, ou Kotlinc, é necessário no processo de compilação pois no Kotlin em si não é interpretado pelo sistema operacional. A ferramenta pode ser obtida seguindo os passos descritos no link abaixo:
+O Kotlin Compiler, ou Kotlinc, é necessário no processo de compilação pois o Kotlin em si não é interpretado pelo sistema operacional. A ferramenta pode ser obtida seguindo os passos descritos no link abaixo:
 
 - [Kotlin Compiler](https://kotlinlang.org/docs/native-command-line-compiler.html)
 
-Após o fim da instalação do arquivo zip ```kotlin-compiler-0.0.0.zip```, extraia o documento e o anexe a um diretório de sua preferência, exemplo: C:\Kotlin. 
+Após o fim da instalação do arquivo zip ```kotlin-compiler-0.0.0.zip```, extraia o documento e o anexe a um diretório de sua preferência. Exemplo: 
+
+>>>C:\Kotlin. 
 
 No arquivo Kotlinc há um diretório bin, o qual contém a ferramenta, e, para que seja possível executar o compiler globalmente, adicione uma nova variável de ambiente a variável Path contendo o caminho até a pasta bin. Exemplo: C:\Kotlin\kotlinc\bin.
 
