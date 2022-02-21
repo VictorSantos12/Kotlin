@@ -19,12 +19,43 @@ Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial 
 Como já foi mencionado o desenvolvimento de aplicações android é atualmente <i>Kotlin-first</i>, sendo assim desde que a parceria foi anunciada na Google I/O de 2019. -->
 
 
-<h2>Ambiente de Desenvolvimento</h2>
+<h1>Ambiente de Desenvolvimento</h1>
 
 
-Da forma que foi descrito acima, é perceptível que o Kotlin pode ser utilizado de diversas maneiras e em ambiente distintos. Porém, para os quais pretendem aprender os conceitos básicos e até mesmo avançados da linguagem sem se preocupar com a criação de um projeto ou a obtenção de ferramentas custozas, a melhor opção é utilizar o VSCode. O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o [Android Studio](https://developer.android.com/studio) ou [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), que são alternativas, mas fornece o suficiente para que seja possível aprender a sintaxe da linguagem de forma prática.
+O Kotlin pode ser utilizado de diversas maneiras e em ambientes distintos, os quais disponibilizam diferentes recursos úteis ao desenvolvimento de aplicações multiplataforma de formas diversas. Elas são:
 
-Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
+
+<h2>IntelliJ IDEA</h2>
+
+
+O IntelliJ IDEA é uma IDE criada pela JetBrains voltada para maximizar a produtividade dos desenvolvedores. Danto total supote ao Java, Kotlin, Scala e Groovy, o IntelliJ possui inúmeros recursos que potencializam o desenvolvimento. O link a seguir indica como obter e instalar as versões da ferramenta:
+
+- [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/)
+
+
+<h2>Android Studio</h2>
+
+
+O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvimentode aplicaçõe Andorid, baseada no IntelliJ IDEA. Indo além do IntelliJ, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar uma aplicação android, como:
+
+- Um sistema de compilação flexível baseado no gerenciador Gradle
+- Uma vasta lista de emuladores ricos em recursos
+- Ambiente que permite desenvolver para todos os dispositivos Android
+- Facilita o fluxo de desenvolvimento aplicando automaticamente alterações sem a necessidade de reinicializar a aplicação
+- Integração com o GitHub
+- Uma série de ferramentas e frameworks de teste
+- Ferramentas Lint para capturar desempenho, usabilidade, compatibilidade de versão e outros problemas
+- Suporte integrado para o [Google Cloud Platform](https://cloud.google.com/tools/android-studio/docs/), facilitando a integração do Google Cloud Messaging e do App Engine
+
+O link a seguir indica como obter e instalar o Android Studio:
+
+- [Android Studio](https://developer.android.com/studio)
+
+
+<h2>VSCode</h2>
+
+
+O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o Android Studio ou o IntelliJ IDEA, mas fornece o suficiente para que seja possível aprender a sintaxe do Kotlin de forma prática. Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
 
 - [VSCode](https://code.visualstudio.com/)
 
@@ -42,7 +73,9 @@ A extensão Kotlin dá suporte a sintaxe dá linguagem, além de adicionar featu
 
 A extensão Code Runner é bastante utilizada para compilar snippets ou arquivos escritos em diversas linguagens. Ela será a responsável por compilar os arquivos .kt criados.
 
+
 <h2>Kotlinc</h2>
+
 
 O Kotlin Compiler, ou Kotlinc, é necessário no processo de compilação pois o Kotlin em si não é interpretado pelo sistema operacional. A ferramenta pode ser obtida seguindo os passos descritos no link abaixo:
 
@@ -238,7 +271,7 @@ A função ```print``` retorna o argumento nela passado como output:
     print("Hello ")
     print("world!")
 
-A execução do exemplo acima teria o seguinte output:
+A execução do exemplo acima terá o seguinte output:
 
 >Hello world!
 
@@ -247,7 +280,7 @@ Já a função ```println``` tem a mesma função com o adicional de aincluir um
     println("Hello world!")
     println(42)
 
-A execução do exemplo acima teria o seguinte output:
+A execução do exemplo acima terá o seguinte output:
 
 >Hello world!
 >
@@ -282,13 +315,13 @@ Em alternativa, também é possível omitir o tipo inferido a função:
 <h2>Tipos Básicos</h2>
 
 
-No Kotlin, basicamente tudo é um objeto, de modo que é possível chamar qualquer mebro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>boolenas</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. A seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
+No Kotlin, basicamente tudo é um objeto, de modo que é possível chamar qualquer membro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>boolenas</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. Na seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
 
 
 <h2>Numbers</h2>
 
 
-O Kotlin porvê uma série de built-in types para representar valores numéricos, sendo estes divididos em dois tipos distintos:
+O Kotlin provê uma série de built-in types para representar valores numéricos, sendo estes divididos em dois tipos distintos:
 
 <h3>Intenger</h3>
 
@@ -350,7 +383,7 @@ Para converter tais valores, o Kotlin disponibiliza as Explicit conversions, as 
 <h2>Explicit Conversions</h2>
 
 
-Devido a diferentes representações, os tipos numéricos menores não são subtipos dos maiores, como Int é diferente de Long. Tal diferenciação permite manter a identidade de cada tipo restrita a si, e destacar essa característica evitar possíveis confusões futuras. Uma consequência dessa diferença é que não é possível converter tipos menos em maiores de forma implicita. O que define a necessidade de utilizar a uma conversão explicita. Exemplo:
+Devido a diferentes representações, os tipos numéricos menores não são subtipos dos maiores, como Int é diferente de Long. Tal diferenciação permite manter a identidade de cada tipo restrita a si, e destacar essa característica evitar possíveis confusões futuras. Uma consequência dessa diferença é que não é possível converter tipos menos em maiores de forma implicita. O que define a necessidade de utilizar uma conversão explicita. Exemplo:
 
     val b: Byte = 1 // OK, literais são verificados estaticamente
     // val i: Int = b // ERROR
@@ -380,7 +413,42 @@ Em muitos casos, não é necessário utilizar explicit conversion porque o tipo 
 <h2>Operações</h2>
 
 
+O Kotlin dá suporte ao conjunto de operações aritméticas padrão: ```+```, ```-```, ```*```, ```%```:
 
+    println(1 + 2)
+    println(2_500_000_000L - 1L)
+    println(3.14 * 2.71)
+    println(10.0 / 3)
+
+A execução do exemplo acima terá o seguinte output:
+
+>3
+>2499999999
+>8.5094
+>3.3333333333333335
+
+
+<h3>Divisão de Inteiros</h3>
+
+
+A divisão entre números inteiros sempre resultará em um número inteiro, ou seja, qualquer parte fracionada do resultado será descartada:
+
+    val x = 5 / 2
+    //println(x == 2.5) // ERROR: O operador '==' não pode ser aplicado entre valores 'Int' e 'Double'
+    println(x == 2)
+
+A execução do exemplo acima terá o seguinte output:
+
+>true
+
+Para retornar um floating-point type, é preciso converter explicitamente um dos operandos para um dos floating-point types:
+
+    val x = 5 / 2.toDouble()
+    println(x == 2.5)
+
+A execução do exemplo acima terá o seguinte output:
+
+>true
 
 
 <h2>Variáveis</h2>
