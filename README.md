@@ -301,7 +301,7 @@ Caso uma val receba um outro valor durante o fluxo de execução, como no exempl
 Como resultado da execução teriamos:
 
 >main.kt:4:4: error: val cannot be reassigned<br>
->   a = 2;
+>   a = 2;<br>
 >   ^
 
 Variáveis cujo valor pode ser redefinido durante o fluxo de execução são definidas com a palavra-chave ```var```:
@@ -316,3 +316,6 @@ Variáveis cujo valor pode ser redefinido durante o fluxo de execução são def
 Como resultado da execução teriamos:
 
 >2
+
+
+<h2>Tipos Básicos</h2>
