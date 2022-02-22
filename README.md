@@ -153,7 +153,7 @@ Experimente executar alguma operações ou printar algumas mensagens em string:
 
 Sendo multiparadigma, o Kotlin é uma linguagem totalmente orientada a objetos que conta com features da programação funcional. Como foi feita para ser compatível com o JVM, muitas características do Java podem ser encontradas nela e a comparação entre ambas é constante. Partindo dessa comparação, uma característica que  acentua a qualidade do Kotlin é que ele consegue ser mais produtivo e reduz em 40% o código que o Java necessitaria para criar determinada rotina.
 
-O Kotlin é uma linguagem estaticamente tipada, ou seja, a definição de tipos só pode ser inferida uma vez, fazendo com que o elemento tipado se restrinja ao tipo inferido. Tal característica a torna mais rigida e segura em termos de processamento. Outras características destacaveis são:
+O Kotlin é uma linguagem estaticamente tipada, ou seja, a definição de tipos só pode ser inferida uma vez, fazendo com que o elemento tipado se restrinja ao tipo inferido. Tal característica a torna mais rígida e segura em termos de processamento. Outras características destacaveis são:
 
 
 <h3>Interoperabilidade</h3>
@@ -195,13 +195,13 @@ As coroutines são um design pattern utilizado para simplificar a execução de 
 <h1>Sintaxe Básica</h1>
 
 
-A seguir iremos abordar a base e um pouco além do que compõe a sintaxe e estrutura do Kotlin, como declarar e utilizar seus componentes utilizando exemplos práticos e como tais elementos seriam declarados em Java para fins de comparação:
+A seguir iremos abordar a base do que compõe a sintaxe e estrutura do Kotlin, como declarar e utilizar seus componentes utilizando exemplos práticos:
 
 
 <h2>Packages e Importações</h2>
 
 
-Uma file kotlin normalmente inicia coma uma declaração de package:
+Uma file kotlin normalmente inicia com a importação ou declaração de uso dos recurso nela utilizados, sendo package uma das formas de definição:
 
     package org.example
     
@@ -281,7 +281,7 @@ A execução do exemplo acima terá o seguinte output:
 
 >Hello world!
 
-Já a função ```println``` tem a mesma função com o adicional de aincluir uma quebra de linha em seu output:
+Já a função ```println``` tem a mesma função com o adicional de incluir uma quebra de linha em seu output:
 
     println("Hello world!")
     println(42)
@@ -296,7 +296,7 @@ A execução do exemplo acima terá o seguinte output:
 <h2>Tipos Básicos</h2>
 
 
-No Kotlin, basicamente tudo é um objeto, de modo que é possível chamar qualquer membro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>boolenas</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. Na seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
+No Kotlin basicamente tudo é um objeto, de modo que é possível chamar qualquer membro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>booleans</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. Na seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
 
 
 <h2>Numbers</h2>
@@ -328,7 +328,7 @@ Todas as variáveis inicializadas com valores inteiros que não excedam o valor 
 <h3>Floating-point</h3>
 
 
-Para números decimais, o Kotlin provê os floating-point types <i>Float</i> e <i>Double</i>. De acordo com o padrão [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754), valores decimais se diferenciam por sua posição decimal, que é a quantidade de dígitos que os mesmos podem conter. Foat reflete o IEEE 754 <i>single precision</i>, enquanto Double provê <i>double precision</i>:
+Para números decimais, o Kotlin provê os floating-point types <i>Float</i> e <i>Double</i>. De acordo com o padrão [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754), valores decimais se diferenciam por sua posição decimal, que é a quantidade de dígitos que os mesmos podem conter. Float reflete o IEEE 754 <i>single precision</i>, enquanto Double provê <i>double precision</i>:
 
 Type    | Size(bits) | Bits significativos | Bits de expoente | Digitos decimais 
 ------- | ---------- | ------------------- | ---------------- | -----------------
@@ -341,7 +341,7 @@ Type    | Size(bits) | Bits significativos | Bits de expoente | Digitos decimais
     // val one: Double = 1 // Error: type mismatch
     val oneDouble = 1.0 // Double
 
-Para especificar explicitamente o tipo <i>Float</i> em uma variável, é preciso adcionar o sufixo <i>f</i> ou <i>F</i> ao valor atribuído. Se um valor contém mais de 6-7 dígitos, ele é arredondado:
+Para especificar explicitamente o tipo <i>Float</i> em uma variável, é preciso adicionar o sufixo <i>f</i> ou <i>F</i> ao valor atribuído. Se um valor contém mais de 6-7 dígitos, ele é arredondado:
 
     val e = 2.7182818284 // Double
     val eFloat = 2.7182818284f // Float, actual value is 2.7182817
@@ -368,7 +368,7 @@ Para converter tais valores, o Kotlin disponibiliza as Explicit conversions, as 
 <h2>Explicit Conversions</h2>
 
 
-Devido a diferentes representações, os tipos numéricos menores não são subtipos dos maiores, como Int é diferente de Long. Tal diferenciação permite manter a identidade de cada tipo restrita a si, e destacar essa característica evitar possíveis confusões futuras. Uma consequência dessa diferença é que não é possível converter tipos menos em maiores de forma implicita. O que define a necessidade de utilizar uma conversão explicita. Exemplo:
+Devido a diferentes representações, os tipos numéricos menores não são subtipos dos maiores, como Int é diferente de Long. Tal diferenciação permite manter a identidade de cada tipo restrita a si, e destacar essa característica evita possíveis confusões futuras. Uma consequência dessa diferença é que não é possível converter tipos menores em maiores de forma implícita. O que define a necessidade de utilizar uma conversão explicita. Exemplo:
 
     val b: Byte = 1 // OK, literais são verificados estaticamente
     // val i: Int = b // ERROR
@@ -390,7 +390,7 @@ Todos os tipos numéricos possuem suporte para serem convertidos em outros tipos
 
 - toChar(): Char
 
-Em muitos casos, não é necessário utilizar explicit conversion porque o tipo é inferido pelo contexo. Em operações aritméticas por exemplo, as conversões são aopropriadas automaticamente: 
+Em muitos casos, não é necessário utilizar explicit conversion porque o tipo é inferido pelo contexto. Em operações aritméticas por exemplo, as conversões são apropriadas automaticamente: 
 
     val l = 1L + 3 // Long + Int => Long
 
@@ -398,7 +398,7 @@ Em muitos casos, não é necessário utilizar explicit conversion porque o tipo 
 <h2>Operadores</h2>
 
 
-O Kotlin porvê os seguintes operadores em seua sintaxe:
+O Kotlin provê os seguintes operadores em sua sintaxe:
 
 
 <h3>Aritméticos</h3>
@@ -481,7 +481,7 @@ A execução do exemplo acima terá o seguinte output:
 <h2>Booleans</h2>
 
 
-O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo: ```true```; ou negativo ```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores comvencionais, também pode receber null.
+O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo: ```true```; ou negativo ```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores convencionais, também pode receber null.
 
 Os operadores internos do Kotlin para entidades booleanas incluem:
 
@@ -514,7 +514,7 @@ Como resultado do exemplo acima, temos o seguinte output:
 <h2>Charactes</h2>
 
 
-Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```1```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
+Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
 
     val aChar: Char = 'a'
     
@@ -532,13 +532,13 @@ Como resultado do exemplo acima, temos o seguinte output:
 <h2>String</h2>
 
 
-No Kotlin uma Strings são representadas pelo tipo <i>String</i>, geralmente sendo uma sequência de caracteres entre aspas duplas (```" "```):
+No Kotlin as Strings são representadas pelo tipo <i>String</i>, geralmente sendo uma sequência de caracteres entre aspas duplas (```" "```):
 
     val str = "abcd 1234"
 
-Os elementos de uma string são caracteres que podem ser acessádos via um operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
+Os elementos de uma string são caracteres que podem ser acessados via um operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
 
-Outro detalhe importante sobre as strings no Kotlin é que tais elementos são imutáveis. Uma vez que uma string é inicializada, não é possível alterar seu valor. Todos os elementos que operam strings retornam seu resultado em um novo objeto string, mantndo a string original inalterada:
+Outro detalhe importante sobre as strings no Kotlin é que tais elementos são imutáveis. Uma vez que uma string é inicializada, não é possível alterar seu valor. Todos os elementos que operam strings retornam seu resultado em um novo objeto string, mantendo a string original inalterada:
 
     val str = "abcd"
     println(str.uppercase()) // Cria e printa um no objeto String
@@ -549,7 +549,7 @@ Como resultado do exemplo acima, temos o seguinte output:
 >ABCD<br>
 >abcd
 
-Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja a string:
+Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja uma string:
 
     val s = "abc" + 1
     println(s + "def")
@@ -611,11 +611,13 @@ As funções em Kotlin são definidas a partir do identificador <i>fun</i> segui
         return a + b
     }
 
-Uma função inda pode ter um omissão do seu escopo, tendo a expressão que a função executa o substituindo:
+Os argumantos de uma função possuem identificadores próprios obrigatórios, os quais sofrem instância quando utilizados.
+
+Uma função ainda pode ter um omissão do seu escopo, tendo a expressão que a função executa o substituindo:
 
     fun sum(a: Int, b: Int) = a + b
 
-Funções Kotlin também podem te um type genêrico, este sendo chamdo de ```Unit```:
+Funções Kotlin também podem te um type genérico, este sendo chamdo de ```Unit```:
 
     fun printSum(a: Int, b: Int) {
         println("sum of $a and $b is ${a + b}")
@@ -633,7 +635,7 @@ Em alternativa, também é possível omitir o tipo inferido a função:
 
 Variáveis locais são declaradas precedidas da palavra-chave ```val```. Essas seriam chamadas ```consts``` em outras linguagens já que podem ser valoradas uma vez apenas:
 
-    val a: Int = 1  // atribuição imadiata
+    val a: Int = 1  // atribuição imediata
     val b = 2   // tipo `Int` inferido pelo valor atribuído
     val c: Int  // Tipo necessário quando nenhum inicializador é fornecido
     c = 3       // atribuição adiada
