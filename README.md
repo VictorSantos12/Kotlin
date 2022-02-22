@@ -293,7 +293,7 @@ Output:
 >42
 
 
-<h2>Tipos Básicos</h2>
+<h1>Tipos Básicos</h1>
 
 
 No Kotlin basicamente tudo é um objeto, de modo que é possível chamar qualquer membro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>booleans</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. Na seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
@@ -395,13 +395,13 @@ Em muitos casos, não é necessário utilizar explicit conversion porque o tipo 
     val l = 1L + 3 // Long + Int => Long
 
 
-<h2>Operadores</h2>
+<h1>Operadores</h1>
 
 
 O Kotlin provê os seguintes operadores em sua sintaxe:
 
 
-<h3>Aritméticos</h3>
+<h2>Aritméticos</h2>
 
 
 O Kotlin dá suporte ao conjunto de operações aritméticas padrão: ```+```, ```-```, ```*```, ```%```:
@@ -442,7 +442,7 @@ Output:
 >true
 
 
-<h3>Verificação de igualdade</h3>
+<h2>Verificação de igualdade</h2>
 
 
 O Kotlin dá suporte ao conjunto dos seguintes verificadores de igualdade: ```a == b``` e  ```a != b```, ambos tendo um boolean como resultado:
@@ -460,7 +460,7 @@ Output:
 >true
 
 
-<h3>Operadores de Comparação</h3>
+<h2>Operadores de Comparação</h2>
 
 
 O Kotlin dá suporte ao conjunto dos seguintes operadores de comparação: ```a < b```, ```a > b```, ```a <= b```, ```a >= b```, todos tendo um boolean como resultado:
@@ -476,6 +476,48 @@ Output:
 >true<br>
 >false<br>
 >true
+
+
+<h2>Operadore de incremento e decremento</h2>
+
+
+O Kotlin dá suporte ao conjunto de operadores de incremento pré e pós fixados: ```++a```, ```a++```, ```--a```, ```a--```, possuindo diferentes resultados:
+
+    var a = 1;
+    var b = 1;
+    var c = 1;
+    var d = 1;
+    
+    fun main() {
+    
+      println(++a)
+      println(b++)
+      println(--c)
+      println(d--)
+       
+    }
+
+Output:
+
+>2
+>1
+>0
+>1
+
+Operadores pré fixados retornam o valor do operando após a operação, já operados pós fixados retoram o valor do operando antes da operação.
+
+
+<h2>Operadores de Auto Atribuição</h2>
+
+
+Operações que relacionam dois operandos de forma que o primeiro operando recebe o valor da operação entre seu valor e o de um segundo operando:
+
+    x  =   y | O operando x recebe o operando y
+    x  -=  y | O operando x recebe a subtração entre os operandos x e y
+    x  /=  y | O operando x recebe a divisão entre os operandos x e y
+    x  %=  y | O operando x recebe o resto da divisão entre os operandos x e y
+    x  +=  y | O operando x recebe a soma entre os operandos x e y
+    x  *=  y | O operando x recebe a multiplicação entre os operandos x e y
 
 
 <h2>Booleans</h2>
@@ -559,7 +601,7 @@ Output:
 >abc1def
 
 
-<h3>String literals</h3>
+<h2>String literals</h2>
 
 
 O Kotlin possui dois tipos de string literals:
@@ -580,7 +622,7 @@ Uma raw string é delimitada por uma sequência de aspas duplas(```"""```) e pod
             print(c)
     """
 
-<h3>String templates</h3>
+<h2>String templates</h2>
 
 
 String literals podem conter um <i>template</i> expression que consiste em partes do código que são avaliadas e cujo resultado é concatenado dentro da string. Uma template expression inicia com um cifrão (```$```) seguido do identificado do elemento a ser concatenado:
@@ -602,7 +644,7 @@ Output:
 >abc.length is 3
 
 
-<h2>Funções</h2>
+<h1>Funções</h1>
 
 
 As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args entre parênteses e por último a inferência de tipo retornado pela mesma: 
@@ -630,7 +672,7 @@ Em alternativa, também é possível omitir o tipo inferido a função:
     }
 
 
-<h2>Variáveis</h2>
+<h1>Variáveis</h1>
 
 
 Variáveis locais são declaradas precedidas da palavra-chave ```val```. Essas seriam chamadas ```consts``` em outras linguagens já que podem ser valoradas uma vez apenas:
@@ -669,5 +711,61 @@ Como resultado da execução teriamos:
 >2
 
 
-<h2>Array</h2>
+<h1>Array</h1>
+
+
+No Kotlin um array é representado pela classe <i>Array</i>, que possui funções comuns a classes Java como ```get``` e ```set```, as quais são acessadas por convenção pelo marcador ```[]```. A classe <i>Array</i> também possui a propriedade size, cuja função clara é definir o tamanho do vetor, além de outros recursos que serão citados a seguir. 
+
+    class Array<T> private constructor() {
+        val size: Int
+        operator fun get(index: Int): T
+        operator fun set(index: Int, value: T): Unit
+    
+        operator fun iterator(): Iterator<T>
+        // ...
+    }
+
+Uma forma simples de criar um array é através da função ```arrayOf()```, a qual compõe a classe <i>Array</i> e recebe como argumento os membros do array a ser criado, logo ```arrayOf(1, 2, 3)``` cria o array ```[1, 2, 3]```. Também é possível criar um array através do constructor Array, que recebe seu tamanho e retorna seus elementos por meio de uma função que opera com a indexação dos mesmos e um dado valor: 
+
+    fun main() {
+        val asc = Array(5) { "string" }
+        asc.forEach { println(it) }
+    }
+
+Output:
+
+>string
+>string
+>string
+>string
+>string
+
+Para cada index, o valor definido será retornado. Caso um valor não seja dado aos elementos, é possível definir o index como valor:
+
+    fun main() {
+        val asc = Array(5) { i -> i }
+        asc.forEach { println(it) }
+    }
+
+Output: 
+
+>0
+>1
+>2
+>3
+>4
+
+No exmplo acima, a função de interação equivale a chamada dos métodos get e set da seguinte forma:
+
+    * get
+    i -> i 
+         * set
+
+Sendo possível omitir o getter visto que a classe já tem acesso ao valor de retorno, que seria o próprio index:
+
+    val asc = Array(5) { _ -> i }
+
+
+<h1>Condicionais e Loops</h1>
+
 
