@@ -413,9 +413,9 @@ O Kotlin dá suporte ao conjunto de operações aritméticas padrão: ```+```, `
 
 A execução do exemplo acima terá o seguinte output:
 
->3
->2499999999
->8.5094
+>3<br>
+>2499999999<br>
+>8.5094<br>
 >3.3333333333333335
 
 
@@ -454,9 +454,9 @@ O Kotlin dá suporte ao conjunto dos seguintes operadores de igualdade: ```a == 
 
 A execução do exemplo acima terá o seguinte output:
 
->false
->true
->false
+>false<br>
+>true<br>
+>false<br>
 >true
 
 
@@ -472,9 +472,9 @@ O Kotlin dá suporte ao conjunto dos seguintes operadores de comparação: ```a 
 
 A execução do exemplo acima terá o seguinte output:
 
->true
->true
->false
+>true<br>
+>true<br>
+>false<br>
 >true
 
 
@@ -506,8 +506,8 @@ Uma operação utilizado algum dos operadores acima sempre irá resultar em um b
 
 Como resultado do exemplo acima, temos o seguinte output:
 
->true
->false
+>true<br>
+>false<br>
 >false
 
 
@@ -525,7 +525,6 @@ Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido 
 Como resultado do exemplo acima, temos o seguinte output:
 
 >a
->
 >
 >＀
 
@@ -547,7 +546,7 @@ Outro detalhe importante sobre as strings no Kotlin é que tais elementos são i
 
 Como resultado do exemplo acima, temos o seguinte output:
 
->ABCD\n
+>ABCD<br>
 >abcd
 
 Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja a string:
