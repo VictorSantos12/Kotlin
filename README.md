@@ -734,10 +734,10 @@ Uma forma simples de criar um array é através da função ```arrayOf()```, a q
 
 Output:
 
->string
->string
->string
->string
+>string<br>
+>string<br>
+>string<br>
+>string<br>
 >string
 
 Para cada index, o valor definido será retornado. Caso um valor não seja dado aos elementos, é possível definir o index como valor:
@@ -749,10 +749,10 @@ Para cada index, o valor definido será retornado. Caso um valor não seja dado 
 
 Output: 
 
->0
->1
->2
->3
+>0<br>
+>1<br>
+>2<br>
+>3<br>
 >4
 
 No exmplo acima, a função de interação equivale a chamada dos métodos get e set da seguinte forma:
@@ -821,6 +821,33 @@ A verificação é feita sequencialmente em cada ramificação até que um valor
     }
 
 
+<h2>ForEach</h2>
+
+
+O loop <i>forEach</i>, usado em exemplos anteriores, funciona como um método aplicado a elementos qua permitem interações, como arrays ou expressões em range. Por exemplo:
+
+    fun main() {
+
+     (0..10).forEach {
+         println(it)
+     }
+    }
+
+Output:
+
+>0<br>
+>1<br>
+>2<br>
+>3<br>
+>4<br>
+>5<br>
+>6<br>
+>7<br>
+>8<br>
+>9<br>
+>10
+
+
 <h2>For loops</h2>
 
 
@@ -846,12 +873,12 @@ Com o loop for é possível interagir com range de números utilizando uma range
 
 Output:
 
->1
->2
->3
->6
->4
->2
+>1<br>
+>2<br>
+>3<br>
+>6<br>
+>4<br>
+>2<br>
 >0
 
 
@@ -870,10 +897,10 @@ A formas distintas de operar interações em arrays no Kotlin, o for loop é a m
 
 Output:
 
->0
->1
->2
->3
+>0<br>
+>1<br>
+>2<br>
+>3<br>
 >4
 
 Em alternativa, é possível utilizar a função ```withIndex()```:
@@ -888,10 +915,10 @@ Em alternativa, é possível utilizar a função ```withIndex()```:
 
 Output:
 
->0 - 0
->1 - 1
->2 - 2
->3 - 3
+>0 - 0<br>
+>1 - 1<br>
+>2 - 2<br>
+>3 - 3<br>
 >4 - 4
 
 
@@ -913,4 +940,4 @@ Portanto, o corpo do <i>do-while</i> é executado pelo menos uma vez, independen
         val y = retrieveData()
     } while (y != null) // y is visible here!
 
-O Kotlin também suporta os operadore ```break``` e ```continue``` comuns a loops. 
+O Kotlin também suporta os operadores ```break``` e ```continue``` comuns a loops, sobre os quais falaremos a seguir.

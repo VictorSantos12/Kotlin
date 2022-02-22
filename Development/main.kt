@@ -1,10 +1,8 @@
 
-var myArray = Array(5) { i -> i }
-
 fun main() {
 
- for (i in myArray) {
-     println(myArray[i])
+ (0..10).forEach {
+     println(it)
  }
 
 }
