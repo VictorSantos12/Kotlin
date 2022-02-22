@@ -795,6 +795,62 @@ No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. També
 Caso um if seja utilizado como uma expressão para retornar um valor ou atribuí-lo a uma variável, por exemplo, a ramificação else é obrigatória.
 
 
+<h2>Verificações de tipo</h2>
+
+
+As verificações de tipo são bastante comuns quando se trata da validação de determinado elemento do código. No Kotlin há duas formas de verificar o tipo inferido a uma entidade: se ela é de determinado tipo, ou se não é. Para isso usamos as seguintes expressões respectivamente:
+
+    if(obj is String) {
+       print("it's a string")
+    } 
+
+A expressão ```is``` declara a condição de positiva quanto ao tipo do elemento a ser validado, retornando true caso o mesmo seja do tipo esperado.
+
+    if(obj !is String) { // !(obj is String)
+       print("Not a String")
+    } else {
+       print("it's a string") 
+    }
+
+A expressão ```!is``` tem a função oposta, declarando a condição esperada como negativa quanto ao tipo do elemento a ser validado, retornando true caso o mesmo não seja do tipo esperado.
+
+
+<h2>Smart Casts</h2>
+
+
+Casting é um recurso de verificação de tipos bastante usual, definido pela expressão ```as```. Na maioria dos casos, não é preciso usar operadores de conversão explícitos em Kotlin porque o compilador rastreia as verificações da expressão is e conversões explícitas para valores imutáveis ​​e inserções(seguras), as convertendo automaticamente quando necessário:
+
+    fun demo(x: Any) {
+        if (x is String) {
+            print(x.length) // x é automaticamente convertido para String
+        }
+    }
+
+Ser imutável é essencial para o funcionamento do Smart Cast pois o compilador precisa garantir que a variávle em análise não irá mudar entre sua verificação e seu uso.
+
+
+<h3>"Unsafe" cast operator</h3>
+
+
+Normalmente, o operado de cast lança uma exceção quando não é possível converter a variável em questão. E assim, nesses casos, ela é chamada de <i>unsafe</i>. Um unsafe cast é definido pela já citada expressão infix <i>as</i>:
+
+    val x: String = y as String
+
+Observe que null não pode ser convertido em String, pois esse tipo não permite valor nulo. Se y fosse nulo, o código acima iria lança uma exceção. Para tornar um código como este correto para valores nulos, usa-se o tipo nullable no lado direito da conversão:
+
+    val x: String? = y as String?
+
+
+<h3>"Safe" (nullable) cast operator</h3>
+
+
+Para evitar exceções, utiliza-se o operador de <i>safe</i> cast ```as?```, o qual irá retornar null caso ache uma falha.
+
+    val x: String? = y as? String
+
+Observe que, apesar do fato de que o lado direito de as? é um tipo String não nulo, o resultado da conversão é nullable.
+
+
 <h2>When expression</h2>
 
 
