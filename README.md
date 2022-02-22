@@ -827,9 +827,8 @@ A verificação é feita sequencialmente em cada ramificação até que um valor
 O loop <i>forEach</i>, usado em exemplos anteriores, funciona como um método aplicado a elementos qua permitem interações, como arrays ou expressões em range. Por exemplo:
 
     fun main() {
-
-     (0..10).forEach {
-         println(it)
+     arrayOf(0, 1, 2, 3, 4, 5).forEach {
+        println(it)
      }
     }
 
@@ -840,13 +839,7 @@ Output:
 >2<br>
 >3<br>
 >4<br>
->5<br>
->6<br>
->7<br>
->8<br>
->9<br>
->10
-
+>5
 
 <h2>For loops</h2>
 
@@ -922,6 +915,110 @@ Output:
 >4 - 4
 
 
+<h2>Retornos e Jumps</h2>
+
+
+O Kotlin possui três expressões de jump estruturais, as quais são utilizadas em conjunto com os controladores de fluxo em loop, elas são:
+
+- ```return``` - Por padrão retorna da função mais próxima a delimitar a expressão.
+- ```break``` - Encerra o loop mais próximo a delimitar a expressão.
+- ```continue``` - Prossegue para o próximo passo do loop mais próximo a delimitar a expressão.
+
+Há formas distintas de utilizar cada uma das expressões acima, com distições ainda mais especificas quando se trata de diferentes estruturas de loop. Por exemplo, a expressão break não pode ser utilizada em conjunto com um forEach loop:
+    
+    var myArray = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    fun main() {
+     myArray.forEach {
+       println(it)
+       if(it >= 8)
+       break
+     }
+    }
+
+Output:
+
+>[Running] cd "c:\Ads\Linguagens\Kotlin\Development\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar<br>
+>main.kt:21:4: error: 'break' and 'continue' are only allowed inside a loop<br>
+>   break<br>
+>   ^<br>
+>
+>[Done] exited with code=1 in 2.534 seconds
+
+
+<h2>Break & Continue labels</h2>
+
+
+Qualquer expressão no Kotlin pode ser marcada por um label. Labels são formados por identificadores seguidos pelo sinal ```@```. Para rotular uma expressão basta adicionar um label que a identifique a sua declaração:
+
+    loop@ for (i in 1..100) {
+        // ...
+    }
+
+Com o marcador, é possível qualificar uma expressão break ou continue com o label criado:
+
+    loop@ for (i in 1..100) {
+        for (j in 1..100) {
+            if (...) break@loop
+        }
+    }
+
+Uma expressão ```break``` qualificada com um label faz um jump para o ponto de excução logo após o loop marcado com o label. Já o ```continue``` prossegue para a próxima iteração do mesmo loop.
+
+
+<h2>Return labels</h2>
+
+
+No Kotlin, as funções podem ser aninhadas usando funções literais, funções locais e expressões de objeto. Retornos qualificados com lables permitem retornar de uma função externa. O caso de uso mais importante é retornar de uma expressão lambda. É importante lembrar que o valor retornado ao utilizar um return é definido pela loop mais próximo ou o que delimita a expressão. Por exmplo:
+
+    fun main() {
+      arrayOf(1, 2, 3, 4, 5).forEach {
+          if (it == 3) return // non-local return directly to the caller of foo()
+          print(it)
+      }
+      println("este ponto não é acessível")
+    }
+
+Output:
+
+>12
+
+Observe que esses retornos não locais são suportados apenas por expressões lambda passadas para funções inline. Para retornar de uma expressão lambda, é preciso rotulá-la junto com seu retorno:
+
+    fun main() {
+     arrayOf(1, 2, 3, 4, 5).forEach lit@ {
+       if (it == 3) return@lit 
+       print(it)
+     }
+     println(" feito com um lable explicito")
+    }
+
+Output:
+
+>1245 feito com um lable explicito
+
+
+Perceba que em expressões <i>forEach</i>, o uso dos local returns possuem efeito similar ao uso do <i>continue</i> em loops regulares. Nele não há equivalente para a expressão break, mas é possível obter o mesmo resultado fazendo uso de um return label:
+
+    arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).forEach lit@ {
+      if(it > 8) return@lit
+      println(it)
+    }
+
+Output:
+
+>0<br>
+>1<br>
+>2<br>
+>3<br>
+>4<br>
+>5<br>
+>6<br>
+>7<br>
+>8
+
+
+
 <h2>While loops</h2>
 
 
@@ -941,3 +1038,7 @@ Portanto, o corpo do <i>do-while</i> é executado pelo menos uma vez, independen
     } while (y != null) // y is visible here!
 
 O Kotlin também suporta os operadores ```break``` e ```continue``` comuns a loops, sobre os quais falaremos a seguir.
+
+
+<h2>Exceptions</h2>
+
