@@ -1,11 +1,10 @@
 
-var a = 5
-var b = 2
+var myArray = Array(5) { i -> i }
 
 fun main() {
 
-b /= a
+ for (i in myArray) {
+     println(myArray[i])
+ }
 
-  println(b)
-   
 }

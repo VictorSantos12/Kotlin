@@ -478,7 +478,7 @@ Output:
 >true
 
 
-<h2>Operadore de incremento e decremento</h2>
+<h2>Operadores de incremento e decremento</h2>
 
 
 O Kotlin dá suporte ao conjunto de operadores de incremento pré e pós fixados: ```++a```, ```a++```, ```--a```, ```a--```, possuindo diferentes resultados:
@@ -769,3 +769,148 @@ Sendo possível omitir o getter visto que a classe já tem acesso ao valor de re
 <h1>Condicionais e Loops</h1>
 
 
+O controle do fluxo de dados é, em suma, um dos aspectos mais importantes da programação. O Kotlin possui as seguintes estruturas para controle de fluxo de informações:
+
+
+<h2>If expression</h2>
+
+
+No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. Também é importante citar que não há um operador ternário (condição ? then : else) no Kotlin, visto que o ordinary if funciona bem nesse papel.
+
+    var max = a
+    if (a < b) max = b
+    
+    // With else
+
+    var max: Int
+    if (a > b) {
+        max = a
+    } else {
+        max = b
+    }
+    
+    // As expression
+    val max = if (a > b) a else b
+
+Caso um if seja utilizado como uma expressão para retornar um valor ou atribuí-lo a uma variável, por exemplo, a ramificação else é obrigatória.
+
+
+<h2>When expression</h2>
+
+
+A expressão <i>when</i> define uma condicional com multiplas ramificações. É semelhante à instrução switch em linguagem da família C. A expressão when no Kotlin possui a seguinte sintaxe:
+
+    when (x) {
+        1 -> print("x == 1")
+        2 -> print("x == 2")
+        else -> {
+            print("x is neither 1 nor 2")
+        }
+    }
+
+A verificação é feita sequencialmente em cada ramificação até que um valor satisfaça a condição. Caso seja utilizado como uma expressão, o else será obrigatório até que o compilador prove que todos os casos possíveis estejam listados na ramificação inicial. Exemplo:
+
+    enum class Bit {
+      ZERO, ONE
+    }
+    
+    val numericValue = when (getRandomBit()) {
+        Bit.ZERO -> 0
+        Bit.ONE -> 1
+        // 'else' is not required because all cases are covered
+    }
+
+
+<h2>For loops</h2>
+
+
+O loop <i>for</i> itera qualquer elemento que forneça um iterador, sendo equivalente ao loop foreach em linguagens como C#. A sintaxe de for é a seguinte:
+
+    for (item in collection) print(item)
+
+O escopo de um loop for pode ser um bloco de execução:
+
+    for (item: Int in ints) {
+        // ...
+    }
+
+Com o loop for é possível interagir com range de números utilizando uma range expression:
+
+    for (i in 1..3) {
+        println(i)
+    }
+
+    for (i in 6 downTo 0 step 2) {
+        println(i)
+    }
+
+Output:
+
+>1
+>2
+>3
+>6
+>4
+>2
+>0
+
+
+<h2>For loop + Array</h2>
+
+
+A formas distintas de operar interações em arrays no Kotlin, o for loop é a mais comum e usual. Uma das formas de utilizá-los em conjunto é através da indexação dos elementos do array:
+
+    var myArray = Array(5) { i -> i }
+    
+    fun main() {
+     for (i in myArray) {
+         println(myArray[i])
+     }
+    }
+
+Output:
+
+>0
+>1
+>2
+>3
+>4
+
+Em alternativa, é possível utilizar a função ```withIndex()```:
+
+    var myArray = Array(5) { i -> i }
+    
+    fun main() {
+     for ((index, value) in myArray.withIndex()) {
+         println("$index - $value")
+     }
+    }
+
+Output:
+
+>0 - 0
+>1 - 1
+>2 - 2
+>3 - 3
+>4 - 4
+
+
+<h2>While loops</h2>
+
+
+Os loops <i>while</i> e <i>do-while</i> executam seu body continuamente enquanto sua condição for satisfatória. A diferença entre eles é o tempo de verificação de condição:
+
+- <i>while</i> verifica a condição e, caso esta o satisfaça, executa o body e posteriormente retorna à verificação.
+- <i>do-while</i> executa o body e posteriormente a condição. Caso esta o satisfaça, o loop é repetido. 
+
+Portanto, o corpo do <i>do-while</i> é executado pelo menos uma vez, independentemente da condição.
+
+    while (x > 0) {
+        x--
+    }
+    
+    do {
+        val y = retrieveData()
+    } while (y != null) // y is visible here!
+
+O Kotlin também suporta os operadore ```break``` e ```continue``` comuns a loops. 
