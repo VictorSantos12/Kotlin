@@ -148,7 +148,7 @@ Experimente executar alguma operações ou printar algumas mensagens em string:
     Welcome to the Kotlin interactive
 
 
-<h2>Características Básicas</h2>
+<h1>Características Básicas</h1>
 
 
 Sendo multiparadigma, o Kotlin é uma linguagem totalmente orientada a objetos que conta com features da programação funcional. Como foi feita para ser compatível com o JVM, muitas características do Java podem ser encontradas nela e a comparação entre ambas é constante. Partindo dessa comparação, uma característica que  acentua a qualidade do Kotlin é que ele consegue ser mais produtivo e reduz em 40% o código que o Java necessitaria para criar determinada rotina.
@@ -156,13 +156,13 @@ Sendo multiparadigma, o Kotlin é uma linguagem totalmente orientada a objetos q
 O Kotlin é uma linguagem estaticamente tipada, ou seja, a definição de tipos só pode ser inferida uma vez, fazendo com que o elemento tipado se restrinja ao tipo inferido. Tal característica a torna mais rígida e segura em termos de processamento. Outras características destacaveis são:
 
 
-<h3>Interoperabilidade</h3>
+<h2>Interoperabilidade</h2>
 
 
 Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem qualquer impedimento. Outra vantegem que a interoperabilidade permite é utilizar as bibliotecas Java em um código Kotlin, já que ambas as linguagens são executadas pelas mesmas APIs.
 
 
-<h3>Concisão</h3>
+<h2>Concisão</h2>
 
 
 A sintaxe do Java é muitas vezes criticada pois exige uma série de declarações e definições de acesso que não são necessárias em muitas linguagens populares. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
@@ -175,7 +175,7 @@ A sintaxe do Java é muitas vezes criticada pois exige uma série de declaraçõ
         }
     }
 
-<h3>Null Safety</h3>
+<h2>Null Safety</h2>
 
 Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um recurso de segurança void bastante usual. O Null Safety permite declarar a nulidade ou nullability do código com base em seu tipo, sendo utilizado para evitar erros ao valorar elementos com tipos restritos através do marcador ```?```. Exemplos:
 
@@ -186,7 +186,7 @@ Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um re
     stringValue = null // ok
 
 
-<h3>Coroutines</h3>
+<h2>Coroutines</h2>
 
 
 As coroutines são um design pattern utilizado para simplificar a execução de código assíncrono no Kotlin. Diferente de outras linguagens que definem ```async``` e ```await``` como palavras-chave da execução assíncrona de promises, o Kotlin faz uso do conceito de <i>suspending function</i>, que provê um meio mais seguro e menos propenso a erros de executar operações não síncronas. Tal assunto será mais bem abordado posteriormente.
@@ -296,7 +296,7 @@ Output:
 <h1>Tipos Básicos</h1>
 
 
-No Kotlin basicamente tudo é um objeto, de modo que é possível chamar qualquer membro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>booleans</i> podem ser representados como valores primitivos durante o runtime, mas, para o usuário, eles são apenas instâncias de classes internas. Na seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
+No Kotlin basicamente tudo é um objeto, de modo que é possível chamar qualquer membro que componha o core da linguagem em qualquer variável, seja uma função ou propriedade. Com isso, alguns tipos possuem uma representação distinta, por exemplo, <i>numbers</i>, <i>characteres</i> e <i>booleans</i> podem ser chamados de primitivos, mas, para o Kotlin, eles são apenas instâncias de classes internas. Na seção a seguir iremos descrever quais são os tipos básicos utilizados no Kotlin e suas características:
 
 
 <h2>Numbers</h2>
@@ -305,7 +305,7 @@ No Kotlin basicamente tudo é um objeto, de modo que é possível chamar qualque
 O Kotlin provê uma série de built-in types para representar valores numéricos, sendo estes divididos em dois tipos distintos:
 
 
-<h3>Intenger</h3>
+<h2>Intenger</h2>
 
 
 Intengers são valores inteiros, que no Kotlin podem ser representados de quatro formas distintas com base em seu tamanho:
@@ -325,7 +325,7 @@ Todas as variáveis inicializadas com valores inteiros que não excedam o valor 
     val oneByte: Byte = 1
 
 
-<h3>Floating-point</h3>
+<h2>Floating-point</h2>
 
 
 Para números decimais, o Kotlin provê os floating-point types <i>Float</i> e <i>Double</i>. De acordo com o padrão [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754), valores decimais se diferenciam por sua posição decimal, que é a quantidade de dígitos que os mesmos podem conter. Float reflete o IEEE 754 <i>single precision</i>, enquanto Double provê <i>double precision</i>:
@@ -499,9 +499,9 @@ O Kotlin dá suporte ao conjunto de operadores de incremento pré e pós fixados
 
 Output:
 
->2
->1
->0
+>2<br>
+>1<br>
+>0<br>
 >1
 
 Operadores pré fixados retornam o valor do operando após a operação, já operados pós fixados retoram o valor do operando antes da operação.
@@ -792,7 +792,7 @@ No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. També
     // As expression
     val max = if (a > b) a else b
 
-Caso um if seja utilizado como uma expressão para retornar um valor ou atribuí-lo a uma variável, por exemplo, a ramificação else é obrigatória.
+Caso um if seja utilizado como uma expressão para retornar um valor, ou atribuí-lo a uma variável por exemplo, a ramificação else é obrigatória.
 
 
 <h2>Verificações de tipo</h2>
@@ -804,7 +804,7 @@ As verificações de tipo são bastante comuns quando se trata da validação de
        print("it's a string")
     } 
 
-A expressão ```is``` declara a condição de positiva quanto ao tipo do elemento a ser validado, retornando true caso o mesmo seja do tipo esperado.
+A expressão ```is``` declara a condição de positividade quanto ao tipo do elemento a ser validado, retornando true caso o mesmo seja do tipo esperado.
 
     if(obj !is String) { // !(obj is String)
        print("Not a String")
@@ -826,10 +826,10 @@ Casting é um recurso de verificação de tipos bastante usual, definido pela ex
         }
     }
 
-Ser imutável é essencial para o funcionamento do Smart Cast pois o compilador precisa garantir que a variávle em análise não irá mudar entre sua verificação e seu uso.
+Ser imutável é essencial para o funcionamento do Smart Cast pois o compilador precisa garantir que a variável em análise não irá mudar entre sua verificação e seu uso.
 
 
-<h3>"Unsafe" cast operator</h3>
+<h2>"Unsafe" cast operator</h2>
 
 
 Normalmente, o operado de cast lança uma exceção quando não é possível converter a variável em questão. E assim, nesses casos, ela é chamada de <i>unsafe</i>. Um unsafe cast é definido pela já citada expressão infix <i>as</i>:
@@ -841,7 +841,7 @@ Observe que null não pode ser convertido em String, pois esse tipo não permite
     val x: String? = y as String?
 
 
-<h3>"Safe" (nullable) cast operator</h3>
+<h2>"Safe" (nullable) cast operator</h2>
 
 
 Para evitar exceções, utiliza-se o operador de <i>safe</i> cast ```as?```, o qual irá retornar null caso ache uma falha.
@@ -1098,3 +1098,28 @@ O Kotlin também suporta os operadores ```break``` e ```continue``` comuns a loo
 
 <h2>Exceptions</h2>
 
+
+Todas as exception classes no Kotlin herdam a classe Throwable. Cada exception possui um message, um stack trace e uma optional cause.
+
+Para lançar um exeption object, use a expressão throw:
+
+    throw Exception("Hi There!")
+
+Output: 
+
+    Exception in thread "main" java.lang.Exception: Hi There!
+    	at MainKt.main(main.kt:3)
+    	at MainKt.main(main.kt)
+
+
+Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
+
+    try {
+        // some code
+    } catch (e: SomeException) {
+        // handler
+    } finally {
+        // optional finally block
+    }
+
+É possível criar zero ou mais blocos catch, e o bloco finally pode ser omitido. Porém, ao menos um catch ou finally é obrigatório.
