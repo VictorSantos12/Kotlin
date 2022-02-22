@@ -445,12 +445,12 @@ Output:
 <h3>Verificação de igualdade</h3>
 
 
-O Kotlin dá suporte ao conjunto dos seguintes operadores de igualdade: ```a == b``` e  ```a != b```, ambos tendo um boolean como resultado:
+O Kotlin dá suporte ao conjunto dos seguintes verificadores de igualdade: ```a == b``` e  ```a != b```, ambos tendo um boolean como resultado:
 
     println(1 == 2)
     println(2_500_000_000L != 1L)
     println(3.14 == 2.71)
-    println(10.0.toInt() !== 3)
+    println(10.0.toInt() != 3)
 
 Output:
 
@@ -489,7 +489,7 @@ Os operadores internos do Kotlin para entidades booleanas incluem:
 - ```&&``` - Conjunção ou AND lógico
 - ```!``` - Negação ou NOT lógico
 
-Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além diiso, tanto o operador de dijunção quanto o de conjunção trabalhão de forma lenta. Os exemplos a seguir mostra como utilizar tais recursos:
+Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além disso, tanto o operador de dijunção quanto o de conjunção trabalham de forma lenta. Os exemplos a seguir mostram como utilizar tais recursos:
 
 
     val myTrue: Boolean = true
@@ -514,7 +514,7 @@ Output:
 <h2>Characters</h2>
 
 
-Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
+Os caracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
 
     val aChar: Char = 'a'
     
@@ -536,7 +536,7 @@ No Kotlin as Strings são representadas pelo tipo <i>String</i>, geralmente send
 
     val str = "abcd 1234"
 
-Os elementos de uma string são caracteres que podem ser acessados via um operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
+Os elementos de uma string são caracteres que podem ser acessados via operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
 
 Outro detalhe importante sobre as strings no Kotlin é que tais elementos são imutáveis. Uma vez que uma string é inicializada, não é possível alterar seu valor. Todos os elementos que operam strings retornam seu resultado em um novo objeto string, mantendo a string original inalterada:
 
@@ -613,11 +613,11 @@ As funções em Kotlin são definidas a partir do identificador <i>fun</i> segui
 
 Os argumantos de uma função possuem identificadores próprios obrigatórios, os quais sofrem instância quando utilizados.
 
-Uma função ainda pode ter um omissão do seu escopo, tendo a expressão que a função executa o substituindo:
+Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa o substituindo:
 
     fun sum(a: Int, b: Int) = a + b
 
-Funções Kotlin também podem te um type genérico, este sendo chamdo de ```Unit```:
+Funções Kotlin também podem te um type genérico, este sendo chamado de ```Unit```:
 
     fun printSum(a: Int, b: Int) {
         println("sum of $a and $b is ${a + b}")
@@ -649,7 +649,7 @@ Caso uma val receba um outro valor durante o runtime, como no exemplo a seguir, 
        print(a);
     }
 
-Como resultado da execução teriamos:
+Output:
 
 >main.kt:4:4: error: val cannot be reassigned<br>
 >   a = 2;<br>
