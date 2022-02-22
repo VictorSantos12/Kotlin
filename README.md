@@ -111,7 +111,7 @@ Uma forma prática de entender a estrutura mais básica de uma linguagem de prog
         println("Hello, world!")
     }
 
-Como output teremos o seguinte resultado:
+Output:
 
     [Running] cd "c:\..\..\..\..\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar
     Hello, world!
@@ -277,7 +277,7 @@ A função ```print``` retorna o argumento nela passado como output:
     print("Hello ")
     print("world!")
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >Hello world!
 
@@ -286,7 +286,7 @@ Já a função ```println``` tem a mesma função com o adicional de incluir uma
     println("Hello world!")
     println(42)
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >Hello world!
 >
@@ -411,7 +411,7 @@ O Kotlin dá suporte ao conjunto de operações aritméticas padrão: ```+```, `
     println(3.14 * 2.71)
     println(10.0 / 3)
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >3<br>
 >2499999999<br>
@@ -428,7 +428,7 @@ A divisão entre números inteiros sempre resultará em um número inteiro, ou s
     //println(x == 2.5) // ERROR: O operador '==' não pode ser aplicado entre valores 'Int' e 'Double'
     println(x == 2)
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >true
 
@@ -437,7 +437,7 @@ Para retornar um floating-point type, é preciso converter explicitamente um dos
     val x = 5 / 2.toDouble()
     println(x == 2.5)
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >true
 
@@ -452,7 +452,7 @@ O Kotlin dá suporte ao conjunto dos seguintes operadores de igualdade: ```a == 
     println(3.14 == 2.71)
     println(10.0.toInt() !== 3)
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >false<br>
 >true<br>
@@ -470,7 +470,7 @@ O Kotlin dá suporte ao conjunto dos seguintes operadores de comparação: ```a 
     println(3.14 <= 2.71)
     println(10.0.toInt() >= 3)
 
-A execução do exemplo acima terá o seguinte output:
+Output:
 
 >true<br>
 >true<br>
@@ -481,7 +481,7 @@ A execução do exemplo acima terá o seguinte output:
 <h2>Booleans</h2>
 
 
-O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo: ```true```; ou negativo ```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores convencionais, também pode receber null.
+O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo:```true```; ou negativo:```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores convencionais, também pode receber null.
 
 Os operadores internos do Kotlin para entidades booleanas incluem:
 
@@ -504,14 +504,14 @@ Uma operação utilizado algum dos operadores acima sempre irá resultar em um b
     
     }
 
-Como resultado do exemplo acima, temos o seguinte output:
+Output:
 
 >true<br>
 >false<br>
 >false
 
 
-<h2>Charactes</h2>
+<h2>Characters</h2>
 
 
 Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
@@ -522,7 +522,7 @@ Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido 
     println('\n') //printa um caractere que representa uma linha extra
     println('\uFF00')
 
-Como resultado do exemplo acima, temos o seguinte output:
+Output:
 
 >a
 >
@@ -544,7 +544,7 @@ Outro detalhe importante sobre as strings no Kotlin é que tais elementos são i
     println(str.uppercase()) // Cria e printa um no objeto String
     println(str) // A Strig original permanece a mesma
 
-Como resultado do exemplo acima, temos o seguinte output:
+Output:
 
 >ABCD<br>
 >abcd
@@ -554,7 +554,7 @@ Para concatenar uma string usa-se o operador ```+```. Com a concatenação tamb�
     val s = "abc" + 1
     println(s + "def")
 
-Como resultado do exemplo acima, temos o seguinte output:
+Output:
 
 >abc1def
 
@@ -588,7 +588,7 @@ String literals podem conter um <i>template</i> expression que consiste em parte
     val i = 10
     println("i = $i") // printa "i = 10"
 
-output:
+Output:
 
 >i = 10
 
@@ -597,7 +597,7 @@ Uma template expression também pode ser declarada entre chaves da seguinte form
     val s = "abc"
     println("$s.length is ${s.length}") // prints "abc.length is 3"
 
-output:
+Output:
 
 >abc.length is 3
 
@@ -640,7 +640,7 @@ Variáveis locais são declaradas precedidas da palavra-chave ```val```. Essas s
     val c: Int  // Tipo necessário quando nenhum inicializador é fornecido
     c = 3       // atribuição adiada
 
-Caso uma val receba um outro valor durante o fluxo de execução, como no exemplo a seguir, uma exception será lançada:
+Caso uma val receba um outro valor durante o runtime, como no exemplo a seguir, uma exception será lançada:
 
     val a = 1;
     
@@ -655,7 +655,7 @@ Como resultado da execução teriamos:
 >   a = 2;<br>
 >   ^
 
-Variáveis cujo valor pode ser redefinido durante o fluxo de execução são definidas com a palavra-chave ```var```:
+Variáveis cujo valor pode ser redefinido durante o runtime são definidas com a palavra-chave ```var```:
 
     var a = 1; 
 
