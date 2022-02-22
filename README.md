@@ -454,10 +454,10 @@ O Kotlin dá suporte ao conjunto dos seguintes operadores de igualdade: ```a == 
 
 A execução do exemplo acima terá o seguinte output:
 
-    false
-    true
-    false
-    true
+>false
+>true
+>false
+>true
 
 
 <h3>Operadores de Comparação</h3>
@@ -472,10 +472,10 @@ O Kotlin dá suporte ao conjunto dos seguintes operadores de comparação: ```a 
 
 A execução do exemplo acima terá o seguinte output:
 
-    true
-    true
-    false
-    true
+>true
+>true
+>false
+>true
 
 
 <h2>Booleans</h2>
@@ -487,7 +487,7 @@ Os operadores internos do Kotlin para entidades booleanas incluem:
 
 - ```||``` - Dijunção ou OR lógico
 - ```&&``` - Conjunção ou AND lógico
-- ```!``` -  Negação ou NOT lógico
+- ```!``` - Negação ou NOT lógico
 
 Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além diiso, tanto o operador de dijunção quanto o de conjunção trabalhão de forma lenta. Os exemplos a seguir mostra como utilizar tais recursos:
 
@@ -547,8 +547,8 @@ Outro detalhe importante sobre as strings no Kotlin é que tais elementos são i
 
 Como resultado do exemplo acima, temos o seguinte output:
 
-    ABCD
-    abcd
+>ABCD
+>abcd
 
 Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja a string:
 
@@ -557,7 +557,7 @@ Para concatenar uma string usa-se o operador ```+```. Com a concatenação tamb�
 
 Como resultado do exemplo acima, temos o seguinte output:
 
-    abc1def
+>abc1def
 
 
 <h3>String literals</h3>
@@ -589,10 +589,18 @@ String literals podem conter um <i>template</i> expression que consiste em parte
     val i = 10
     println("i = $i") // printa "i = 10"
 
+output:
+
+>i = 10
+
 Uma template expression também pode ser declarada entre chaves da seguinte forma:
 
     val s = "abc"
     println("$s.length is ${s.length}") // prints "abc.length is 3"
+
+output:
+
+>abc.length is 3
 
 
 <h2>Funções</h2>
