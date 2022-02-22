@@ -547,7 +547,7 @@ Outro detalhe importante sobre as strings no Kotlin é que tais elementos são i
 
 Como resultado do exemplo acima, temos o seguinte output:
 
->ABCD
+>ABCD\n
 >abcd
 
 Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja a string:
