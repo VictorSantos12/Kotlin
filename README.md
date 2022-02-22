@@ -36,7 +36,7 @@ O IntelliJ IDEA é uma IDE criada pela JetBrains voltada para maximizar a produt
 <h2>Android Studio</h2>
 
 
-O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvimentode aplicaçõe Andorid, baseada no IntelliJ IDEA. Indo além do IntelliJ, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar uma aplicação android, como:
+O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvimento de aplicações Andorid, baseado no IntelliJ IDEA. Indo além do IntelliJ, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar uma aplicação android, como:
 
 - Um sistema de compilação flexível baseado no gerenciador Gradle
 - Uma vasta lista de emuladores ricos em recursos
@@ -155,11 +155,15 @@ Sendo multiparadigma, o Kotlin é uma linguagem totalmente orientada a objetos q
 
 O Kotlin é uma linguagem estaticamente tipada, ou seja, a definição de tipos só pode ser inferida uma vez, fazendo com que o elemento tipado se restrinja ao tipo inferido. Tal característica a torna mais rigida e segura em termos de processamento. Outras características destacaveis são:
 
+
 <h3>Interoperabilidade</h3>
+
 
 Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem qualquer impedimento. Outra vantegem que a interoperabilidade permite é utilizar as bibliotecas Java em um código Kotlin, já que ambas as linguagens são executadas pelas mesmas APIs.
 
+
 <h3>Concisão</h3>
+
 
 A sintaxe do Java é muitas vezes criticada pois exige uma série de declarações e definições de acesso que não são necessárias em muitas linguagens populares. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
 
@@ -181,7 +185,9 @@ Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um re
     var stringValue: String? = “Hello World!”
     stringValue = null // ok
 
+
 <h3>Coroutines</h3>
+
 
 As coroutines são um design pattern utilizado para simplificar a execução de código assíncrono no Kotlin. Diferente de outras linguagens que definem ```async``` e ```await``` como palavras-chave da execução assíncrona de promises, o Kotlin faz uso do conceito de <i>suspending function</i>, que provê um meio mais seguro e menos propenso a erros de executar operações não síncronas. Tal assunto será mais bem abordado posteriormente.
 
@@ -287,31 +293,6 @@ A execução do exemplo acima terá o seguinte output:
 >42
 
 
-<h2>Funções</h2>
-
-As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args entre parênteses e por último a inferência de tipo retornado pela mesma: 
-
-    fun sum(a: Int, b: Int): Int {
-        return a + b
-    }
-
-Uma função inda pode ter um omissão do seu escopo, tendo a expressão que a função executa o substituindo:
-
-    fun sum(a: Int, b: Int) = a + b
-
-Funções Kotlin também podem te um type genêrico, este sendo chamdo de ```Unit```:
-
-    fun printSum(a: Int, b: Int) {
-        println("sum of $a and $b is ${a + b}")
-    }
-
-Em alternativa, também é possível omitir o tipo inferido a função:
-
-    fun printSum(a: Int, b: Int) {
-        println("sum of $a and $b is ${a + b}")
-    }
-
-
 <h2>Tipos Básicos</h2>
 
 
@@ -323,7 +304,9 @@ No Kotlin, basicamente tudo é um objeto, de modo que é possível chamar qualqu
 
 O Kotlin provê uma série de built-in types para representar valores numéricos, sendo estes divididos em dois tipos distintos:
 
+
 <h3>Intenger</h3>
+
 
 Intengers são valores inteiros, que no Kotlin podem ser representados de quatro formas distintas com base em seu tamanho:
 
@@ -341,7 +324,9 @@ Todas as variáveis inicializadas com valores inteiros que não excedam o valor 
     val oneLong = 1L // Long
     val oneByte: Byte = 1
 
+
 <h3>Floating-point</h3>
+
 
 Para números decimais, o Kotlin provê os floating-point types <i>Float</i> e <i>Double</i>. De acordo com o padrão [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754), valores decimais se diferenciam por sua posição decimal, que é a quantidade de dígitos que os mesmos podem conter. Foat reflete o IEEE 754 <i>single precision</i>, enquanto Double provê <i>double precision</i>:
 
@@ -350,7 +335,7 @@ Type    | Size(bits) | Bits significativos | Bits de expoente | Digitos decimais
  Float  |  32        |  24                 |  8               |  6-7
  Double |  64        |  53                 |  11              |  15-16
 
-É possível inicializar variáveis Double e Float com números fracionados, sendo separados por ponto. Para vairiáveis com inferência de tipo defina por um número decimal, por padrão lhe será atribuída o tipo <i>Double</i>:
+É possível inicializar variáveis Double e Float com números fracionados, sendo separados por ponto. Para variáveis com inferência de tipo defina por um número decimal, por padrão lhe será atribuída o tipo <i>Double</i>:
 
     val pi = 3.14 // Double
     // val one: Double = 1 // Error: type mismatch
@@ -410,7 +395,13 @@ Em muitos casos, não é necessário utilizar explicit conversion porque o tipo 
     val l = 1L + 3 // Long + Int => Long
 
 
-<h2>Operações</h2>
+<h2>Operadores</h2>
+
+
+O Kotlin porvê os seguintes operadores em seua sintaxe:
+
+
+<h3>Aritméticos</h3>
 
 
 O Kotlin dá suporte ao conjunto de operações aritméticas padrão: ```+```, ```-```, ```*```, ```%```:
@@ -451,6 +442,185 @@ A execução do exemplo acima terá o seguinte output:
 >true
 
 
+<h3>Verificação de igualdade</h3>
+
+
+O Kotlin dá suporte ao conjunto dos seguintes operadores de igualdade: ```a == b``` e  ```a != b```, ambos tendo um boolean como resultado:
+
+    println(1 == 2)
+    println(2_500_000_000L != 1L)
+    println(3.14 == 2.71)
+    println(10.0.toInt() !== 3)
+
+A execução do exemplo acima terá o seguinte output:
+
+    false
+    true
+    false
+    true
+
+
+<h3>Operadores de Comparação</h3>
+
+
+O Kotlin dá suporte ao conjunto dos seguintes operadores de comparação: ```a < b```, ```a > b```, ```a <= b```, ```a >= b```, todos tendo um boolean como resultado:
+
+    println(1 < 2)
+    println(2_500_000_000L > 1L)
+    println(3.14 <= 2.71)
+    println(10.0.toInt() >= 3)
+
+A execução do exemplo acima terá o seguinte output:
+
+    true
+    true
+    false
+    true
+
+
+<h2>Booleans</h2>
+
+
+O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo: ```true```; ou negativo ```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores comvencionais, também pode receber null.
+
+Os operadores internos do Kotlin para entidades booleanas incluem:
+
+- ```||``` - Dijunção ou OR lógico
+- ```&&``` - Conjunção ou AND lógico
+- ```!``` -  Negação ou NOT lógico
+
+Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além diiso, tanto o operador de dijunção quanto o de conjunção trabalhão de forma lenta. Os exemplos a seguir mostra como utilizar tais recursos:
+
+
+    val myTrue: Boolean = true
+    val myFalse: Boolean = false
+    val boolNull: Boolean? = null // Variable 'boolNull' is never used
+    
+    fun main() {
+     
+      println(myTrue || myFalse)
+      println(myTrue && myFalse)
+      println(!myTrue)
+    
+    }
+
+Como resultado do exemplo acima, temos o seguinte output:
+
+>true
+>false
+>false
+
+
+<h2>Charactes</h2>
+
+
+Os cracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```1```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
+
+    val aChar: Char = 'a'
+    
+    println(aChar)
+    println('\n') //printa um caractere que representa uma linha extra
+    println('\uFF00')
+
+Como resultado do exemplo acima, temos o seguinte output:
+
+>a
+>
+>
+>＀
+
+
+<h2>String</h2>
+
+
+No Kotlin uma Strings são representadas pelo tipo <i>String</i>, geralmente sendo uma sequência de caracteres entre aspas duplas (```" "```):
+
+    val str = "abcd 1234"
+
+Os elementos de uma string são caracteres que podem ser acessádos via um operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
+
+Outro detalhe importante sobre as strings no Kotlin é que tais elementos são imutáveis. Uma vez que uma string é inicializada, não é possível alterar seu valor. Todos os elementos que operam strings retornam seu resultado em um novo objeto string, mantndo a string original inalterada:
+
+    val str = "abcd"
+    println(str.uppercase()) // Cria e printa um no objeto String
+    println(str) // A Strig original permanece a mesma
+
+Como resultado do exemplo acima, temos o seguinte output:
+
+    ABCD
+    abcd
+
+Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja a string:
+
+    val s = "abc" + 1
+    println(s + "def")
+
+Como resultado do exemplo acima, temos o seguinte output:
+
+    abc1def
+
+
+<h3>String literals</h3>
+
+
+O Kotlin possui dois tipos de string literals:
+
+- <i>escaped</i> strings que podem conter caracteres de escape
+- <i>raw</i> strings brutas que podem conter novas linhas e texto arbitrário
+
+A seguir temos um exemplo de escapes string:
+
+    val s = "Hello, world!\n"
+
+O escape é feito da maneira convencional, com uma barra invertida (```\```). Consulte Caracteres acima para obter a lista de sequências de escape com suporte.
+
+Uma raw string é delimitada por uma sequência de aspas duplas(```"""```) e pode conter novas linhas e qualquer outro caractere:
+
+    val text = """
+        for (c in "foo")
+            print(c)
+    """
+
+<h3>String templates</h3>
+
+
+String literals podem conter um <i>template</i> expression que consiste em partes do código que são avaliadas e cujo resultado é concatenado dentro da string. Uma template expression inicia com um cifrão (```$```) seguido do identificado do elemento a ser concatenado:
+
+    val i = 10
+    println("i = $i") // printa "i = 10"
+
+Uma template expression também pode ser declarada entre chaves da seguinte forma:
+
+    val s = "abc"
+    println("$s.length is ${s.length}") // prints "abc.length is 3"
+
+
+<h2>Funções</h2>
+
+
+As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args entre parênteses e por último a inferência de tipo retornado pela mesma: 
+
+    fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
+
+Uma função inda pode ter um omissão do seu escopo, tendo a expressão que a função executa o substituindo:
+
+    fun sum(a: Int, b: Int) = a + b
+
+Funções Kotlin também podem te um type genêrico, este sendo chamdo de ```Unit```:
+
+    fun printSum(a: Int, b: Int) {
+        println("sum of $a and $b is ${a + b}")
+    }
+
+Em alternativa, também é possível omitir o tipo inferido a função:
+
+    fun printSum(a: Int, b: Int) {
+        println("sum of $a and $b is ${a + b}")
+    }
+
+
 <h2>Variáveis</h2>
 
 
@@ -488,3 +658,7 @@ Variáveis cujo valor pode ser redefinido durante o fluxo de execução são def
 Como resultado da execução teriamos:
 
 >2
+
+
+<h2>Array</h2>
+
