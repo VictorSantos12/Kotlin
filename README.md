@@ -395,6 +395,149 @@ Em muitos casos, não é necessário utilizar explicit conversion porque o tipo 
     val l = 1L + 3 // Long + Int => Long
 
 
+<h2>Characters</h2>
+
+
+Os caracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
+
+    val aChar: Char = 'a'
+    
+    println(aChar)
+    println('\n') //printa um caractere que representa uma linha extra
+    println('\uFF00')
+
+Output:
+
+>a
+>
+>＀
+
+
+<h2>String</h2>
+
+
+No Kotlin as Strings são representadas pelo tipo <i>String</i>, geralmente sendo uma sequência de caracteres entre aspas duplas (```" "```):
+
+    val str = "abcd 1234"
+
+Os elementos de uma string são caracteres que podem ser acessados via operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
+
+Outro detalhe importante sobre as strings no Kotlin é que tais elementos são imutáveis. Uma vez que uma string é inicializada, não é possível alterar seu valor. Todos os elementos que operam strings retornam seu resultado em um novo objeto string, mantendo a string original inalterada:
+
+    val str = "abcd"
+    println(str.uppercase()) // Cria e printa um no objeto String
+    println(str) // A Strig original permanece a mesma
+
+Output:
+
+>ABCD<br>
+>abcd
+
+Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja uma string:
+
+    val s = "abc" + 1
+    println(s + "def")
+
+Output:
+
+>abc1def
+
+
+<h2>String literals</h2>
+
+
+O Kotlin possui dois tipos de string literals:
+
+- <i>escaped</i> strings que podem conter caracteres de escape
+- <i>raw</i> strings brutas que podem conter novas linhas e texto arbitrário
+
+A seguir temos um exemplo de escapes string:
+
+    val s = "Hello, world!\n"
+
+O escape é feito da maneira convencional, com uma barra invertida (```\```). Consulte Caracteres acima para obter a lista de sequências de escape com suporte.
+
+Uma raw string é delimitada por uma sequência de aspas duplas(```"""```) e pode conter novas linhas e qualquer outro caractere:
+
+    val text = """
+        for (c in "foo")
+            print(c)
+    """
+
+<h2>String templates</h2>
+
+
+String literals podem conter um <i>template</i> expression que consiste em partes do código que são avaliadas e cujo resultado é concatenado dentro da string. Uma template expression inicia com um cifrão (```$```) seguido do identificado do elemento a ser concatenado:
+
+    val i = 10
+    println("i = $i") // printa "i = 10"
+
+Output:
+
+>i = 10
+
+Uma template expression também pode ser declarada entre chaves da seguinte forma:
+
+    val s = "abc"
+    println("$s.length is ${s.length}") // prints "abc.length is 3"
+
+Output:
+
+>abc.length is 3
+
+
+<h2>Booleans</h2>
+
+
+O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo:```true```; ou negativo:```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores convencionais, também pode receber null.
+
+Os operadores internos do Kotlin para entidades booleanas incluem:
+
+- ```||``` - Dijunção ou OR lógico
+- ```&&``` - Conjunção ou AND lógico
+- ```!``` - Negação ou NOT lógico
+
+Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além disso, tanto o operador de dijunção quanto o de conjunção trabalham de forma lenta. Os exemplos a seguir mostram como utilizar tais recursos:
+
+
+    val myTrue: Boolean = true
+    val myFalse: Boolean = false
+    val boolNull: Boolean? = null // Variable 'boolNull' is never used
+    
+    fun main() {
+     
+      println(myTrue || myFalse)
+      println(myTrue && myFalse)
+      println(!myTrue)
+    
+    }
+
+Output:
+
+>true<br>
+>false<br>
+>false
+
+
+<h2>Any</h2>
+
+
+O tipo <i>Any</i> é um tipo genêrico que permite a inserção de qualquer tipo de valor na entidade na qual é inferido. Sendo definido pela classe ```Any```, o tipo pode ser utilizado da seguinte forma:
+
+    var anything: Any = 10
+    
+    fun main() {
+     
+     anything = "some text"
+     println(anything)
+    
+    }
+
+Também é possível utilizá-lo como tipo retornado por uma função:
+
+    fun any(): Any { /*...*/ }
+
+
 <h1>Operadores</h1>
 
 
@@ -520,130 +663,6 @@ Operações que relacionam dois operandos de forma que o primeiro operando receb
     x  *=  y | O operando x recebe a multiplicação entre os operandos x e y
 
 
-<h2>Booleans</h2>
-
-
-O tipo <i>Boolean</i> representa um objeto booleano que pode vir a ter valor lógico positivo:```true```; ou negativo:```false```. Um boolean possui a contraparte nullable ```Boolean?```, que além dos valores convencionais, também pode receber null.
-
-Os operadores internos do Kotlin para entidades booleanas incluem:
-
-- ```||``` - Dijunção ou OR lógico
-- ```&&``` - Conjunção ou AND lógico
-- ```!``` - Negação ou NOT lógico
-
-Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além disso, tanto o operador de dijunção quanto o de conjunção trabalham de forma lenta. Os exemplos a seguir mostram como utilizar tais recursos:
-
-
-    val myTrue: Boolean = true
-    val myFalse: Boolean = false
-    val boolNull: Boolean? = null // Variable 'boolNull' is never used
-    
-    fun main() {
-     
-      println(myTrue || myFalse)
-      println(myTrue && myFalse)
-      println(!myTrue)
-    
-    }
-
-Output:
-
->true<br>
->false<br>
->false
-
-
-<h2>Characters</h2>
-
-
-Os caracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
-
-    val aChar: Char = 'a'
-    
-    println(aChar)
-    println('\n') //printa um caractere que representa uma linha extra
-    println('\uFF00')
-
-Output:
-
->a
->
->＀
-
-
-<h2>String</h2>
-
-
-No Kotlin as Strings são representadas pelo tipo <i>String</i>, geralmente sendo uma sequência de caracteres entre aspas duplas (```" "```):
-
-    val str = "abcd 1234"
-
-Os elementos de uma string são caracteres que podem ser acessados via operador de indexação: ```s[i]```, sendo possível obter qualquer um dos caracteres através de uma interação com a string em questão em um loop for, sobre o qual falaremos mais adiante.
-
-Outro detalhe importante sobre as strings no Kotlin é que tais elementos são imutáveis. Uma vez que uma string é inicializada, não é possível alterar seu valor. Todos os elementos que operam strings retornam seu resultado em um novo objeto string, mantendo a string original inalterada:
-
-    val str = "abcd"
-    println(str.uppercase()) // Cria e printa um no objeto String
-    println(str) // A Strig original permanece a mesma
-
-Output:
-
->ABCD<br>
->abcd
-
-Para concatenar uma string usa-se o operador ```+```. Com a concatenação também é possível unir string a valores de diferentes tipos, desde que o primeiro elemento seja uma string:
-
-    val s = "abc" + 1
-    println(s + "def")
-
-Output:
-
->abc1def
-
-
-<h2>String literals</h2>
-
-
-O Kotlin possui dois tipos de string literals:
-
-- <i>escaped</i> strings que podem conter caracteres de escape
-- <i>raw</i> strings brutas que podem conter novas linhas e texto arbitrário
-
-A seguir temos um exemplo de escapes string:
-
-    val s = "Hello, world!\n"
-
-O escape é feito da maneira convencional, com uma barra invertida (```\```). Consulte Caracteres acima para obter a lista de sequências de escape com suporte.
-
-Uma raw string é delimitada por uma sequência de aspas duplas(```"""```) e pode conter novas linhas e qualquer outro caractere:
-
-    val text = """
-        for (c in "foo")
-            print(c)
-    """
-
-<h2>String templates</h2>
-
-
-String literals podem conter um <i>template</i> expression que consiste em partes do código que são avaliadas e cujo resultado é concatenado dentro da string. Uma template expression inicia com um cifrão (```$```) seguido do identificado do elemento a ser concatenado:
-
-    val i = 10
-    println("i = $i") // printa "i = 10"
-
-Output:
-
->i = 10
-
-Uma template expression também pode ser declarada entre chaves da seguinte forma:
-
-    val s = "abc"
-    println("$s.length is ${s.length}") // prints "abc.length is 3"
-
-Output:
-
->abc.length is 3
-
-
 <h1>Funções</h1>
 
 
@@ -709,7 +728,7 @@ Uma função anônima se parece exatamente como uma função regular, exceto pel
     fun(x: Int, y: Int): Int {
         return x + y
     }
-    
+
 
 <h2>Valores Padrão</h2>
 
@@ -1174,3 +1193,8 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
     }
 
 É possível criar zero ou mais blocos catch, e o bloco finally pode ser omitido. Porém, ao menos um catch ou finally é obrigatório.
+
+
+<h1>Kotlin Orientado a Objetos</h1>
+
+
