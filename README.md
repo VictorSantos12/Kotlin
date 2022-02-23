@@ -647,15 +647,11 @@ Output:
 <h1>Funções</h1>
 
 
-As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args entre parênteses e por último a inferência de tipo retornado pela mesma: 
+As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args, que usam Pascal notation(<i>name: type</i>), e por último a inferência de tipo retornado pela mesma: 
 
-    fun sum(a: Int, b: Int): Int {
-        return a + b
-    }
+    fun sum(a: Int, b: Int): Int { /*...*/ }
 
-Os argumantos de uma função possuem identificadores próprios obrigatórios, os quais sofrem instância quando utilizados.
-
-Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa o substituindo:
+Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa o substituindo, estas sendo chamadas de ```single-expression``` functions:
 
     fun sum(a: Int, b: Int) = a + b
 
@@ -670,6 +666,61 @@ Em alternativa, também é possível omitir o tipo inferido a função:
     fun printSum(a: Int, b: Int) {
         println("sum of $a and $b is ${a + b}")
     }
+
+
+<h2>Expressões Lambda e Funções Anônimas</h2>
+
+
+Expressões Lambda e funções anônimas são <i>function literals</i>. Function literals são funções não declaradas, as quais são passadas como uma expressão. Considere o exemplo a seguir:
+
+    max(strings, { a, b -> a.length < b.length })
+
+A função ```max``` é uma higher-order function, ou seja, ela pode receber outras funções por parâmetro e utilizá-las em seu escopo. Nesse caso, a função max recebe como parâmetro uma function literal, que seria equivalente ao seguinte exemplo:
+
+    fun compare(a: String, b: String): Boolean = a.length < b.length
+
+
+<h2>Sintaxe de uma Expressão Lambda</h2>
+
+
+Uma função Lambda é utilizada seguindo a sintaxe descrita abaixo:
+
+    val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
+
+- Uma expressão lambda é sempre cercada por chaves.
+- As declarações de parâmetros na forma sintática completa ficam dentro de chaves e têm anotações de tipo opcionais.
+- O corpo da função vai após ```->```.
+- Se o tipo de retorno inferido do lambda não for Unit, a última (ou possivelmente única) expressão dentro do corpo lambda será tratada como o valor de retorno.
+
+Caso todas as optional annotations sejam deixadas de fora, o que resta é algo parecido com o isso:
+
+    val sum = { x: Int, y: Int -> x + y }
+
+
+<h2>Funções Anônimas</h2>
+
+
+A sintaxe da expressão lambda acima está não conta com um recurso específico – a capacidade de declarar explicitamente o tipo de retorno da função. Na maioria dos casos, isso é desnecessário porque o tipo de retorno pode ser inferido automaticamente. No entanto, se necessário, é possível usar uma sintaxe alternativa: uma função anônima.
+
+    fun(x: Int, y: Int): Int = x + y
+
+Uma função anônima se parece exatamente como uma função regular, exceto pela omissão de um namespace. Seu corpo também pode ser uma expressão(como no exmplo acima) ou um bloco:
+
+    fun(x: Int, y: Int): Int {
+        return x + y
+    }
+    
+
+<h2>Valores Padrão</h2>
+
+
+Parâmetros em funções podem possuir valores iniciais, os quais são utilizados quando o mesmo não é utilizado no escopo da função. Com isso também é possível diminuir o número de overloads da execução:
+
+    fun read(
+        b: ByteArray,
+        off: Int = 0,
+        len: Int = b.size,
+    ) { /*...*/ }
 
 
 <h1>Variáveis</h1>
@@ -1107,9 +1158,9 @@ Para lançar um exeption object, use a expressão throw:
 
 Output: 
 
-    Exception in thread "main" java.lang.Exception: Hi There!
-    	at MainKt.main(main.kt:3)
-    	at MainKt.main(main.kt)
+>Exception in thread "main" java.lang.Exception: Hi There!<br>
+>at MainKt.main(main.kt:3)<br>
+>at MainKt.main(main.kt)
 
 
 Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
