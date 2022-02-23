@@ -562,7 +562,7 @@ Output:
 >3.3333333333333335
 
 
-<h3>Divisão de Inteiros</h3>
+<h2>Divisão de Inteiros</h2>
 
 
 A divisão entre números inteiros sempre resultará em um número inteiro, ou seja, qualquer parte fracionada do resultado será descartada:
