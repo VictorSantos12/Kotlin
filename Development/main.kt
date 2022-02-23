@@ -1,11 +1,17 @@
 
 fun main() {
-  forever()
+  loop()
 }
 
- fun forever(): Nothing {
-    while(true) {
-        // Thread.sleep( millis: 1000 )
-        println("oi")
-    }
+val myArray = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+ fun loop() {
+   
+   for(i in myArray) {
+      println(i)
+      when(myArray[i] !is Int) {
+        true -> println("impar")
+        false -> println("false")
+      } 
+   }
  }
