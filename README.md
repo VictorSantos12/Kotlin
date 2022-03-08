@@ -5,9 +5,9 @@
 <img src="https://img.shields.io/static/v1?label=Kotlin&message=Language&color=purple&style=for-the-badge&logo=Kotlin"/>
 
 
-O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalmente mobile. Isso se dá pois a linguagem foi criada para para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tâ-la presente em basicamente qualquer ambiente em que o Java é executado.
+O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalmente mobile. Isso se dá pois a linguagem foi criada para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tâ-la presente em basicamente qualquer ambiente em que o Java é executado.
 
-Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria surgiu em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language da plataforma em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source.
+Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria surgiu em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language da em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source.
 
 
 <!-- <h1>Kotlin Multiplataform</h1> -->
@@ -130,7 +130,7 @@ Como resultado temos:
 
 >Hello, world!
 
-Além disso, também é possível acessar o Kotlin interactive e executar algumas operações fazendo run da palavra-chave ```kotlin``` no terminal. Como resultado temos um compiler que faz uso da jvm:
+Além disso, também é possível acessar o Kotlin interactive e executar algumas operações fazendo run da palavra-chave ```kotlin``` no terminal. Como resultado temos um compiler que faz uso da JVM:
 
     Welcome to Kotlin version 1.6.10 (JRE 1.8.0_211-b12)
     Type :help for help, :quit for quit
@@ -165,7 +165,7 @@ Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem 
 <h2>Concisão</h2>
 
 
-A sintaxe do Java é muitas vezes criticada pois exige uma série de declarações e definições de acesso que não são necessárias em muitas linguagens populares. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
+A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de linhas de código, o que tirna seu uso monótono devido a constante repetição de código existente. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
 
     // Java                                          // Kotlin
                                                                  
@@ -184,6 +184,8 @@ Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um re
     
     var stringValue: String? = “Hello World!”
     stringValue = null // ok
+
+O nullsafety será mais bem abordado posteriormente.
 
 
 <h2>Coroutines</h2>
@@ -350,7 +352,7 @@ Note que diferente de algumas linguagens, no Kotlin, não há conversões de amp
 
     fun main() {
 
-        fun printDouble(d: Double) { print(d) }
+        fun printDouble(d: Double) { println(d) }
     
         val i = 1
         val d = 1.0
@@ -461,7 +463,7 @@ Uma raw string é delimitada por uma sequência de aspas duplas(```"""```) e pod
 
     val text = """
         for (c in "foo")
-            print(c)
+            println(c)
     """
 
 <h2>String templates</h2>
@@ -666,21 +668,21 @@ Operações que relacionam dois operandos de forma que o primeiro operando receb
 <h1>Funções</h1>
 
 
-As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace com os args, que usam Pascal notation(<i>name: type</i>), e por último a inferência de tipo retornado pela mesma: 
+As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace. As funções Kotlin recebem parâmetros nomeados os quais usam Pascal notation(<i>name: type</i>). Por último há a inferência de tipo retornado pela função: 
 
     fun sum(a: Int, b: Int): Int { /*...*/ }
 
-Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa o substituindo, estas sendo chamadas de ```single-expression``` functions:
+Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa atribuída a si, estas sendo chamadas de ```single-expression``` functions:
 
     fun sum(a: Int, b: Int) = a + b
 
-Funções Kotlin também podem te um type genérico, este sendo chamado de ```Unit```:
+Funções Kotlin também podem ter um type genérico, este sendo chamado de ```Unit```:
 
-    fun printSum(a: Int, b: Int) {
+    fun printSum(a: Int, b: Int): Unit {
         println("sum of $a and $b is ${a + b}")
     }
 
-Em alternativa, também é possível omitir o tipo inferido a função:
+Por padrão, todas as funções em Kotlin possuem um tipo Unit. Em alternativa, também é possível omitir o tipo inferido a função:
 
     fun printSum(a: Int, b: Int) {
         println("sum of $a and $b is ${a + b}")
@@ -758,7 +760,7 @@ Caso uma val receba um outro valor durante o runtime, como no exemplo a seguir, 
     
     fun main() {
        a = 2;
-       print(a);
+       println(a);
     }
 
 Output:
@@ -773,12 +775,122 @@ Variáveis cujo valor pode ser redefinido durante o runtime são definidas com a
 
     fun main() {
        a = 2;
-       print(a);
+       println(a);
     }
 
 Como resultado da execução teriamos:
 
 >2
+
+
+<h1>Conjuntos</h1>
+
+
+No Kotlin é possível manipular múltiplos conjuntos de dados através de uma única referência. Normalmente essa função é suprida por um vetor(assusnto que será abordado a seguir), mas, no Kotlin é possível associar valores distintos a uma única variável. Uma referência de uso de funcionalidade seria ao trabalhar com coordenadas geográfias, recurso bastante comum em apps:
+
+    val coordinates = Pair(2, 3)
+
+Com a função <i>Pair</i> também pe possível utilizar elementos de tipos distintos, como por exemplo:
+
+    val coordinates = Pair(2.3, 3)
+
+Assim como em um array, é possível acessar cada elemento de um conjuntos:
+
+    coordinates.first // 2.3
+    coordinates.second // 3
+
+
+<h2>Expressão to</h2>
+
+
+Ao criar um conjunto, é possível definir os elemeentos que o compõe através da expressão <i>to</i>, o to ganha funcionalidade ao permitir encurtar a expressão:
+
+    val coordinates = 2 to 3
+
+
+<h2>Destruindo um conjunto</h2>
+
+
+Para destruir um conjunto, ou melhor dizendo, acessar seus elementos individualmente, utiliza-se um destructor:
+
+    val coordinates = Pair(2.3, 3)
+    val (x, y) = coordinates
+    println(x) // 2.3
+    println(y) // 3
+
+Sua função é basicamente anular a conjunção e dar acesso a cada um dos elementos nela contidos individualmente. Para descartar um dos valores, utilizamos a expressão da seguinte forma:
+
+    val coordinates = Pair(2.3, 3)
+    val (x, _) = coordinates
+    println(x) // 2.3
+    println(y) // error: unresolved reference: y
+
+
+<h1>Range</h1>
+
+
+A forma mais simples de criar uma sequência de elementos no Kotlin é criando um range. Um range define um intervalor entre dois elementos de um conjunto numérico. No Kotlin, um range comum é criado por meio da declaração de seus dois endpoints, separados por dois pontos: 
+
+>1..10
+
+Também é possível acessar o range inverso ao declarado acima. Para isso usamos a expressão ```downTo```:
+
+>10 downTo 1
+
+O principal operador quando se trata de sequências numéricas em range é o ```contains```, que normalmente é utilizados na forma dos operadores ```in``` e ```!in```:
+
+    for (i in 1..10) {
+        println(i)
+    }
+
+Output:
+
+>1<br>
+>2<br>
+>3<br>
+>4<br>
+>5<br>
+>6<br>
+>7<br>
+>8<br>
+>9<br>
+>10
+
+Para não percorrer determinado elemento em um range, usa-se a expressão ```until``` no lugar de ```..```:
+
+    for (i in 1 until 10) {  // i in 1 until 10, excluding 10
+        println(i)
+    }
+
+Output:
+
+>1<br>
+>2<br>
+>3<br>
+>4<br>
+>5<br>
+>6<br>
+>7<br>
+>8<br>
+>9
+
+Além disso, é possível declrar que um determinado elemento será evitado na interação. Para isso usa-se a expressão ```step``` logo após a declaração do range:
+
+    for (i in 1..10 step 2) println(i)
+
+Output:
+
+>1<br>
+>3<br>
+>4<br>
+>5<br>
+>6<br>
+>7<br>
+>8<br>
+>9<br>
+>10
+
+O conceito de range é muito utilizado quando se trata de vetores e a interação com os mesmo. A seguir, iremos entender como utilizar vetores no Koltin.
 
 
 <h1>Array</h1>
@@ -827,9 +939,8 @@ Output:
 
 No exmplo acima, a função de interação equivale a chamada dos métodos get e set da seguinte forma:
 
-    * get
-    i -> i 
-         * set
+        i -> i 
+    get *    * set
 
 Sendo possível omitir o getter visto que a classe já tem acesso ao valor de retorno, que seria o próprio index:
 
@@ -848,38 +959,52 @@ O controle do fluxo de dados é, em suma, um dos aspectos mais importantes da pr
 No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. Também é importante citar que não há um operador ternário (condição ? then : else) no Kotlin, visto que o ordinary if funciona bem nesse papel.
 
     var max = a
+
     if (a < b) max = b
     
     // With else
 
     var max: Int
+
     if (a > b) {
-        max = a
+      max = a
     } else {
-        max = b
+      max = b
     }
-    
+
+Caso um if seja utilizado como uma expressão para retornar um valor, ou atribuí-lo a uma variável, por exemplo, a ramificação else é obrigatória:
+
     // As expression
     val max = if (a > b) a else b
 
-Caso um if seja utilizado como uma expressão para retornar um valor, ou atribuí-lo a uma variável por exemplo, a ramificação else é obrigatória.
+Tamém é possível utilizar expressões condicionais compostas por um ou mais else if, disponibilizando uma ou mais condições adicionais as duas expressões padrão:
+
+    if (/*...*/) {
+  
+      ...
+
+    } else {
+  
+      ...
+
+    }
 
 
 <h2>Verificações de tipo</h2>
 
 
-As verificações de tipo são bastante comuns quando se trata da validação de determinado elemento do código. No Kotlin há duas formas de verificar o tipo inferido a uma entidade: se ela é de determinado tipo, ou se não é. Para isso usamos as seguintes expressões respectivamente:
+As verificações de tipo são bastante comuns quando se trata da validação de determinado elemento do código. No Kotlin há duas formas de verificar o tipo inferido a uma entidade: se ela é de determinado tipo, ou se não é. Para isso, usamos as seguintes expressões respectivamente:
 
     if(obj is String) {
-       print("it's a string")
+       println("it's a string")
     } 
 
 A expressão ```is``` declara a condição de positividade quanto ao tipo do elemento a ser validado, retornando true caso o mesmo seja do tipo esperado.
 
     if(obj !is String) { // !(obj is String)
-       print("Not a String")
+       println("Not a String")
     } else {
-       print("it's a string") 
+       println("it's a string") 
     }
 
 A expressão ```!is``` tem a função oposta, declarando a condição esperada como negativa quanto ao tipo do elemento a ser validado, retornando true caso o mesmo não seja do tipo esperado.
@@ -892,7 +1017,7 @@ Casting é um recurso de verificação de tipos bastante usual, definido pela ex
 
     fun demo(x: Any) {
         if (x is String) {
-            print(x.length) // x é automaticamente convertido para String
+            println(x.length) // x é automaticamente convertido para String
         }
     }
 
@@ -902,7 +1027,7 @@ Ser imutável é essencial para o funcionamento do Smart Cast pois o compilador 
 <h2>"Unsafe" cast operator</h2>
 
 
-Normalmente, o operado de cast lança uma exceção quando não é possível converter a variável em questão. E assim, nesses casos, ela é chamada de <i>unsafe</i>. Um unsafe cast é definido pela já citada expressão infix <i>as</i>:
+Normalmente, o operado de cast lançar uma exceção quando não é possível converter a variável em questão. E assim, nesses casos, ela é chamada de <i>unsafe</i>. Um unsafe cast é definido pela já citada expressão infix <i>as</i>:
 
     val x: String = y as String
 
@@ -927,10 +1052,10 @@ Observe que, apesar do fato de que o lado direito de as? é um tipo String não 
 A expressão <i>when</i> define uma condicional com multiplas ramificações. É semelhante à instrução switch em linguagem da família C. A expressão when no Kotlin possui a seguinte sintaxe:
 
     when (x) {
-        1 -> print("x == 1")
-        2 -> print("x == 2")
+        1 -> println("x == 1")
+        2 -> println("x == 2")
         else -> {
-            print("x is neither 1 nor 2")
+            println("x is neither 1 nor 2")
         }
     }
 
@@ -970,9 +1095,9 @@ Output:
 <h2>For loops</h2>
 
 
-O loop <i>for</i> itera qualquer elemento que forneça um iterador, sendo equivalente ao loop foreach em linguagens como C#. A sintaxe de for é a seguinte:
+O loop <i>for</i> itera qualquer elemento que forneça um iterador, sendo equivalente ao loop foreach em linguagens como C#. A sintaxe da expressão for é a seguinte:
 
-    for (item in collection) print(item)
+    for (item in collection) println(item)
 
 O escopo de um loop for pode ser um bloco de execução:
 
@@ -980,7 +1105,7 @@ O escopo de um loop for pode ser um bloco de execução:
         // ...
     }
 
-Com o loop for é possível interagir com range de números utilizando uma range expression:
+Com o loop for é possível interagir com um range de números utilizando uma range expression:
 
     for (i in 1..3) {
         println(i)
@@ -1050,7 +1175,7 @@ O Kotlin possui três expressões de jump estruturais, as quais são utilizadas 
 - ```break``` - Encerra o loop mais próximo a delimitar a expressão.
 - ```continue``` - Prossegue para o próximo passo do loop mais próximo a delimitar a expressão.
 
-Há formas distintas de utilizar cada uma das expressões acima, com distições ainda mais especificas quando se trata de diferentes estruturas de loop. Por exemplo, a expressão break não pode ser utilizada em conjunto com um forEach loop:
+Há formas distintas de utilizar cada uma das expressões acima, com distinções ainda mais especificas quando se trata de diferentes estruturas de loop. Por exemplo, a expressão break não pode ser utilizada em conjunto com um forEach loop:
     
     var myArray = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
@@ -1071,11 +1196,13 @@ Output:
 >
 >[Done] exited with code=1 in 2.534 seconds
 
+Nesse caso, em vez de utilizar a expressão break, usa-se um recurso chamado de lables, o qual será abordado a seguir.
+
 
 <h2>Break & Continue labels</h2>
 
 
-Qualquer expressão no Kotlin pode ser marcada por um label. Labels são formados por identificadores seguidos pelo sinal ```@```. Para rotular uma expressão basta adicionar um label que a identifique a sua declaração:
+Qualquer expressão no Kotlin pode ser marcada por um label. Labels são formados por identificadores seguidos pelo sinal ```@```. Para rotular uma expressão basta adicionar um label que identifique a sua declaração:
 
     loop@ for (i in 1..100) {
         // ...
@@ -1089,7 +1216,7 @@ Com o marcador, é possível qualificar uma expressão break ou continue com o l
         }
     }
 
-Uma expressão ```break``` qualificada com um label faz um jump para o ponto de excução logo após o loop marcado com o label. Já o ```continue``` prossegue para a próxima iteração do mesmo loop.
+Uma expressão ```break``` qualificada com um label faz um jump para o ponto de excução logo após o loop marcado com o label. Já o ```continue``` prossegue para a próxima interação do loop marcado.
 
 
 <h2>Return labels</h2>
@@ -1100,7 +1227,7 @@ No Kotlin, as funções podem ser aninhadas usando funções literais, funções
     fun main() {
       arrayOf(1, 2, 3, 4, 5).forEach {
           if (it == 3) return // non-local return directly to the caller of foo()
-          print(it)
+          println(it)
       }
       println("este ponto não é acessível")
     }
@@ -1114,7 +1241,7 @@ Observe que esses retornos não locais são suportados apenas por expressões la
     fun main() {
      arrayOf(1, 2, 3, 4, 5).forEach lit@ {
        if (it == 3) return@lit 
-       print(it)
+       println(it)
      }
      println(" feito com um lable explicito")
     }
@@ -1195,6 +1322,7 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
 É possível criar zero ou mais blocos catch, e o bloco finally pode ser omitido. Porém, ao menos um catch ou finally é obrigatório.
 
 
-<h1>Kotlin Orientado a Objetos</h1>
+<h1>Kotlin e a Orientação a Objetos</h1>
 
 
+Por ser uma linguagem orintada a objetos, o Kotlin conta com todos os recursos padrões do paradigma, como Classes, Constructors, herança baseada em hierarquia, além de muitos outros conceitos. A seguir iremos entender como aplicar os conceitos da POO com o Kotlin.
