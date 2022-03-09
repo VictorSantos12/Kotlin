@@ -665,85 +665,6 @@ Operações que relacionam dois operandos de forma que o primeiro operando receb
     x  *=  y // O operando x recebe a multiplicação entre os operandos x e y
 
 
-<h1>Funções</h1>
-
-
-As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace. As funções Kotlin recebem parâmetros nomeados os quais usam Pascal notation(<i>name: type</i>). Por último há a inferência de tipo retornado pela função: 
-
-    fun sum(a: Int, b: Int): Int { /*...*/ }
-
-Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa atribuída a si, estas sendo chamadas de ```single-expression``` functions:
-
-    fun sum(a: Int, b: Int) = a + b
-
-Funções Kotlin também podem ter um type genérico, este sendo chamado de ```Unit```:
-
-    fun printSum(a: Int, b: Int): Unit {
-        println("sum of $a and $b is ${a + b}")
-    }
-
-Por padrão, todas as funções em Kotlin possuem um tipo Unit. Em alternativa, também é possível omitir o tipo inferido a função:
-
-    fun printSum(a: Int, b: Int) {
-        println("sum of $a and $b is ${a + b}")
-    }
-
-
-<h2>Expressões Lambda e Funções Anônimas</h2>
-
-
-Expressões Lambda e funções anônimas são <i>function literals</i>. Function literals são funções não declaradas, as quais são passadas como uma expressão. Considere o exemplo a seguir:
-
-    max(strings, { a, b -> a.length < b.length })
-
-A função ```max``` é uma higher-order function, ou seja, ela pode receber outras funções por parâmetro e utilizá-las em seu escopo. Nesse caso, a função max recebe como parâmetro uma function literal, que seria equivalente ao seguinte exemplo:
-
-    fun compare(a: String, b: String): Boolean = a.length < b.length
-
-
-<h2>Sintaxe de uma Expressão Lambda</h2>
-
-
-Uma função Lambda é utilizada seguindo a sintaxe descrita abaixo:
-
-    val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
-
-- Uma expressão lambda é sempre cercada por chaves.
-- As declarações de parâmetros na forma sintática completa ficam dentro de chaves e têm anotações de tipo opcionais.
-- O corpo da função vai após ```->```.
-- Se o tipo de retorno inferido do lambda não for Unit, a última (ou possivelmente única) expressão dentro do corpo lambda será tratada como o valor de retorno.
-
-Caso todas as optional annotations sejam deixadas de fora, o que resta é algo parecido com o isso:
-
-    val sum = { x: Int, y: Int -> x + y }
-
-
-<h2>Funções Anônimas</h2>
-
-
-A sintaxe da expressão lambda acima está não conta com um recurso específico – a capacidade de declarar explicitamente o tipo de retorno da função. Na maioria dos casos, isso é desnecessário porque o tipo de retorno pode ser inferido automaticamente. No entanto, se necessário, é possível usar uma sintaxe alternativa: uma função anônima.
-
-    fun(x: Int, y: Int): Int = x + y
-
-Uma função anônima se parece exatamente como uma função regular, exceto pela omissão de um namespace. Seu corpo também pode ser uma expressão(como no exmplo acima) ou um bloco:
-
-    fun(x: Int, y: Int): Int {
-        return x + y
-    }
-
-
-<h2>Valores Padrão</h2>
-
-
-Parâmetros em funções podem possuir valores iniciais, os quais são utilizados quando o mesmo não é utilizado no escopo da função. Com isso também é possível diminuir o número de overloads da execução:
-
-    fun read(
-        b: ByteArray,
-        off: Int = 0,
-        len: Int = b.size,
-    ) { /*...*/ }
-
-
 <h1>Variáveis</h1>
 
 
@@ -945,6 +866,85 @@ No exmplo acima, a função de interação equivale a chamada dos métodos get e
 Sendo possível omitir o getter visto que a classe já tem acesso ao valor de retorno, que seria o próprio index:
 
     val asc = Array(5) { _ -> i }
+
+
+<h1>Funções</h1>
+
+
+As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace. As funções Kotlin recebem parâmetros nomeados os quais usam Pascal notation(<i>name: type</i>). Por último há a inferência de tipo retornado pela função: 
+
+    fun sum(a: Int, b: Int): Int { /*...*/ }
+
+Uma função ainda pode ter seu escopo omitido, tendo a expressão que a função executa atribuída a si, estas sendo chamadas de ```single-expression``` functions:
+
+    fun sum(a: Int, b: Int) = a + b
+
+Funções Kotlin também podem ter um type genérico, este sendo chamado de ```Unit```:
+
+    fun printSum(a: Int, b: Int): Unit {
+        println("sum of $a and $b is ${a + b}")
+    }
+
+Por padrão, todas as funções em Kotlin possuem um tipo Unit. Em alternativa, também é possível omitir o tipo inferido a função:
+
+    fun printSum(a: Int, b: Int) {
+        println("sum of $a and $b is ${a + b}")
+    }
+
+
+<h2>Expressões Lambda e Funções Anônimas</h2>
+
+
+Expressões Lambda e funções anônimas são <i>function literals</i>. Function literals são funções não declaradas, as quais são passadas como uma expressão. Considere o exemplo a seguir:
+
+    max(strings, { a, b -> a.length < b.length })
+
+A função ```max``` é uma higher-order function, ou seja, ela pode receber outras funções por parâmetro e utilizá-las em seu escopo. Nesse caso, a função max recebe como parâmetro uma function literal, que seria equivalente ao seguinte exemplo:
+
+    fun compare(a: String, b: String): Boolean = a.length < b.length
+
+
+<h2>Sintaxe de uma Expressão Lambda</h2>
+
+
+Uma função Lambda é utilizada seguindo a sintaxe descrita abaixo:
+
+    val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
+
+- Uma expressão lambda é sempre cercada por chaves.
+- As declarações de parâmetros na forma sintática completa ficam dentro de chaves e têm anotações de tipo opcionais.
+- O corpo da função vai após ```->```.
+- Se o tipo de retorno inferido do lambda não for Unit, a última (ou possivelmente única) expressão dentro do corpo lambda será tratada como o valor de retorno.
+
+Caso todas as optional annotations sejam deixadas de fora, o que resta é algo parecido com o isso:
+
+    val sum = { x: Int, y: Int -> x + y }
+
+
+<h2>Funções Anônimas</h2>
+
+
+A sintaxe da expressão lambda acima está não conta com um recurso específico – a capacidade de declarar explicitamente o tipo de retorno da função. Na maioria dos casos, isso é desnecessário porque o tipo de retorno pode ser inferido automaticamente. No entanto, se necessário, é possível usar uma sintaxe alternativa: uma função anônima.
+
+    fun(x: Int, y: Int): Int = x + y
+
+Uma função anônima se parece exatamente como uma função regular, exceto pela omissão de um namespace. Seu corpo também pode ser uma expressão(como no exmplo acima) ou um bloco:
+
+    fun(x: Int, y: Int): Int {
+        return x + y
+    }
+
+
+<h2>Valores Padrão</h2>
+
+
+Parâmetros em funções podem possuir valores iniciais, os quais são utilizados quando o mesmo não é utilizado no escopo da função. Com isso também é possível diminuir o número de overloads da execução:
+
+    fun read(
+        b: ByteArray,
+        off: Int = 0,
+        len: Int = b.size,
+    ) { /*...*/ }
 
 
 <h1>Condicionais e Loops</h1>
@@ -1227,7 +1227,7 @@ No Kotlin, as funções podem ser aninhadas usando funções literais, funções
     fun main() {
       arrayOf(1, 2, 3, 4, 5).forEach {
           if (it == 3) return // non-local return directly to the caller of foo()
-          println(it)
+          print(it)
       }
       println("este ponto não é acessível")
     }
@@ -1241,9 +1241,9 @@ Observe que esses retornos não locais são suportados apenas por expressões la
     fun main() {
      arrayOf(1, 2, 3, 4, 5).forEach lit@ {
        if (it == 3) return@lit 
-       println(it)
+       print(it)
      }
-     println(" feito com um lable explicito")
+     print(" feito com um lable explicito")
     }
 
 Output:
@@ -1298,7 +1298,7 @@ O Kotlin também suporta os operadores ```break``` e ```continue``` comuns a loo
 
 Todas as exception classes no Kotlin herdam a classe Throwable. Cada exception possui um message, um stack trace e uma optional cause.
 
-Para lançar um exeption object, use a expressão throw:
+Para lançar um exeption object, usa-se a expressão throw:
 
     throw Exception("Hi There!")
 
@@ -1320,6 +1320,14 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
     }
 
 É possível criar zero ou mais blocos catch, e o bloco finally pode ser omitido. Porém, ao menos um catch ou finally é obrigatório.
+
+
+<h1>NullSafety</h1>
+
+
+O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida sobre, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato é ausente. Atribuir um tipo null a uma variável só a torna passível de receber null. Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido.
+
+Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos, resultando em um exception, e, por conseguinte, um crash no código.
 
 
 <h1>Kotlin e a Orientação a Objetos</h1>
