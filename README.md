@@ -814,7 +814,23 @@ Output:
 O conceito de range é muito utilizado quando se trata de vetores e a interação com os mesmo. A seguir, iremos entender como utilizar vetores no Koltin.
 
 
-<h1>Array</h1>
+<h1>Collections</h1>
+
+
+Collections são grupos compostos por um variado número de itens(possivelmente zero), sendo normalmente do mesmo tipo, estes sendo definidos como elements ou items. Há dois grupos que distinguem as collections no Kotlin, sendo elas:
+
+- <i>Read-only</i> ou <I>Ummutable</I>, são collections cujos elementos são constantes, contando com uma interface que permite acessar seus elementos.
+- <i>Mutable</i>, são collections cujos elementos são variáveis, contando com uma interface que possui os mesmos recursos das read-only collection mais operadores de controle: adding, removing e updating.
+
+
+Os principais tipos de collections presentes no Kotlin são:
+
+
+<h2>List</h2>
+<h2>Set</h2>
+<h2>Map</h2>
+
+<h2>Array</h2>
 
 
 No Kotlin um array é representado pela classe <i>Array</i>, que possui funções comuns a classes Java como ```get``` e ```set```, as quais são acessadas por convenção pelo marcador ```[]```. A classe <i>Array</i> também possui a propriedade size, cuja função clara é definir o tamanho do vetor, além de outros recursos que serão citados a seguir. 
@@ -866,6 +882,10 @@ No exmplo acima, a função de interação equivale a chamada dos métodos get e
 Sendo possível omitir o getter visto que a classe já tem acesso ao valor de retorno, que seria o próprio index:
 
     val asc = Array(5) { _ -> i }
+
+
+<h2>List</h2>
+
 
 
 <h1>Funções</h1>
@@ -1325,26 +1345,26 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
 <h1>NullSafety</h1>
 
 
-O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. Atribuir um tipo null a uma variável só a torna passível de receber null. Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido.
+O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. Atribuir um tipo null a uma variável só a torna passível de receber null. 
 
-Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos, resultando em uma exception, e, por conseguinte, um crash no código.
+Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido. Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos ou tipos desconhecidos, resultando em uma exception, e, por conseguinte, em um crash no código.
 
 No Kotlin, o sistema de tipos distingue as referencias que podem ser ```null```(nullable reference) das que não podem(non-null reference). Por exemplo, uma variável tipada como ```String``` não sustenta um ```null```:
 
     val a: String = "string"
     a = null // compilation error
 
-Para que seja possível tornar o exemplo acima livre do erro resultante, a variável deve ser tipada com o marcador ```?```:
+Para que seja possível tornar o exemplo acima livre do erro resultante, a variável deve ser tipada com o marcador ```?```, a tornando nullable:
 
     val b: String? = "string"
     a = null // ok
     print(b)
 
-Caso seja necessário acessar e utilizar o valor contido em uma variável nullable é preciso garantir que valor nela contido não seja null, ou seja. Por exemplo, a seguinte atribuição não seria alvo de uma exception pois a só será valorada com valores non-nullable:
+Caso seja necessário acessar e utilizar o valor contido em uma variável nullable, é preciso garantir que o valor nela contido não seja null. Por exemplo, a seguinte atribuição não seria alvo de uma exception pois ```a```só será valorada com valores non-nullable:
 
     val l = a.length
 
-Já a variável b, cujo valor pode ser nulo, não permite tal atribuição:
+Já a variável ```b```, cujo valor pode ser nulo, não permite tal atribuição:
 
     val l = b.length // error: variable 'b' can be null
 
@@ -1354,7 +1374,7 @@ No Kotlin, há formas distintas de acessar esse valor.
 <h2>Verificação de Valores Nulos</h2>
 
 
-Primeiramente, é possível verificar se a variável b é nula, e tratar as duas possibilidades de forma separada:
+Primeiramente, é possível verificar se a variável b é nula e tratar as duas possibilidades de forma separada:
 
     val b: String? = "Kotlin"
     if (b != null && b.length > 0) {
@@ -1383,7 +1403,7 @@ Output:
 >null<br>
 >6
 
-A safe call retorna o valor da propriedade caso sua origem não seja nula, caso contrário, retorna null.
+A safe call é declarada após a instância da entidade e retorna o valor da propriedade caso sua origem não seja nula, caso contrário, retorna null.
 
 
 <h2>O Operador !!</h2>
