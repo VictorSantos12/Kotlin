@@ -827,8 +827,88 @@ Os principais tipos de collections presentes no Kotlin são:
 
 
 <h2>List</h2>
+
+
+Uma <i>List</i> é uma collection de elementos ordenados que provê acesso a estes por indexação, cuja contagem inicia no número zero e se prolonga até o último elemento da lista, que seria o equivalente a: ```list.size - 1```.
+
+    val numbers = listOf("one", "two", "three", "four")
+
+    println("Number of elements: ${numbers.size}")
+    println("Third element: ${numbers.get(2)}")
+    println("Fourth element: ${numbers[3]}")
+    println("Index of element \"two\" ${numbers.indexOf("two")}")
+
+Output: 
+
+>Number of elements: 4<br>
+>Third element: three<br>
+>Fourth element: four<br>
+>Index of element "two" 1
+
+Uma List pode conter qualquer número de objetos do mesmo tipo ou acorrências de um único objeto. 
+
+
 <h2>Set</h2>
+
+
+Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em set: Um set só permite a existência de um único null em seu escopo. O uso de uma Set collection pe muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado.
+
+    val numbers = setOf(1, 2, 3, 4)
+    println("Number of elements: ${numbers.size}")
+    if (numbers.contains(1)) println("1 is in the set")
+    
+    val numbersBackwards = setOf(4, 3, 2, 1)
+    println("The sets are equal: ${numbers == numbersBackwards}")
+
+Output:
+
+>Number of elements: 4<br>
+>1 is in the set<br>
+>The sets are equal: true
+
+
 <h2>Map</h2>
+
+
+Mesmo não sendo herdeiros da ```Collection Inteface``` como os demais, Maps também fazem parte do mesmo grupo. Um <i>Map</i> armazena pares de key-value únicos, cuja tipo não é explicito, ou seja, uma key pode receber tanto valores semelhantes quanto distintos das demais. A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores e key específicos e mais.
+
+Uma key é associada ao respectivo valor pelo marcador ```to```, já a key é declarada entre aspas:
+
+>"Key" to value
+
+Veja o exemplo de uso e de acesso a membros de um Map:
+
+    val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key4" to 1)
+    
+    println("All keys: ${numbersMap.keys}")
+    println("All values: ${numbersMap.values}")
+    if ("key2" in numbersMap) println("Value by key \"key2\": ${numbersMap["key2"]}")    
+    if (1 in numbersMap.values) println("The value 1 is in the map")
+    if (numbersMap.containsValue(1)) println("The value 1 is in the map") // same as previous
+
+Output:
+
+>All keys: [key1, key2, key3, key4]<br>
+>All values: [1, 2, 3, 1]<br>
+>Value by key "key2": 2<br>
+>The value 1 is in the map<br>
+>The value 1 is in the map
+
+
+<h2>Mutable Collection</h2>
+
+
+Todas as collections do Kotlin são, por padrão, read-only. Tal padrão, tornaria necessário criar uma nova list, por exemplo, sempre que houver a necessidade de alterar um de seus valores, substituindo a anterior. Para suprir tal necessidade, o Kotlin provê as <i>Mutable Collections</i>, que possuem as mesmas caracteríticas das já citadas, porem, acompanham uma série de funções e propriedades(chamadas de iterators) voltadas para a manipulação e refatoração de seus elementos. As mutable collections são:
+
+- MutableList
+- MutableSet
+- MutableMap
+
+Como dito anteriormente, todas as collections compartilham uma série de iterators padrão, sendo alguns dos principais:
+
+
+- [MutableCollection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/)
+
 
 <h2>Array</h2>
 
@@ -882,10 +962,6 @@ No exmplo acima, a função de interação equivale a chamada dos métodos get e
 Sendo possível omitir o getter visto que a classe já tem acesso ao valor de retorno, que seria o próprio index:
 
     val asc = Array(5) { _ -> i }
-
-
-<h2>List</h2>
-
 
 
 <h1>Funções</h1>
