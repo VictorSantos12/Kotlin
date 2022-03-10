@@ -1421,19 +1421,19 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
 <h1>NullSafety</h1>
 
 
-O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. Atribuir um tipo null a uma variável só a torna passível de receber null. 
+O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. 
 
-Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido. Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos ou tipos desconhecidos, resultando em uma exception, e, por conseguinte, em um crash no código.
+Atribuir um tipo null a uma variável só a torna passível de receber null. Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido. Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos ou tipos desconhecidos, resultando em uma exception, e, por conseguinte, em um crash no código.
 
-No Kotlin, o sistema de tipos distingue as referencias que podem ser ```null```(nullable reference) das que não podem(non-null reference). Por exemplo, uma variável tipada como ```String``` não sustenta um ```null```:
+No Kotlin, o sistema de tipos distingue as referencias que podem ser ```null```(nullable reference) das que não podem(non-null reference). Por exemplo, uma variável tipada como String não sustenta um null:
 
-    val a: String = "string"
+    var a: String
     a = null // compilation error
 
 Para que seja possível tornar o exemplo acima livre do erro resultante, a variável deve ser tipada com o marcador ```?```, a tornando nullable:
 
-    val b: String? = "string"
-    a = null // ok
+    var b: String?
+    b = null // ok
     print(b)
 
 Caso seja necessário acessar e utilizar o valor contido em uma variável nullable, é preciso garantir que o valor nela contido não seja null. Por exemplo, a seguinte atribuição não seria alvo de uma exception pois ```a```só será valorada com valores non-nullable:
