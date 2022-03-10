@@ -1325,9 +1325,75 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
 <h1>NullSafety</h1>
 
 
-O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida sobre, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato é ausente. Atribuir um tipo null a uma variável só a torna passível de receber null. Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido.
+O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. Atribuir um tipo null a uma variável só a torna passível de receber null. Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido.
 
-Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos, resultando em um exception, e, por conseguinte, um crash no código.
+Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos, resultando em uma exception, e, por conseguinte, um crash no código.
+
+No Kotlin, o sistema de tipos distingue as referencias que podem ser ```null```(nullable reference) das que não podem(non-null reference). Por exemplo, uma variável tipada como ```String``` não sustenta um ```null```:
+
+    val a: String = "string"
+    a = null // compilation error
+
+Para que seja possível tornar o exemplo acima livre do erro resultante, a variável deve ser tipada com o marcador ```?```:
+
+    val b: String? = "string"
+    a = null // ok
+    print(b)
+
+Caso seja necessário acessar e utilizar o valor contido em uma variável nullable é preciso garantir que valor nela contido não seja null, ou seja. Por exemplo, a seguinte atribuição não seria alvo de uma exception pois a só será valorada com valores non-nullable:
+
+    val l = a.length
+
+Já a variável b, cujo valor pode ser nulo, não permite tal atribuição:
+
+    val l = b.length // error: variable 'b' can be null
+
+No Kotlin, há formas distintas de acessar esse valor.
+
+
+<h2>Verificação de Valores Nulos</h2>
+
+
+Primeiramente, é possível verificar se a variável b é nula, e tratar as duas possibilidades de forma separada:
+
+    val b: String? = "Kotlin"
+    if (b != null && b.length > 0) {
+        print("String of length ${b.length}")
+    } else {
+        print("Empty string")
+    }
+
+Output:
+
+    String of length 6
+
+
+<h2>Safe Calls</h2>
+
+
+Uma alternativa para permitir o acesso a propriedades de entidades nullable é utilizar o operador de chamada segura, ou safe call ```?.```:
+
+    val a = "Kotlin"
+    val b: String? = null
+    println(b?.length)
+    println(a?.length) // Unnecessary safe call
+
+Output:
+
+>null<br>
+>6
+
+A safe call retorna o valor da propriedade caso sua origem não seja nula, caso contrário, retorna null.
+
+
+<h2>O Operador !!</h2>
+
+
+A terceira opção seria utilizar o operador de asserção não nulo (```!!```). Sua função é converter qualquer valor para um tipo non-null, lançando uma exception caso o valor seja null:
+
+    val l = b!!.length
+
+Ao aplicar o operador !! na variável b, é possível acessar suas propriedades sem uma verificação condicional de alto nível.
 
 
 <h1>Kotlin e a Orientação a Objetos</h1>
