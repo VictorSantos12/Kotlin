@@ -169,7 +169,7 @@ Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem 
 <h2>Concisão</h2>
 
 
-A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de linhas de código, o que tirna seu uso monótono devido a constante repetição de código existente. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
+A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de linhas de código, o que torna seu uso monótono devido a constante repetição. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
 
     // Java                                          // Kotlin
                                                                  
@@ -181,7 +181,7 @@ A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de 
 
 <h2>Null Safety</h2>
 
-Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um recurso de segurança void bastante usual. O Null Safety permite declarar a nulidade ou nullability do código com base em seu tipo, sendo utilizado para evitar erros ao valorar elementos com tipos restritos através do marcador ```?```. Exemplos:
+Presente em linguagens modernas como o Dart, o Null Safety é um recurso de segurança void bastante usual. O Null Safety permite declarar a nulidade do código com base em seu tipo, sendo utilizado para evitar erros ao valorar elementos com tipos restritos através do marcador ```?```. Exemplos:
 
     var stringValue: String = “Hello World!”
     stringValue= null; // error
@@ -201,13 +201,13 @@ As coroutines são um design pattern utilizado para simplificar a execução de 
 <h1>Sintaxe Básica</h1>
 
 
-A seguir iremos abordar a base do que compõe a sintaxe e estrutura do Kotlin, como declarar e utilizar seus componentes utilizando exemplos práticos:
+A seguir iremos abordar a base do que compõe a sintaxe e a estrutura do Kotlin, como declarar e utilizar seus componentes utilizando exemplos práticos:
 
 
 <h2>Packages e Importações</h2>
 
 
-Uma file kotlin normalmente inicia com a importação ou declaração de uso dos recurso nela utilizados, sendo package uma das formas de definição:
+Uma file kotlin normalmente inicia com a importação ou declaração de uso dos recursos nela utilizados, sendo package uma das formas de definição:
 
     package org.example
     
@@ -341,7 +341,7 @@ Type    | Size(bits) | Bits significativos | Bits de expoente | Digitos decimais
  Float  |  32        |  24                 |  8               |  6-7
  Double |  64        |  53                 |  11              |  15-16
 
-É possível inicializar variáveis Double e Float com números fracionados, sendo separados por ponto. Para variáveis com inferência de tipo defina por um número decimal, por padrão lhe será atribuída o tipo <i>Double</i>:
+É possível inicializar variáveis Double e Float com números fracionados, sendo separados por ponto. Para variáveis com inferência de tipo definida por um número decimal, por padrão lhe será atribuída o tipo <i>Double</i>:
 
     val pi = 3.14 // Double
     // val one: Double = 1 // Error: type mismatch
@@ -404,7 +404,7 @@ Em muitos casos, não é necessário utilizar explicit conversion porque o tipo 
 <h2>Characters</h2>
 
 
-Os caracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Cracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
+Os caracteres no Kotlin são representados pelo tipo <i>Char</i>, sendo definido por um elemento entre aspas simples ```'1'```. Caracteres especiais iniciam com uma barra invertida ```\```, este podendo ser um dos seguintes elementos suportados: \t, \b, \n, \r, \', \", \\ e \$. Para codificar qualquer outro caractere, usa-se a sintaxe de sequência de escape Unicode: '\uFF00'.
 
     val aChar: Char = 'a'
     
@@ -473,7 +473,7 @@ Uma raw string é delimitada por uma sequência de aspas duplas(```"""```) e pod
 <h2>String templates</h2>
 
 
-String literals podem conter um <i>template</i> expression que consiste em partes do código que são avaliadas e cujo resultado é concatenado dentro da string. Uma template expression inicia com um cifrão (```$```) seguido do identificado do elemento a ser concatenado:
+String literals podem conter um <i>template</i> expression que consiste em partes do código que são avaliadas e cujo resultado é concatenado dentro da string. Uma template expression inicia com um cifrão (```$```) seguido do identificador do elemento a ser concatenado:
 
     val i = 10
     println("i = $i") // printa "i = 10"
@@ -503,7 +503,7 @@ Os operadores internos do Kotlin para entidades booleanas incluem:
 - ```&&``` - Conjunção ou AND lógico
 - ```!``` - Negação ou NOT lógico
 
-Uma operação utilizado algum dos operadores acima sempre irá resultar em um boolean. Além disso, tanto o operador de dijunção quanto o de conjunção trabalham de forma lenta. Os exemplos a seguir mostram como utilizar tais recursos:
+Uma operação utilizando algum dos operadores acima sempre irá resultar em um boolean. Além disso, tanto o operador de dijunção quanto o de conjunção trabalham de forma lenta. Os exemplos a seguir mostram como utilizar tais recursos:
 
 
     val myTrue: Boolean = true
@@ -653,7 +653,7 @@ Output:
 >0<br>
 >1
 
-Operadores pré fixados retornam o valor do operando após a operação, já operados pós fixados retoram o valor do operando antes da operação.
+Operadores pré fixados retornam o valor do operando após a operação, já operados pós fixados retornam o valor do operando antes da operação.
 
 
 <h2>Operadores de Auto Atribuição</h2>
@@ -672,7 +672,7 @@ Operações que relacionam dois operandos de forma que o primeiro operando receb
 <h1>Variáveis</h1>
 
 
-Variáveis locais são declaradas precedidas da palavra-chave ```val```. Essas seriam chamadas ```consts``` em outras linguagens já que podem ser valoradas uma vez apenas:
+Variáveis locais são declaradas precedidas da palavra-chave ```val```. Sendo chamadas de ```const``` ou ```final``` em outras linguagens já que podem ser valoradas apenas uma vez:
 
     val a: Int = 1  // atribuição imediata
     val b = 2   // tipo `Int` inferido pelo valor atribuído
@@ -711,7 +711,7 @@ Como resultado da execução teriamos:
 <h1>Conjuntos</h1>
 
 
-No Kotlin é possível manipular múltiplos conjuntos de dados através de uma única referência. Normalmente essa função é suprida por um vetor(assusnto que será abordado a seguir), mas, no Kotlin é possível associar valores distintos a uma única variável. Uma referência de uso de funcionalidade seria ao trabalhar com coordenadas geográfias, recurso bastante comum em apps:
+No Kotlin é possível manipular múltiplos conjuntos de dados através de uma única referência. Normalmente essa função é suprida por um vetor(assunto que será abordado a seguir), mas, no Kotlin é possível associar valores distintos a uma única variável. Uma referência de uso de funcionalidade seria ao trabalhar com coordenadas geográfias, recurso bastante comum em apps:
 
     val coordinates = Pair(2, 3)
 
@@ -754,7 +754,7 @@ Sua função é basicamente anular a conjunção e dar acesso a cada um dos elem
 <h1>Range</h1>
 
 
-A forma mais simples de criar uma sequência de elementos no Kotlin é criando um range. Um range define um intervalor entre dois elementos de um conjunto numérico. No Kotlin, um range comum é criado por meio da declaração de seus dois endpoints, separados por dois pontos: 
+A forma mais simples de criar uma sequência de elementos no Kotlin é criando um range. Um range define um intervalo entre dois elementos de um conjunto numérico. No Kotlin, um range comum é criado por meio da declaração de seus dois endpoints, separados por dois pontos: 
 
 >1..10
 
@@ -799,7 +799,7 @@ Output:
 >8<br>
 >9
 
-Além disso, é possível declrar que um determinado elemento será evitado na interação. Para isso usa-se a expressão ```step``` logo após a declaração do range:
+Além disso, é possível declarar que um determinado elemento será evitado na interação. Para isso usa-se a expressão ```step``` logo após a declaração do range:
 
     for (i in 1..10 step 2) println(i)
 
@@ -815,7 +815,7 @@ Output:
 >9<br>
 >10
 
-O conceito de range é muito utilizado quando se trata de vetores e a interação com os mesmo. A seguir, iremos entender como utilizar vetores no Koltin.
+O conceito de range é muito utilizado quando se trata de vetores e a interação com os mesmos. A seguir, iremos entender como utilizar vetores no Koltin.
 
 
 <h1>Collections</h1>
@@ -824,7 +824,7 @@ O conceito de range é muito utilizado quando se trata de vetores e a interaçã
 Collections são grupos compostos por um variado número de itens(possivelmente zero), sendo normalmente do mesmo tipo, estes sendo definidos como elements ou items. Há dois grupos que distinguem as collections no Kotlin, sendo elas:
 
 - <i>Read-only</i> ou <I>Ummutable</I>, são collections cujos elementos são constantes, contando com uma interface que permite acessar seus elementos.
-- <i>Mutable</i>, são collections cujos elementos são variáveis, contando com uma interface que possui os mesmos recursos das read-only collection mais operadores de controle: adding, removing e updating.
+- <i>Mutable</i>, são collections cujos elementos são variáveis, contando com uma interface que possui os mesmos recursos das read-only collections mais operadores de controle: adding, removing e updating.
 
 
 Os principais tipos de collections presentes no Kotlin são:
@@ -855,7 +855,7 @@ Uma List pode conter qualquer número de objetos do mesmo tipo ou acorrências d
 <h2>Set</h2>
 
 
-Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em set: Um set só permite a existência de um único null em seu escopo. O uso de uma Set collection pe muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado.
+Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em set: Um set só permite a existência de um único null em seu escopo. O uso de uma Set collection é muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado.
 
     val numbers = setOf(1, 2, 3, 4)
     println("Number of elements: ${numbers.size}")
@@ -874,7 +874,7 @@ Output:
 <h2>Map</h2>
 
 
-Mesmo não sendo herdeiros da ```Collection Inteface``` como os demais, Maps também fazem parte do mesmo grupo. Um <i>Map</i> armazena pares de key-value únicos, cuja tipo não é explicito, ou seja, uma key pode receber tanto valores semelhantes quanto distintos das demais. A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores e key específicos e mais.
+Mesmo não sendo herdeiros da ```Collection Inteface``` como os demais, Maps também fazem parte do mesmo grupo. Um <i>Map</i> armazena pares de key-value únicos, cuja tipo não é explícito, ou seja, uma key pode receber tanto valores semelhantes quanto distintos das demais. A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores e key específicos e mais.
 
 Uma key é associada ao respectivo valor pelo marcador ```to```, já a key é declarada entre aspas:
 
@@ -1425,7 +1425,7 @@ Para tratar uma exceção, usa-se a expressão ```try```...```catch```:
 <h1>NullSafety</h1>
 
 
-O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. 
+O já citado <i>nullsafety</i> é um recurso bastante comum a liguagens de programação modernas. Em uma definição rápida, poderia ser dito que o nullsafety é um método de controle de tipos nulos, com o qual é possível evitar reference exceptions quando determinado dato acessado é inesperadamente nulo. 
 
 Atribuir um tipo null a uma variável só a torna passível de receber null. Com o nullsafety é possível definir que um elemento de determindado tipo espere por uma possível nulidade do valor recebido. Um dos vários casos de uso seria a obtenção de informações oriundas de Api's externas, cujo processo pode contar com impeditivos não previstos ou tipos desconhecidos, resultando em uma exception, e, por conseguinte, em um crash no código.
 
@@ -1440,7 +1440,7 @@ Para que seja possível tornar o exemplo acima livre do erro resultante, a vari�
     b = null // ok
     print(b)
 
-Caso seja necessário acessar e utilizar o valor contido em uma variável nullable, é preciso garantir que o valor nela contido não seja null. Por exemplo, a seguinte atribuição não seria alvo de uma exception pois ```a```só será valorada com valores non-nullable:
+Caso seja necessário acessar e utilizar o valor contido em uma variável nullable, é preciso garantir que o valor nela contido não seja null. Por exemplo, a seguinte atribuição não seria alvo de uma exception pois ```a``` só será valorada com valores non-nullable:
 
     val l = a.length
 
