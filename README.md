@@ -118,8 +118,6 @@ Com a execução, um arquivo .jar será gerado, este sendo executado e tendo o s
 
 >[Running] cd "c:\..\..\..\..\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar<br>
 >Hello, world!<br>
-<br>
-
 >[Done] exited with code=0 in 3.62 seconds
 
 <!-- Outra forma de obter o resultado é gerando um arquivo em java a partir da file .Kt. Para isso, no terminal, acesse o diretório em que o arquivo deve ser gerado e execute o comando a seguir:
@@ -138,17 +136,16 @@ Além disso, também é possível acessar o Kotlin interactive e executar alguma
 
 >Welcome to Kotlin version 1.6.10 (JRE 1.8.0_211-b12)<br>
 >Type :help for help, :quit for quit<br>
->>>>
 
 Experimente executar alguma operações ou printar algumas mensagens em string:
      
->>>> var a = 16 * 15<br>
->>>> a<br>
+>var a = 16 * 15<br>
+>a<br>
 >res4: kotlin.Int = 240
 
 <br>
 
-    >>> println("Welcome to the Kotlin interactive")
+    println("Welcome to the Kotlin interactive")
 
 Output:
 
