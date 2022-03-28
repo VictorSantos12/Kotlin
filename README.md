@@ -5,9 +5,9 @@
 <img src="https://img.shields.io/static/v1?label=Kotlin&message=Language&color=purple&style=for-the-badge&logo=Kotlin"/>
 
 
-O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalmente mobile. Isso se dá pois a linguagem foi criada para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tâ-la presente em basicamente qualquer ambiente em que o Java é executado.
+O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalmente mobile. Isso se dá pois a linguagem foi criada para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tê-la presente em basicamente qualquer ambiente em que o Java é executado.
 
-Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria surgiu em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language da em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source.
+Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria surgiu em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source.
 
 
 <!-- <h1>Kotlin Multiplataform</h1> -->
@@ -36,7 +36,7 @@ O IntelliJ IDEA é uma IDE criada pela JetBrains voltada para maximizar a produt
 <h2>Android Studio</h2>
 
 
-O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvimento de aplicações Andorid, baseado no IntelliJ IDEA. Indo além do IntelliJ, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar uma aplicação android, como:
+O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvedores de aplicações Andorid. Baseado no IntelliJ IDEA e indo além, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar uma aplicação android, como:
 
 - Um sistema de compilação flexível baseado no gerenciador Gradle
 - Uma vasta lista de emuladores ricos em recursos
@@ -55,11 +55,13 @@ O link a seguir indica como obter e instalar o Android Studio:
 <h2>VSCode</h2>
 
 
-O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o Android Studio ou o IntelliJ IDEA, mas fornece o suficiente para que seja possível aprender a sintaxe do Kotlin de forma prática. Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, faremos algumas instalações:
+O VSCode é um editor de código bastante popular, que não possui os recursos de IDE's como o Android Studio ou o IntelliJ IDEA, mas fornece o suficiente para que seja possível aprender a sintaxe do Kotlin de forma prática. Sendo assim, com o intuito de criar o ambiente mínimo para executar o Kotlin, optaremos por usa-la em detrimento das demais. Para iniciar, faremos algumas instalações:
+
+O VSCode é imprescindível para escrever e compilar o código Kotlin de forma simples e rápida.
 
 - [VSCode](https://code.visualstudio.com/)
 
-O VSCode é imprescindível para escrever e compilar o código Kotlin de forma simples e rápida. Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
+Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/154381629-75b90545-4b7d-4836-a517-950cb7e3510d.png">
@@ -111,14 +113,16 @@ Uma forma prática de entender a estrutura mais básica de uma linguagem de prog
         println("Hello, world!")
     }
 
-Output:
 
-    [Running] cd "c:\..\..\..\..\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar
-    Hello, world!
-    
-    [Done] exited with code=0 in 3.62 seconds
+Com a execução, um arquivo .jar será gerado, este sendo executado e tendo o seguinte output como resultado:
 
-Outra forma de obter o resultado é gerando um arquivo em java a partir da file .Kt. Para isso, no terminal, acesse o diretório em que o arquivo deve ser gerado e execute o comando a seguir:
+>[Running] cd "c:\..\..\..\..\" && kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar<br>
+>Hello, world!<br>
+<br>
+
+>[Done] exited with code=0 in 3.62 seconds
+
+<!-- Outra forma de obter o resultado é gerando um arquivo em java a partir da file .Kt. Para isso, no terminal, acesse o diretório em que o arquivo deve ser gerado e execute o comando a seguir:
 
     kotlinc main.kt -include-runtime -d main.jar
 
@@ -128,24 +132,27 @@ Um arquivo main.jar será gerado. Para executá-lo use o comando a seguir:
 
 Como resultado temos:
 
->Hello, world!
+>Hello, world! -->
 
 Além disso, também é possível acessar o Kotlin interactive e executar algumas operações fazendo run da palavra-chave ```kotlin``` no terminal. Como resultado temos um compiler que faz uso da JVM:
 
-    Welcome to Kotlin version 1.6.10 (JRE 1.8.0_211-b12)
-    Type :help for help, :quit for quit
-    >>>
+>Welcome to Kotlin version 1.6.10 (JRE 1.8.0_211-b12)<br>
+>Type :help for help, :quit for quit<br>
+>>>>
 
 Experimente executar alguma operações ou printar algumas mensagens em string:
      
-    >>> var a = 16 * 15
-    >>> a
-    res4: kotlin.Int = 240
+>>>> var a = 16 * 15<br>
+>>>> a<br>
+>res4: kotlin.Int = 240
 
 <br>
 
     >>> println("Welcome to the Kotlin interactive")
-    Welcome to the Kotlin interactive
+
+Output:
+
+>Welcome to the Kotlin interactive
 
 
 <h1>Características Básicas</h1>
