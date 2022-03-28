@@ -908,11 +908,6 @@ Todas as collections do Kotlin são, por padrão, read-only. Tal padrão, tornar
 - MutableSet
 - MutableMap
 
-Como dito anteriormente, todas as collections compartilham uma série de iterators padrão, sendo alguns dos principais:
-
-
-- [MutableCollection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/)
-
 
 <h2>Array</h2>
 
@@ -966,6 +961,11 @@ No exmplo acima, a função de interação equivale a chamada dos métodos get e
 Sendo possível omitir o getter visto que a classe já tem acesso ao valor de retorno, que seria o próprio index:
 
     val asc = Array(5) { _ -> i }
+
+Como dito anteriormente, todas as collections compartilham uma série de iterators padrão, sendo alguns dos principais:
+
+
+- [MutableCollection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/)
 
 
 <h1>Funções</h1>
@@ -1500,3 +1500,49 @@ Ao aplicar o operador !! na variável b, é possível acessar suas propriedades 
 
 
 Por ser uma linguagem orintada a objetos, o Kotlin conta com todos os recursos padrões do paradigma, como Classes, Constructors, herança baseada em hierarquia, além de muitos outros conceitos. A seguir iremos entender como aplicar os conceitos da POO com o Kotlin.
+
+
+<h1>Classes</h1>
+
+
+A classes no Kotlin são declaradas utilizando a palavra-chave ```class```:
+
+    class Person { /*...*/ }
+
+A declaração de uma classe consiste em identificador, o header da classe (especificando seus parãmetros, constructor e etc), e por último, um body, delimitado por chaves. Ambos header e body são opcionais, sendo possível omitir as chaves que o delimitam:
+
+    class Empty
+
+
+<h2>Constructor</h2>
+
+
+Uma classe no Kotlin possui um ou mais constructors. Um <i>primary constructor</i> é parte do header da classe, podendo ser declarado após o identificador da classe da seguinte forma:
+
+    class Person constructor(parameter: type) { /*...*/ }
+
+O contructor pode receber parâmetros assim como uma função qualquer, sendo possível acessar seus valores ao inicializar a classe. Casp o <i>primary constructor</i> não possua annotations ou modificadores de visibilidade, a palavra-chave do construtor pode ser omitida:
+
+    class Person(firstName: String) { /*...*/ }
+
+O <i>primary constructor</i> não pode executar código algum. Código de inicialização pode ser alocado em blocos de inicialização, ou <i>initializaer block</i> prefixados com a palavra-chave ```init```:
+
+    class Person(firstName: String) {
+        init { /*...*/ }
+     }
+
+Durante a inicialização de uma classe, os blocos de init são executados na sua ordem de declaração, com o intervalo entre as inicializações das propriedades, que por sua vez podem receber os valores dos parâmetros do <i>primary constructor</i>: 
+
+    class InitOrderDemo(name: String) {
+        val firstProperty = "First property: $name".also(::println)
+        
+        init {
+            println("First initializer block that prints $name")
+        }
+        
+        val secondProperty = "Second property: ${name.length}".also(::println)
+        
+        init {
+            println("Second initializer block that prints ${name.length}")
+        }
+    }
