@@ -848,9 +848,7 @@ Como mencionado cada collection no Kotlin possui uma versão mutável acompanhad
 
     val numbers = mutableListOf(1, 2, 3, 4)
 
-O link a seguir lista todos os interatos aplicáveis a MutableLists:
-
-[MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
+O link a seguir lista todos os interatos aplicáveis a MutableLists: [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
 
 
 <h2>Set</h2>
@@ -866,9 +864,7 @@ O uso de uma Set collection é muito mais matemático que prátrico dentro da si
 <h2>MutableSet</h2>
 
 
-Da mesma forma que as Lists possuiem a interface MutableList, a collection Set conta com uma interface mutável: a MutableSet; que possui os memso interators que uma MutableList, sendo possível manipular os elementos que a compõe. O link a seguir lista todos os interatos aplicáveis a MutableSets:
-
-[MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/)
+Da mesma forma que as Lists possuiem a interface MutableList, a collection Set conta com uma interface mutável: a MutableSet; que possui os memso interators que uma MutableList, sendo possível manipular os elementos que a compõe. O link a seguir lista todos os interatos aplicáveis a MutableSets: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/)
 
 
 <h2>Map</h2>
@@ -888,9 +884,7 @@ Um Map no Kotlin é declarado da seguinte forma;
 <h2>MutableMap</h2>
 
     
-A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores em um key específicos e mais. O link a seguir lista todos os interatos aplicáveis a MutableMaps:
-
-[MutableMap](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/)
+A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores em um key específicos e mais. O link a seguir lista todos os interatos aplicáveis a MutableMaps: [MutableMap](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/)
 
 
 <h2>Array</h2>
