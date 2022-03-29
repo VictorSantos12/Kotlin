@@ -775,36 +775,20 @@ Output:
 Para não percorrer determinado elemento em um range, usa-se a expressão ```until``` no lugar de ```..```:
 
     for (i in 1 until 10) {  // i in 1 until 10, excluding 10
-        println(i)
+        print(i)
     }
 
 Output:
 
->1<br>
->2<br>
->3<br>
->4<br>
->5<br>
->6<br>
->7<br>
->8<br>
->9
+>1 2 3 4 5 6 7 8 9
 
 Além disso, é possível declarar que um determinado elemento será evitado na interação. Para isso usa-se a expressão ```step``` logo após a declaração do range:
 
-    for (i in 1..10 step 2) println(i)
+    for (i in 1..10 step 2) print(i)
 
 Output:
 
->1<br>
->3<br>
->4<br>
->5<br>
->6<br>
->7<br>
->8<br>
->9<br>
->10
+>1 3 4 5 6 7 8 9 10
 
 O conceito de range é muito utilizado quando se trata de vetores e a interação com os mesmos. A seguir, iremos entender como utilizar vetores no Koltin.
 
@@ -839,7 +823,11 @@ Como mencionado cada collection no Kotlin possui uma versão mutável acompanhad
 
     val numbers = mutableListOf(1, 2, 3, 4)
 
-O link a seguir lista todos os interatos aplicáveis a MutableLists: [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
+Também é possível inferir um tipo ao inicializar uma MutableList, não sendo necessário declarar os valores que a lista carrega:
+
+    val myList: MutableList<T> = mutableListOf()
+
+Desta forma a List pode ser preenchida de acordo com o fluxo de execução do código utilizando os respectivos interators. O link a seguir lista todos os interatos aplicáveis a MutableLists: [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
 
 
 <h2>Set</h2>
@@ -849,8 +837,7 @@ Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um g
 
     val numbers = setOf(1, 2, 3, 4)
 
-O uso de uma Set collection é muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado.
-
+O uso de uma Set collection é muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado. 
 
 <h2>MutableSet</h2>
 
@@ -1329,16 +1316,7 @@ Perceba que em expressões <i>forEach</i>, o uso dos local returns possuem efeit
 
 Output:
 
->0<br>
->1<br>
->2<br>
->3<br>
->4<br>
->5<br>
->6<br>
->7<br>
->8
-
+>0 1 2 3 4 5 6 7 8
 
 
 <h2>While loops</h2>
@@ -1513,5 +1491,30 @@ Durante a inicialização de uma classe, os blocos de init são executados na su
         
         init {
             println("Second initializer block that prints ${name.length}")
+        }
+    }
+
+
+<h2>Secondary Constructors</h2>
+
+
+Classes Kotlin também podem ter um contructor secundário declarado, o qual é identifocado pela palavra-chave ```constructor```:
+
+    class Person(val pets: MutableList<Pet> = mutableListOf())
+    
+    class Pet {
+        constructor(owner: Person) {
+            owner.pets.add(this) // adicionar um objeto pet a lista de pets da classe Person 
+        }
+    }
+
+Se a classe tiver um <i>primary constructor</i>, cada construtor secundário precisará delegar ao construtor primário, direta ou indiretamente por meio de outro(s) construtor(es) secundário(s). A delegação para outro construtor da mesma classe é feita usando a palavra-chave this:
+
+    class Person(val name: String) {
+
+        val children: MutableList<Person> = mutableListOf()
+        
+        constructor(name: String, parent: Person) : this(name) {
+            parent.children.add(this)
         }
     }
