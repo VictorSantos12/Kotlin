@@ -826,6 +826,7 @@ Collections são grupos compostos por um variado número de itens(possivelmente 
 - <i>Read-only</i> ou <I>Ummutable</I>, são collections cujos elementos são constantes, contando com uma interface que permite acessar seus elementos.
 - <i>Mutable</i>, são collections cujos elementos são variáveis, contando com uma interface que possui os mesmos recursos das read-only collections mais operadores de controle: adding, removing e updating.
 
+Todas as collections do Kotlin são, por padrão, read-only. Para que seja possível manipular collections, o Kotlin provê interfaces mutáveis para cada uma das collections, estas sendo chamadas de <i>Mutable Collections</i>. As mutable collections possuem as mesmas caracteríticas das suas versões imutáveis, porém, acompanham uma série de funções e propriedades(chamadas de iterators) voltadas para a manipulação e refatoração de seus elementos. 
 
 Os principais tipos de collections presentes no Kotlin são:
 
@@ -837,76 +838,59 @@ Uma <i>List</i> é uma collection de elementos ordenados que provê acesso a est
 
     val numbers = listOf("one", "two", "three", "four")
 
-    println("Number of elements: ${numbers.size}")
-    println("Third element: ${numbers.get(2)}")
-    println("Fourth element: ${numbers[3]}")
-    println("Index of element \"two\" ${numbers.indexOf("two")}")
+Uma List pode conter qualquer número de objetos do mesmo tipo ou acorrências de um único objeto, ou seja, uma list permite a duplicidade de elementos. O uso das Lists é recomendado em situações em que o número de elementos agrupados varia dinamicamente durante a execução, podendo ter elementos adicionados, removidos ou editados.
 
-Output: 
 
->Number of elements: 4<br>
->Third element: three<br>
->Fourth element: four<br>
->Index of element "two" 1
+<h2>MutableList</h2>
 
-Uma List pode conter qualquer número de objetos do mesmo tipo ou acorrências de um único objeto. 
+
+Como mencionado cada collection no Kotlin possui uma versão mutável acompanhada de interators que permitem a manipulação e refatoração de seus elementos, como a remoção e a adição. Para declarar uma Mutable List usamos o seguinte método:
+
+    val numbers = mutableListOf(1, 2, 3, 4)
+
+O link a seguir lista todos os interatos aplicáveis a MutableLists:
+
+[MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
 
 
 <h2>Set</h2>
 
 
-Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em set: Um set só permite a existência de um único null em seu escopo. O uso de uma Set collection é muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado.
+Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em sets, podendo haver um único null em seu escopo.
 
     val numbers = setOf(1, 2, 3, 4)
-    println("Number of elements: ${numbers.size}")
-    if (numbers.contains(1)) println("1 is in the set")
-    
-    val numbersBackwards = setOf(4, 3, 2, 1)
-    println("The sets are equal: ${numbers == numbersBackwards}")
 
-Output:
+O uso de uma Set collection é muito mais matemático que prátrico dentro da sintaxe do Kotlin, e raramente será utilizado.
 
->Number of elements: 4<br>
->1 is in the set<br>
->The sets are equal: true
+
+<h2>MutableSet</h2>
+
+
+Da mesma forma que as Lists possuiem a interface MutableList, a collection Set conta com uma interface mutável: a MutableSet; que possui os memso interators que uma MutableList, sendo possível manipular os elementos que a compõe. O link a seguir lista todos os interatos aplicáveis a MutableSets:
+
+[MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/)
 
 
 <h2>Map</h2>
 
 
-Mesmo não sendo herdeiros da ```Collection Inteface``` como os demais, Maps também fazem parte do mesmo grupo. Um <i>Map</i> armazena pares de key-value únicos, cuja tipo não é explícito, ou seja, uma key pode receber tanto valores semelhantes quanto distintos das demais. A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores e key específicos e mais.
+Mesmo não sendo herdeiros da ```Collection Inteface``` como os demais, Maps também fazem parte do mesmo grupo. Um <i>Map</i> armazena pares de key-value únicos, cuja tipo não é explícito, ou seja, uma key pode receber tanto valores semelhantes quanto distintos das demais. 
 
-Uma key é associada ao respectivo valor pelo marcador ```to```, já a key é declarada entre aspas:
+Uma key é associada a seu respectivo valor pelo marcador ```to```, já a key é declarada entre aspas:
 
 >"Key" to value
 
-Veja o exemplo de uso e de acesso a membros de um Map:
+Um Map no Kotlin é declarado da seguinte forma;
 
     val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key4" to 1)
+
+
+<h2>MutableMap</h2>
+
     
-    println("All keys: ${numbersMap.keys}")
-    println("All values: ${numbersMap.values}")
-    if ("key2" in numbersMap) println("Value by key \"key2\": ${numbersMap["key2"]}")    
-    if (1 in numbersMap.values) println("The value 1 is in the map")
-    if (numbersMap.containsValue(1)) println("The value 1 is in the map") // same as previous
+A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores em um key específicos e mais. O link a seguir lista todos os interatos aplicáveis a MutableMaps:
 
-Output:
-
->All keys: [key1, key2, key3, key4]<br>
->All values: [1, 2, 3, 1]<br>
->Value by key "key2": 2<br>
->The value 1 is in the map<br>
->The value 1 is in the map
-
-
-<h2>Mutable Collection</h2>
-
-
-Todas as collections do Kotlin são, por padrão, read-only. Tal padrão, tornaria necessário criar uma nova list, por exemplo, sempre que houver a necessidade de alterar um de seus valores, substituindo a anterior. Para suprir tal necessidade, o Kotlin provê as <i>Mutable Collections</i>, que possuem as mesmas caracteríticas das já citadas, porem, acompanham uma série de funções e propriedades(chamadas de iterators) voltadas para a manipulação e refatoração de seus elementos. As mutable collections são:
-
-- MutableList
-- MutableSet
-- MutableMap
+[MutableMap](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/)
 
 
 <h2>Array</h2>
