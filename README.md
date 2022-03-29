@@ -765,21 +765,12 @@ Também é possível acessar o range inverso ao declarado acima. Para isso usamo
 O principal operador quando se trata de sequências numéricas em range é o ```contains```, que normalmente é utilizados na forma dos operadores ```in``` e ```!in```:
 
     for (i in 1..10) {
-        println(i)
+        print(i)
     }
 
 Output:
 
->1<br>
->2<br>
->3<br>
->4<br>
->5<br>
->6<br>
->7<br>
->8<br>
->9<br>
->10
+>1 2 3 4 5 6 7 8 9 10
 
 Para não percorrer determinado elemento em um range, usa-se a expressão ```until``` no lugar de ```..```:
 
