@@ -1452,33 +1452,35 @@ Por ser uma linguagem orintada a objetos, o Kotlin conta com todos os recursos p
 <h1>Classes</h1>
 
 
-A classes no Kotlin são declaradas utilizando a palavra-chave ```class```:
+As classes no Kotlin são declaradas utilizando a palavra-chave ```class```:
 
     class Person { /*...*/ }
 
-A declaração de uma classe consiste em identificador, o header da classe (especificando seus parãmetros, constructor e etc), e por último, um body, delimitado por chaves. Ambos header e body são opcionais, sendo possível omitir as chaves que o delimitam:
+A declaração de uma classe consiste em um identificador, o header da classe (especificando seus parâmetros, constructor e etc), e por último, um body, delimitado por chaves. Ambos header e body são opcionais, sendo possível omitir as chaves que o delimitam:
 
     class Empty
+
+Classes Kotlin podem conter os seguintes membos:
 
 
 <h2>Constructor</h2>
 
 
-Uma classe no Kotlin possui um ou mais constructors. Um <i>primary constructor</i> é parte do header da classe, podendo ser declarado após o identificador da classe da seguinte forma:
+Uma classe no Kotlin pode ter um <i>primary constructor</i> e um ou mais <i>secondary constructors</i>. O primary constructor é uma parte do class header, sendo declarado após o identificador da classe da seguinte forma:
 
     class Person constructor(parameter: type) { /*...*/ }
 
-O contructor pode receber parâmetros assim como uma função qualquer, sendo possível acessar seus valores ao inicializar a classe. Casp o <i>primary constructor</i> não possua annotations ou modificadores de visibilidade, a palavra-chave do construtor pode ser omitida:
+O contructor pode receber parâmetros assim como uma função qualquer, sendo possível acessar seus valores ao inicializar a classe. Casa o <i>primary constructor</i> não possua modificadores de visibilidade, a palavra-chave do construtor pode ser omitida:
 
     class Person(firstName: String) { /*...*/ }
 
-O <i>primary constructor</i> não pode executar código algum. Código de inicialização pode ser alocado em blocos de inicialização, ou <i>initializaer block</i> prefixados com a palavra-chave ```init```:
+O <i>primary constructor</i> não pode executar código algum. Código de inicialização pode ser alocado em blocos de inicialização, ou <i>initializer blocks</i> prefixados com a palavra-chave ```init```:
 
     class Person(firstName: String) {
         init { /*...*/ }
      }
 
-Durante a inicialização de uma classe, os blocos de init são executados na sua ordem de declaração, com o intervalo entre as inicializações das propriedades, que por sua vez podem receber os valores dos parâmetros do <i>primary constructor</i>: 
+Durante a inicialização de uma classe, os blocos de init são executados na sua ordem de declaração, intercaladas com a inicialização das propriedade, que por sua vez podem receber os valores dos parâmetros do <i>primary constructor</i>: 
 
     class InitOrderDemo(name: String) {
         val firstProperty = "First property: $name".also(::println)
@@ -1518,3 +1520,4 @@ Se a classe tiver um <i>primary constructor</i>, cada construtor secundário pre
             parent.children.add(this)
         }
     }
+
