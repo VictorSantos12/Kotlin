@@ -1,8 +1,7 @@
 
+
 // * INHERITANCE
 
-All classes in Kotlin have a common superclass, Any, which is the 
-default superclass for a class with no supertypes declared:
 
 // Todas as classes no Kotlin têm uma superclasse comum, Any, que é a
 // superclasse padrão para uma classe que não possui qualquer supertype 
@@ -12,9 +11,6 @@ class Example {} // Implicitly inherits from Any
 
 // Any tem três métodos: equals(), hashCode() e toString(). Assim, esses
 // métodos são definidos para todas as classes Kotlin.
-
-By default, Kotlin classes are final – they can’t be inherited. To make a 
-class inheritable, mark it with the open keyword:
 
 // Por padrão, as classes Kotlin são final – elas não podem ser herdadas. Para tornar uma
 // classe herdável, é preciso declará-la com o modificador open:
@@ -57,10 +53,6 @@ class Circle() : Shape() {
     override fun draw() { /*...*/ }
 }
 
-The override modifier is required for Circle.draw(). If it were missing, the compiler would complain. 
-If there is no open modifier on a function, like Shape.fill(), declaring a method with the same signature 
-in a subclass is not allowed, either with override or without it. The open modifier has no effect when added 
-to members of a final class – a class without an open modifier.
 
 // O modificador override é necessário na declaração do método Circle.draw(). Casp não fosse declarado, o compilador reclamaria.
 // Se não houver um modificador open em uma função, como Shape.fill(), declarar um método com a mesma assinatura em uma subclasse
@@ -89,9 +81,6 @@ open class Shape {
 class Rectangle : Shape() {
     override val vertexCount = 4
 }
-
-You can also override a val property with a var property, but not vice versa. This is allowed because a val property essentially declares 
-a get method, and overriding it as a var additionally declares a set method in the derived class.
 
 // Também é possível substituir uma propriedade val por uma propriedade var, mas não vice-versa. Isso se dá pois uma propriedade val declara
 // essencialmente um método get, e substituí-lo por um var declara um método set na classe derivada.
@@ -178,9 +167,6 @@ class FilledRectangle : Rectangle() {
 // Em Kotlin, a herança de implementação é regulada pela seguinte regra: se uma classe herdar várias implementações do mesmo membro de
 // suas superclasses imediatas, ele deve substituir esse membro e fornecer sua própria implementação (talvez, usando um dos herdados).
 
-To denote the supertype from which the inherited implementation is taken, use super qualified by the supertype name in angle brackets,
-such as super<Base>:
-
 // Para denotar o supertype do qual a implementação herdada é obtida, usa-se a palavra-chave super seguida so supertipo entre colchetes,
 // como por exemplo super<Base>.
 
@@ -199,9 +185,6 @@ class Square() : Rectangle(), Polygon {
         super<Polygon>.draw() // call to Polygon.draw()
     }
 }
-
-It's fine to inherit from both Rectangle and Polygon, but both of them have their implementations of draw(), so you need to override draw() 
-in Square and provide a separate implementation for it to eliminate the ambiguity.
 
 // Não há problema em herdar de Rectangle e Polygon ao memso tempo, mas ambos têm suas implementações de draw(), então é necessário substituir 
 // draw() na classe Square e fornecer uma implementação separada para eliminar a ambiguidade.

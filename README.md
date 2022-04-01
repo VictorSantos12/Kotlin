@@ -1460,6 +1460,18 @@ A declaração de uma classe consiste em um identificador, o header da classe (e
 
     class Empty
 
+
+<h2>Instanciando uma Classe</h2>
+
+
+Para criar uma instância de uma classe, é preciso chamar seu construtor como se fosse uma função regular:
+
+    val invoice = Invoice()
+
+O Kotlin não possui a palavra-chave ```new```:
+
+    val customer = Customer("Joe Smith")
+
 Classes Kotlin podem conter os seguintes membos:
 
 
@@ -1521,3 +1533,205 @@ Se a classe tiver um <i>primary constructor</i>, cada construtor secundário pre
         }
     }
 
+
+<h2>Classes Abstratas</h2>
+
+
+Uma classe pode ser declarada abstrata, juntamente com alguns ou todos os seus membros. Um membro abstrato de uma classe
+não é implementado na mesma, não sendo necessário declarar classes abstratas ou funções como ```open```:
+
+    abstract class Polygon {
+        abstract fun draw()
+    }
+    
+    class Rectangle : Polygon() {
+        override fun draw() {
+            // draw the rectangle
+        }
+    }
+
+É possível fazer um override de um membro definido como open por um abstrato quando este é herdado
+
+    open class Polygon {
+        open fun draw() {
+            // some default polygon drawing method
+        }
+    }
+    
+    abstract class WildShape : Polygon() {
+        // As classes que herdarem da classe WildShape devem
+        // fornecer seu próprio método draw em vez de usar o 
+        // herdado da classe Polygon 
+        abstract override fun draw()
+    }
+
+
+<h2>Inheritance</h2>
+
+
+Todas as classes no Kotlin têm uma superclasse comum, ```Any```, que é a superclasse padrão para uma classe que não possui qualquer supertype declarado:
+
+    class Example {} // Implicitly inherits from Any
+
+Any tem três métodos: equals(), hashCode() e toString(). Assim, esses métodos são definidos para todas as classes Kotlin.
+
+Por padrão, as classes Kotlin são ```final```, ou seja, são fixas e não podem ser herdadas. Para tornar uma classe herdável, é preciso declará-la com o modificador ```open```:
+
+    open class Base {}
+
+Para declarar um supertype explícito, é preciso definí-lo após dois pontos no cabeçalho da classe:
+
+    open class Base(p: Int)
+    
+    class Derived(p: Int) : Base(p)
+
+Se uma classe derivada possuir um primary constructor, a classe base pode(e deve) ser inicializada nesse primary constructor de acordo com seus parâmetros.
+
+Se uma classe derivada não possuir um primary constructor, cada construtor secundário deverá inicializar o tipo base usando a palavra-chave ```super``` ou deve delegar esta função para que outro construtor que o faça.
+
+Observe que neste caso diferentes construtores secundários podem chamar diferentes construtores do tipo base:
+
+    class MyView : View {
+        constructor(ctx: Context) : super(ctx)
+    
+        constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
+    }
+
+
+<h2>Overriding Methods</h2>
+
+
+ O Kotlin requer modificadores explícitos para membros substituíveis e substituições:
+
+    open class Shape {
+        open fun draw() { /*...*/ }
+        fun fill() { /*...*/ }
+    }
+    
+    class Circle() : Shape() {
+        override fun draw() { /*...*/ }
+    }
+
+O modificador ```override``` é necessário na declaração do método ```Circle.draw()```. Casp não fosse declarado, o compilador reclamaria. Se não houver um modificador ```open``` em uma função, como ```Shape.fill()```, declarar um método com a mesma assinatura em uma subclasse não é permitido, seja com ```override``` ou sem ele. O modificador open não tem efeito quando adicionado a membros de uma classe final – uma classe sem um modificador open.
+
+Um membro marcado com um override é explicitamente um open, portanto, pode ser substituído em subclasses. Caso seja necessário impedir
+seu override em subclasses que o herdem, usa-se o marcador ```final```:
+
+    open class Rectangle() : Shape() {
+        final override fun draw() { /*...*/ }
+    }
+
+
+<h2>Override em Propriedades</h2>
+
+
+O mecanismo de substituição funciona nas propriedades da mesma maneira que nos métodos. Propriedades declaradas em uma superclasse que são posteriormente redeclarados em uma classe derivada devem ser precedidos de do marcador override e devem ter um tipo compatível. Cada  propriedade declarada pode ser substituído por uma propriedade com um inicializador ou por uma propriedade com um método ```get:```
+
+    open class Shape {
+        open val vertexCount: Int = 0
+    }
+    
+    class Rectangle : Shape() {
+        override val vertexCount = 4
+    }
+
+Também é possível substituir uma propriedade val por uma propriedade var, mas não vice-versa. Isso se dá pois uma propriedade val declara
+essencialmente um método get, e substituí-lo por um var declara um método set na classe derivada.
+
+Observe que é possível usar a palavra-chave override como parte da declaração de propriedade em um primary construtor:
+
+    interface Shape {
+        val vertexCount: Int
+    }
+    
+    class Rectangle(override val vertexCount: Int = 4) : Shape // Always has 4 vertices
+    
+    class Polygon : Shape {
+        override var vertexCount: Int = 0  // Can be set to any number later
+    }
+
+
+<h2>Ordem de Inicialização da Classe Derivada</h2>
+
+
+Durante a construção de uma nova instância de uma classe derivada, a inicialização da classe base é feita como o primeiro passo (precedido
+apenas pela avaliação dos argumentos para o construtor da classe base), o que significa que isso acontece antes da lógica de inicialização 
+da classe derivada ser executada.
+
+    open class Base(val name: String) {
+    
+        init { println("Initializing a base class") }
+    
+        open val size: Int = 
+            name.length.also { println("Initializing size in the base class: $it") }
+    }
+    
+    class Derived(
+        name: String,
+        val lastName: String,
+    ) : Base(name.replaceFirstChar { it.uppercase() }.also { println("Argument for the base class: $it") }) {
+    
+        init { println("Initializing a derived class") }
+    
+        override val size: Int =
+            (super.size + lastName.length).also { println("Initializing size in the derived class: $it") }
+    }
+
+Output:
+
+>Constructing the derived class("hello", "world")<br>
+>Argument for the base class: Hello<br>
+>Initializing a base class<br>
+>Initializing size in the base class: 5<br>
+>Initializing a derived class<br>
+>Initializing size in the derived class: 10
+
+Isso significa que quando o construtor da classe base é executado, as propriedades declaradas ou substituídas no classe ainda não foram inicializados. Usando qualquer uma dessas propriedades na lógica de inicialização da classe base (seja direta ou indiretamente por meio de outra implementação de um override de um membro definido como open) pode levar a um comportamento incorreto ou a um falha em tempo de execução. Ao projetar uma classe base, você deve evitar usar membros com o marcador open nos construtors, inicializadores de
+propriedade ou blocos de inicialização.
+
+
+<h2>Chamando uma Implementação de SuperClasse</h2>
+
+
+O código em uma classe derivada pode chamar suas funções de superclasse e implementações de acesso de propriedades usando a palavra-chave ```super```:
+
+    open class Rectangle {
+        open fun draw() { println("Drawing a rectangle") }
+        val borderColor: String get() = "black"
+    }
+    
+    class FilledRectangle : Rectangle() {
+        override fun draw() {
+            super.draw()
+            println("Filling the rectangle")
+        }
+    
+        val fillColor: String get() = super.borderColor
+    }
+
+
+<h2>Regras de substituição</h2>
+
+
+Em Kotlin, a herança de implementação é regulada pela seguinte regra: se uma classe herdar várias implementações do mesmo membro de suas superclasses imediatas, ele deve substituir esse membro e fornecer sua própria implementação (talvez, usando um dos herdados).
+
+Para denotar o supertype do qual a implementação herdada é obtida, usa-se a palavra-chave super seguida so supertipo entre colchetes,
+como por exemplo ```super<Base>```.
+
+    open class Rectangle {
+        open fun draw() { /* ... */ }
+    }
+    
+    interface Polygon {
+        fun draw() { /* ... */ } // membros de uma interface são 'open' por padrão
+    }
+    
+    class Square() : Rectangle(), Polygon {
+        // O compilador requer a substituição do draw():
+        override fun draw() {
+            super<Rectangle>.draw() // Rectangle.draw()
+            super<Polygon>.draw() // Polygon.draw()
+        }
+    }
+
+Não há problema em herdar de ```Rectangle``` e ```Polygon``` ao memso tempo, mas ambos têm suas implementações de ```draw()```, então é necessário substituir ```draw()``` na classe Square e fornecer uma implementação separada para eliminar a ambiguidade.

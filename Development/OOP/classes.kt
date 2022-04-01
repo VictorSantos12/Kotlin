@@ -132,7 +132,7 @@ val customer = Customer("Joe Smith")
 
 
 // Uma classe pode ser declarada abstrata, juntamente com alguns ou todos os seus membros. Um membro abstrato de uma classe
-// não é implementado na mesma, não sendo necessário delcará-lo, nem a classe a qual ele pertence com o modificador open:
+// não é implementado na mesma, não sendo necessário declará-lo, nem a classe a qual ele pertence com o modificador open:
 
 abstract class Polygon {
     abstract fun draw()
