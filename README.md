@@ -1566,7 +1566,7 @@ não é implementado na mesma, não sendo necessário declarar classes abstratas
     }
 
 
-<h2>Inheritance</h2>
+<h1>Inheritance</h1>
 
 
 Todas as classes no Kotlin têm uma superclasse comum, ```Any```, que é a superclasse padrão para uma classe que não possui qualquer supertype declarado:
@@ -1735,3 +1735,205 @@ como por exemplo ```super<Base>```.
     }
 
 Não há problema em herdar de ```Rectangle``` e ```Polygon``` ao memso tempo, mas ambos têm suas implementações de ```draw()```, então é necessário substituir ```draw()``` na classe Square e fornecer uma implementação separada para eliminar a ambiguidade.
+
+
+<h2>Visibility Modifiers</h2>
+
+
+Classes, objects, interfaces, constructors, e funções, bem como propriedes e seus setters, podem ter modificadores de visibilidade. No Kotlin há quantro modificadores de visibilidade: private, protected, internal e public, e cada um deles possui diferentes funções em diferentes entidades. A visibilidade padrão é public.
+
+
+<h2>Packages</h2>
+
+
+Funções, propriedades, classes, objetos e interfaces podem ser declaradas no "top-level" de um arquivo, diretamente dentro de um package:
+
+    // file name: example.kt
+    package foo
+    
+    fun baz() { ... }
+    class Bar { ... }
+
+Nesse caso, as regras são:
+
+- Caso um modificador de visibilidade não seja utilizando, a declaração estará visível em qualquer parte do sistema.
+
+- Caso a declaração receba o marcador private, ela apenas será  visível dentro do arquivo que a contém.
+
+- Caso a declaração receba o marcador internal, ela será visível em qualquer parte do memso módulo.
+
+- O modificador protected não é utilizado em declarações top-level.
+
+Exemplo:
+
+    // file name: example.kt
+    package foo
+
+    private fun foo() { ... } // visible inside example.kt
+    
+    public var bar: Int = 5 // property is visible everywhere
+        private set         // setter is visible only in example.kt
+    
+    internal val baz = 6    // visible inside the same module
+
+
+<h2>Membros de uma Classe</h2>
+
+
+Para membros declarados em uma classe:
+
+- private define que o membro é visível dentro da classe e apensas nela(incluindo todos os seus membros).
+
+- protected define que o membro possui o memso nível de acesso que um private, mas também poderá ser acessado em subclasses.
+
+- internal define que qualquer client dentro do módulo que tenha acesso a classe, possa ter acesso ao seus internal members.
+
+- public define que qualquer client que tenha acesso a classe tenha acesso a seus public members.
+
+* no kotlin, classes não possuem acesso a membros privados de suas classes internas.
+
+Caso um membro protected ou internal de uma classe sofra um override e não tenha a visibilidade especificada explicitamente, o membro que sofreu o override terá o mesmo nível de acesso que o original.
+
+Exemplo:
+
+    open class Outer {
+        private val a = 1
+        protected open val b = 2
+        internal open val c = 3
+        val d = 4  // public by default
+    
+        protected class Nested {
+            public val e: Int = 5
+        }
+    }
+
+    class Subclass : Outer() {
+        // a is not visible
+        // b, c and d are visible
+        // Nested and e are visible
+    
+        override val b = 5   // 'b' is protected
+        override val c = 7   // 'c' is internal
+    }
+
+    class Unrelated(o: Outer) {
+        // o.a, o.b are not visible
+        // o.c and o.d are visible (same module)
+        // Outer.Nested is not visible, and Nested::e is not visible either
+    }
+
+
+<h2>Constructor</h2>
+
+
+Para especificar o nível de acesso a um primary constructor, utilizamos a seguinte sintaxe:
+
+    class C private constructor(a: Int) { ... }
+
+Obs: é preciso adicionar a palavra-chave constructor explicitamente.
+
+
+<h1>Interfaces</h1>
+
+
+Interfaces no Kotlin podem conter declarações de abstract methods, bem como implementações de métodos. O que as tornam diferentes de classes abstratas é que as interfaces não podem armazenar um state. Elas podem ter propriedades, porém, precisam ser abstratas ou precisam fornecer implementações de acesso.
+
+Uma interface é definida utilizando a palavra-chave interface:
+
+    interface MyInterface {
+        fun bar()
+        fun foo() {
+          // optional body
+        }
+    }
+
+
+<h2>Implementando Interfaces</h2>
+
+
+Uma classe ou objeto podem implementar uma ou mais interfaces:
+
+    class Child : MyInterface {
+        override fun bar() {
+            // body
+        }
+    }
+
+
+<h2>Propriedades em Interfaces</h2>
+
+
+É possível declarar propriedades em interfaces. Uma propriedade declarada em um interface pode ser abstrata ou pode prover uma implementação de acesso. Tais propriedades não podem ter campos de apoio e, portanto, accessors declarados em interfaces não podem referenciá-los:
+
+    interface MyInterface {
+        val prop: Int // abstract
+    
+        val propertyWithImplementation: String
+            get() = "foo"
+    
+        fun foo() {
+            print(prop)
+        }
+    }
+    
+    class Child : MyInterface {
+        override val prop: Int = 29
+    }
+
+
+<h2>Herdando Interfaces</h2>
+
+
+Uma interface pode derivar de outra interface, o que significa que ambas podem prover implementações para seus membros e declarar novas funções e propriedades. Muito naturalmente, as classes que implementam essa interface são necessárias apenas para definir as implementações ausentes:
+
+    interface Named {
+        val name: String
+    }
+    
+    interface Person : Named {
+        val firstName: String
+        val lastName: String
+    
+        override val name: String get() = "$firstName $lastName"
+    }
+    
+    data class Employee(
+        // implementing 'name' is not required
+        override val firstName: String,
+        override val lastName: String,
+        val position: Position
+    ) : Person
+
+
+<h2>Resolvendo Conflitos de Override</h2>
+
+Quando multiplos tipo são declarados em um supertype list, é posssível herdar mais de uma implementação do mesmo método:
+
+    interface A {
+        fun foo() { print("A") }
+        fun bar()
+    }
+    
+    interface B {
+        fun foo() { print("B") }
+        fun bar() { print("bar") }
+    }
+    
+    class C : A {
+        override fun bar() { print("bar") }
+    }
+    
+    class D : A, B {
+        override fun foo() {
+            super<A>.foo()
+            super<B>.foo()
+        }
+    
+        override fun bar() {
+            super<B>.bar()
+        }
+    }
+
+Ambas as interfaces A e B declaram as funções foo() e bar(), porem, só a B implementa a função bar() (bar() não está marcado como abstract em A porque este é o padrão para interfaces se a função não tiver corpo). Agora, caso uma classe concreta chamada de C, derive de A, é preciso fazer um override da função bar() e prover sua implementação.
+
+No entanto, caso uma classe chamada de D derive tanto de A quanto de B, será preciso implementar todos os métodos que a classe herda das multiplas interfaces. A regra se aplica tanto para métodos os quais foram implementados apenas uma vez (bar()) quanto dos quais a classe D herdar multiplas implementações (foo()).
