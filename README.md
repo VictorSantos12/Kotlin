@@ -1737,7 +1737,7 @@ como por exemplo ```super<Base>```.
 Não há problema em herdar de ```Rectangle``` e ```Polygon``` ao memso tempo, mas ambos têm suas implementações de ```draw()```, então é necessário substituir ```draw()``` na classe Square e fornecer uma implementação separada para eliminar a ambiguidade.
 
 
-<h2>Visibility Modifiers</h2>
+<h1>Visibility Modifiers</h1>
 
 
 Classes, objects, interfaces, constructors, e funções, bem como propriedes e seus setters, podem ter modificadores de visibilidade. No Kotlin há quantro modificadores de visibilidade: private, protected, internal e public, e cada um deles possui diferentes funções em diferentes entidades. A visibilidade padrão é public.
