@@ -13,5 +13,5 @@ fun main() {
   myList.add(3)
 
   println(myList)
-
+  println(myList.size)
 }

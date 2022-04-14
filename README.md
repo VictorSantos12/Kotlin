@@ -5,9 +5,9 @@
 <img src="https://img.shields.io/static/v1?label=Kotlin&message=Language&color=purple&style=for-the-badge&logo=Kotlin"/>
 
 
-O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web e principalmente mobile. Isso se dá pois a linguagem foi criada para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tê-la presente em basicamente qualquer ambiente em que o Java é executado.
+O Kotlin é uma linguagem de programação multiparadigma criada pela [JetBrains](https://www.jetbrains.com/pt-br/) no ano de 2011 com o intuito de atualizar ou mesmo substituir o Java. Sendo multiplataforma, o Kotlin é especialmente famoso por estar presente em aplicações sever-side, web, e principalmente mobile. Isso se dá pois a linguagem foi criada para ser compilada e executada na JVM(Java Virtual Machine), tornando possível utilizá-la em códigos baseados em Java e vice-versa, o que permite tê-la presente em basicamente qualquer ambiente em que o Java é executado.
 
-Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria surgiu em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source.
+Indo além da JVM, o Kotlin se tornou mais notório do que sua função inicial permitiria. Oriunda da parceria entre a Google e a JetBrains, foi criada a Kotlin Foundation, que é a atual responsável pela linguagem. Da mesma parceria foi definida em 2017 a inclusão e o suporte do Kotlin em ferramentas como o Android Studio e aplicações Android em geral, passando a ser sua preferred language em 2019. Além disso, o Kotlin também sofre constantes contribuições da comunidade por ser um projeto open-source, o que permite sua contínua atualização.
 
 
 <!-- <h1>Kotlin Multiplataform</h1> -->
@@ -22,7 +22,7 @@ Como já foi mencionado o desenvolvimento de aplicações android é atualmente 
 <h1>Ambiente de Desenvolvimento</h1>
 
 
-O Kotlin pode ser utilizado de diversas maneiras e em ambientes distintos, os quais disponibilizam diferentes recursos úteis ao desenvolvimento de aplicações multiplataforma de formas diversas. Elas são:
+Pode-se desenvolver com s Kotlin de diversas maneiras e com o auxílio de ferramentas distintas, as quais disponibilizam diferentes recursos úteis ao desenvolvimento de aplicações multiplataforma. Elas são:
 
 
 <h2>IntelliJ IDEA</h2>
@@ -36,7 +36,8 @@ O IntelliJ IDEA é uma IDE criada pela JetBrains voltada para maximizar a produt
 <h2>Android Studio</h2>
 
 
-O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvedores de aplicações Andorid. Baseado no IntelliJ IDEA e indo além, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar uma aplicação android, como:
+O Android Studio é o ambiente oficial de desenvolvimento integrado para o desenvolvedores de aplicações Android. Baseado no IntelliJ IDEA e indo além, o Android Studio oferece ainda mais ferramentas com o intuito de melhorar a produtividade ao criar aplicações android nativas.
+Elas são:
 
 - Um sistema de compilação flexível baseado no gerenciador Gradle
 - Uma vasta lista de emuladores ricos em recursos
@@ -61,13 +62,13 @@ O VSCode é imprescindível para escrever e compilar o código Kotlin de forma s
 
 - [VSCode](https://code.visualstudio.com/)
 
-Além do próprio editor, iremos incluir duas extensões essenciais, sendo elas:
+Com a instalação do editor, iremos incluir duas extensões essenciais, sendo elas:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/154381629-75b90545-4b7d-4836-a517-950cb7e3510d.png">
 </div>
 
-A extensão Kotlin dá suporte a sintaxe dá linguagem, além de adicionar features básicas que irão auxiliar na aua escrita e uso no VSCode.
+A extensão Kotlin dá suporte a sintaxe da linguagem, além de adicionar features básicas que irão auxiliar na sua escrita e uso no VSCode.
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/154381781-c6bb6927-37dd-4841-83aa-a2fd27f6f473.png">
@@ -110,7 +111,7 @@ Tendo concluído o processo de criação do ambiente de desenvolvimento, iremos 
 Uma forma prática de entender a estrutura mais básica de uma linguagem de programação é o popular Hello World. Sendo assim, em uma file main.kt, execute as seguintes linhas de código:
 
     fun main() {
-        println("Hello, world!")
+      println("Hello, world!")
     }
 
 
@@ -169,7 +170,7 @@ Como citado anteriormente, Kotlin e Java podem fazer parte do mesmo código sem 
 <h2>Concisão</h2>
 
 
-A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de linhas de código, o que torna seu uso monótono devido a constante repetição. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
+A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de linhas de código para executar comandos simples, o que torna seu uso monótono devido a constante repetição. O Kotlin por sua vez, com o intuito de evitar a repetição desnecessária de código, possui uma sintaxe bastante concisa. Um exemplo disso é a declaração de um simples Hello World:
 
     // Java                                          // Kotlin
                                                                  
@@ -181,7 +182,7 @@ A sintaxe do Java é muitas vezes criticada pois exige uma grande quantidade de 
 
 <h2>Null Safety</h2>
 
-Presente em linguagens modernas como o Dart, o Null Safety é um recurso de segurança void bastante usual. O Null Safety permite declarar a nulidade do código com base em seu tipo, sendo utilizado para evitar erros ao valorar elementos com tipos restritos através do marcador ```?```. Exemplos:
+Presente em linguagens modernas como o Dart e Typescript, o Null Safety é um recurso de segurança void bastante usual. O Null Safety permite declarar a nulidade do código com base em seu tipo, sendo utilizado para evitar erros ao valorar elementos com tipos restritos. Para isso, usa-se o marcador ```?```. Exemplos:
 
     var stringValue: String = “Hello World!”
     stringValue= null; // error
@@ -715,7 +716,7 @@ No Kotlin é possível manipular múltiplos conjuntos de dados através de uma �
 
     val coordinates = Pair(2, 3)
 
-Com a função <i>Pair</i> também pe possível utilizar elementos de tipos distintos, como por exemplo:
+Com a função <i>Pair</i> também é possível utilizar elementos de tipos distintos, como por exemplo:
 
     val coordinates = Pair(2.3, 3)
 
@@ -728,7 +729,7 @@ Assim como em um array, é possível acessar cada elemento de um conjuntos:
 <h2>Expressão to</h2>
 
 
-Ao criar um conjunto, é possível definir os elemeentos que o compõe através da expressão <i>to</i>, o to ganha funcionalidade ao permitir encurtar a expressão:
+Ao criar um conjunto, é possível definir os elementos que o compõe através da expressão <i>to</i>. O to ganha funcionalidade ao permitir encurtar a expressão:
 
     val coordinates = 2 to 3
 
@@ -813,13 +814,23 @@ Uma <i>List</i> é uma collection de elementos ordenados que provê acesso a est
 
     val numbers = listOf("one", "two", "three", "four")
 
-Uma List pode conter qualquer número de objetos do mesmo tipo ou acorrências de um único objeto, ou seja, uma list permite a duplicidade de elementos. O uso das Lists é recomendado em situações em que o número de elementos agrupados varia dinamicamente durante a execução, podendo ter elementos adicionados, removidos ou editados.
+Uma List pode conter qualquer número de objetos do mesmo tipo ou acorrências de um único objeto, ou seja, uma list permite a duplicidade de elementos. O uso das Lists é recomendado em situações em que o número de elementos agrupados varia dinamicamente durante a execução, podendo ter elementos adicionados, removidos ou editados. A propriedade size, que existe basicamente em qualquer collection, define o número de elementos que uma collection possui. Exemplo:
+
+    val myList = listOf(1, "2", true, null)
+    
+    fun main() {
+      println(myList.size)
+    }
+
+Output: 
+
+>3
 
 
 <h2>MutableList</h2>
 
 
-Como mencionado cada collection no Kotlin possui uma versão mutável acompanhada de interators que permitem a manipulação e refatoração de seus elementos, como a remoção e a adição. Para declarar uma Mutable List usamos o seguinte método:
+Como mencionado, cada collection no Kotlin possui uma versão mutável acompanhada de interators que permitem a manipulação e refatoração de seus elementos, como a remoção e a adição. Para declarar uma Mutable List usamos o seguinte método:
 
     val numbers = mutableListOf(1, 2, 3, 4)
 
@@ -833,7 +844,7 @@ Desta forma a List pode ser preenchida de acordo com o fluxo de execução do c�
 <h2>Set</h2>
 
 
-Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em sets, podendo haver um único null em seu escopo.
+Um <i>Set</i> é uma collection que registra elementos únicos, ou seja, é um grupo de objetos que não permite a duplicidade e cuja ordenação não é relevante. Elementos do tipo ```null``` também são considerados em sets, podendo haver apensa um null em seu escopo.
 
     val numbers = setOf(1, 2, 3, 4)
 
@@ -842,7 +853,7 @@ O uso de uma Set collection é muito mais matemático que prátrico dentro da si
 <h2>MutableSet</h2>
 
 
-Da mesma forma que as Lists possuiem a interface MutableList, a collection Set conta com uma interface mutável: a MutableSet; que possui os memso interators que uma MutableList, sendo possível manipular os elementos que a compõe. O link a seguir lista todos os interatos aplicáveis a MutableSets: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/)
+Da mesma forma que as Lists possuiem a interface MutableList, a collection Set conta com uma interface mutável: a MutableSet; que possui os mesmos interators que uma MutableList, sendo possível manipular os elementos que a compõe. O link a seguir lista todos os interatos aplicáveis a MutableSets: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/)
 
 
 <h2>Map</h2>
@@ -862,7 +873,7 @@ Um Map no Kotlin é declarado da seguinte forma;
 <h2>MutableMap</h2>
 
     
-A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores em um key específicos e mais. O link a seguir lista todos os interatos aplicáveis a MutableMaps: [MutableMap](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/)
+A interface que o Kotlin provê para os Maps conta com funções voltadas para ações específicas, como acessar valores através da sua key, procurar por valores em uma key específica e mais. O link a seguir lista todos os interatos aplicáveis a MutableMaps: [MutableMap](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/).
 
 
 <h2>Array</h2>
@@ -924,10 +935,68 @@ Como dito anteriormente, todas as collections compartilham uma série de iterato
 - [MutableCollection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/)
 
 
+
+<h1>Manipulação de Collections</h1>
+
+
+Como foi citado anteriormente, as Kotlin Collections, ou melhor, Kotlin Multable Collections, possuiem uma série de funções e propriedades que permitem a manipulação, refatoração e remoção das informações nelas contidas, as quais são essenciais no processo de fluxo e manipulação do agrupamento de informações. A seguir iremos entender como tais recursos são utilizados e suas principais aplicações.
+
+Há diferentes formas de manipular Collections no Kotlin, e estas se dividem em:
+
+
+<h2>Transformation</h2>
+
+
+A biblioteca padrão do Kotlin fornece um conjunto de funções de extensão para transformações de collections. Estas funções criam novas collections baseadas na definição de mudanças declaradas. As operações de transformation são:
+
+
+<h2>Map</h2>
+
+
+O transformador <i>map</i> cria uma collection a partir do resultado da operação de uma determinada função em uma outra collection. A função lambda declarada é aplica em cada elemnto subsequente, resultando em uma nova lista com os elementos modificados, mantendo a ordem da collection original.
+
+Sua forma básica é ```(map())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html]```:
+
+    val numbers = setOf(1, 2, 3)
+    println(numbers.map { it * 3 })
+    println(numbers.mapIndexed { idx, value -> value * idx })
+
+E para aplicar uma transformation que utiliza a indexação dos elementos como argumento, usa-se a função ```(mapIndexed())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html]```
+
+Output:
+
+>[3, 6, 9]
+>[0, 2, 6]
+
+
+Se a operação produzir ```null``` em certos elementos, é possível filtrar e remover tais elementos através do método ```(mapNotNull())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html]```, ou ```(mapIndexedNotNull())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html]```.
+
+    val numbers = setOf(1, 2, 3)
+    println(numbers.mapNotNull { if ( it == 2) null else it * 3 })
+    println(numbers.mapIndexedNotNull { idx, value -> if (idx == 0) null else value * idx })
+
+Output:
+
+>[3, 9]
+>[2, 6]
+
+
+Quando a collection sendo modificada for um ```map```, há duas opções de modificação: modificar as keys e manter seus valores, ou vice-versa. Para modificar as keys, usa-se a função ```(mapKeys())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html]```; para modificar valores, usa-se a fuunção ```(mapValues())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html]```.
+
+    val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key11" to 11)
+    println(numbersMap.mapKeys { it.key.uppercase() })
+    println(numbersMap.mapValues { it.value + it.key.length })
+
+Output: 
+
+    {KEY1=1, KEY2=2, KEY3=3, KEY11=11}
+    {key1=5, key2=6, key3=7, key11=16}
+
+
 <h1>Funções</h1>
 
 
-As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace. As funções Kotlin recebem parâmetros nomeados os quais usam Pascal notation(<i>name: type</i>). Por último há a inferência de tipo retornado pela função: 
+As funções em Kotlin são definidas a partir do identificador <i>fun</i> seguido de um namespace. As funções Kotlin recebem parâmetros nomeados os quais usam Pascal notation(<i>name: type</i>). Por último, há a inferência de tipo retornado pela função: 
 
     fun sum(a: Int, b: Int): Int { /*...*/ }
 
@@ -941,7 +1010,7 @@ Funções Kotlin também podem ter um type genérico, este sendo chamado de ```U
         println("sum of $a and $b is ${a + b}")
     }
 
-Por padrão, todas as funções em Kotlin possuem um tipo Unit. Em alternativa, também é possível omitir o tipo inferido a função:
+Por padrão, todas as funções em Kotlin possuem um tipo Unit. Logo, é possível omitir o tipo inferido a função:
 
     fun printSum(a: Int, b: Int) {
         println("sum of $a and $b is ${a + b}")
@@ -1012,7 +1081,7 @@ O controle do fluxo de dados é, em suma, um dos aspectos mais importantes da pr
 <h2>If expression</h2>
 
 
-No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. Também é importante citar que não há um operador ternário (condição ? then : else) no Kotlin, visto que o ordinary if funciona bem nesse papel.
+No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. Também é importante citar que não há um operador ternário (condição ? then : else) no Kotlin, visto que o ordinary if funciona bem neste papel.
 
     var max = a
 
@@ -1026,6 +1095,16 @@ No Kotlin, o if é uma expressão, ou seja, ele recebe e retorna valores. També
       max = a
     } else {
       max = b
+    }
+
+    // With esle if
+
+     if (a > b) {
+      max = a
+    } else if(a == b) {
+      max = a + b
+    } else {
+      max = b      
     }
 
 Caso um if seja utilizado como uma expressão para retornar um valor, ou atribuí-lo a uma variável, por exemplo, a ramificação else é obrigatória:
@@ -1083,7 +1162,7 @@ Ser imutável é essencial para o funcionamento do Smart Cast pois o compilador 
 <h2>"Unsafe" cast operator</h2>
 
 
-Normalmente, o operado de cast lançar uma exceção quando não é possível converter a variável em questão. E assim, nesses casos, ela é chamada de <i>unsafe</i>. Um unsafe cast é definido pela já citada expressão infix <i>as</i>:
+Normalmente, o operadoe de cast lança uma exceção quando não é possível converter a variável em questão. E assim, nesses casos, ela é chamada de <i>unsafe</i>. Um unsafe cast é definido pela já citada expressão infix <i>as</i>:
 
     val x: String = y as String
 
@@ -1131,7 +1210,7 @@ A verificação é feita sequencialmente em cada ramificação até que um valor
 <h2>ForEach</h2>
 
 
-O loop <i>forEach</i>, usado em exemplos anteriores, funciona como um método aplicado a elementos qua permitem interações, como arrays ou expressões em range. Por exemplo:
+O loop <i>forEach</i>, usado em exemplos anteriores, funciona como um método aplicado a elementos qua permitem interações, como arrays ou expressões em range. Diferente de um operador de loop for, cujo interator normalmente é chamado de i(index), o forEach possui, por padrão, um interador ```it```. Por exemplo:
 
     fun main() {
      arrayOf(0, 1, 2, 3, 4, 5).forEach {
@@ -1151,7 +1230,7 @@ Output:
 <h2>For loops</h2>
 
 
-O loop <i>for</i> itera qualquer elemento que forneça um iterador, sendo equivalente ao loop foreach em linguagens como C#. A sintaxe da expressão for é a seguinte:
+O loop <i>for</i> itera qualquer elemento que forneça um iterador, sendo equivalente ao loop forEach em linguagens como C#. A sintaxe da expressão for é a seguinte:
 
     for (item in collection) println(item)
 
@@ -1482,7 +1561,7 @@ Uma classe no Kotlin pode ter um <i>primary constructor</i> e um ou mais <i>seco
 
     class Person constructor(parameter: type) { /*...*/ }
 
-O contructor pode receber parâmetros assim como uma função qualquer, sendo possível acessar seus valores ao inicializar a classe. Casa o <i>primary constructor</i> não possua modificadores de visibilidade, a palavra-chave do construtor pode ser omitida:
+O contructor pode receber parâmetros assim como uma função qualquer, sendo possível acessar seus valores ao inicializar a classe. Caso o <i>primary constructor</i> não possua modificadores de visibilidade, a palavra-chave do construtor pode ser omitida:
 
     class Person(firstName: String) { /*...*/ }
 
@@ -1492,7 +1571,7 @@ O <i>primary constructor</i> não pode executar código algum. Código de inicia
         init { /*...*/ }
      }
 
-Durante a inicialização de uma classe, os blocos de init são executados na sua ordem de declaração, intercaladas com a inicialização das propriedade, que por sua vez podem receber os valores dos parâmetros do <i>primary constructor</i>: 
+Durante a inicialização de uma classe, os blocos de init são executados na sua ordem de declaração, intercaladas com a inicialização das propriedades, que por sua vez, podem receber os valores dos parâmetros do <i>primary constructor</i>: 
 
     class InitOrderDemo(name: String) {
         val firstProperty = "First property: $name".also(::println)
@@ -1550,7 +1629,7 @@ não é implementado na mesma, não sendo necessário declarar classes abstratas
         }
     }
 
-É possível fazer um override de um membro definido como open por um abstrato quando este é herdado
+É possível fazer um override de um membro definido como open por um abstrato quando este é herdado:
 
     open class Polygon {
         open fun draw() {
@@ -1758,11 +1837,11 @@ Nesse caso, as regras são:
 
 - Caso um modificador de visibilidade não seja utilizando, a declaração estará visível em qualquer parte do sistema.
 
-- Caso a declaração receba o marcador private, ela apenas será  visível dentro do arquivo que a contém.
+- Caso a declaração receba o marcador ```private```, ela apenas será  visível dentro do arquivo que a contém.
 
-- Caso a declaração receba o marcador internal, ela será visível em qualquer parte do memso módulo.
+- Caso a declaração receba o marcador ```internal```, ela será visível em qualquer parte do memso módulo.
 
-- O modificador protected não é utilizado em declarações top-level.
+- O modificador ```protected``` não é utilizado em declarações top-level.
 
 Exemplo:
 
@@ -1782,15 +1861,15 @@ Exemplo:
 
 Para membros declarados em uma classe:
 
-- private define que o membro é visível dentro da classe e apensas nela(incluindo todos os seus membros).
+- ```private``` define que o membro é visível dentro da classe e apensas nela(incluindo todos os seus membros).
 
-- protected define que o membro possui o memso nível de acesso que um private, mas também poderá ser acessado em subclasses.
+- ```protected``` define que o membro possui o memso nível de acesso que um private, mas também poderá ser acessado em subclasses.
 
-- internal define que qualquer client dentro do módulo que tenha acesso a classe, possa ter acesso ao seus internal members.
+- ```internal``` define que qualquer client dentro do módulo que tenha acesso a classe, possa ter acesso ao seus internal members.
 
-- public define que qualquer client que tenha acesso a classe tenha acesso a seus public members.
+- ```public``` define que qualquer client que tenha acesso a classe tenha acesso a seus public members.
 
-* no kotlin, classes não possuem acesso a membros privados de suas classes internas.
+- no kotlin, classes não possuem acesso a membros privados de suas classes internas.
 
 Caso um membro protected ou internal de uma classe sofra um override e não tenha a visibilidade especificada explicitamente, o membro que sofreu o override terá o mesmo nível de acesso que o original.
 
@@ -1907,7 +1986,7 @@ Uma interface pode derivar de outra interface, o que significa que ambas podem p
 
 <h2>Resolvendo Conflitos de Override</h2>
 
-Quando multiplos tipo são declarados em um supertype list, é posssível herdar mais de uma implementação do mesmo método:
+Quando multiplos tipos são declarados em um supertype list, é posssível herdar mais de uma implementação do mesmo método:
 
     interface A {
         fun foo() { print("A") }
