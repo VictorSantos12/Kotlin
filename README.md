@@ -955,13 +955,13 @@ A biblioteca padrão do Kotlin fornece um conjunto de funções de extensão par
 
 O transformador <i>map</i> cria uma collection a partir do resultado da operação de uma determinada função em uma outra collection. A função lambda declarada é aplica em cada elemnto subsequente, resultando em uma nova lista com os elementos modificados, mantendo a ordem da collection original.
 
-Sua forma básica é (map())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html]:
+Sua forma básica é [map()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html):
 
     val numbers = setOf(1, 2, 3)
     println(numbers.map { it * 3 })
     println(numbers.mapIndexed { idx, value -> value * idx })
 
-E para aplicar uma transformation que utiliza a indexação dos elementos como argumento, usa-se a função (mapIndexed())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html].
+E para aplicar uma transformation que utiliza a indexação dos elementos como argumento, usa-se a função [mapIndexed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html).
 
 Output:
 
@@ -969,7 +969,7 @@ Output:
 >[0, 2, 6]
 
 
-Se a operação produzir ```null``` em certos elementos, é possível filtrar e remover tais elementos através do método (mapNotNull())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html], ou (mapIndexedNotNull())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html].
+Se a operação produzir ```null``` em certos elementos, é possível filtrar e remover tais elementos através do método [mapNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html), ou [mapIndexedNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html).
 
     val numbers = setOf(1, 2, 3)
     println(numbers.mapNotNull { if ( it == 2) null else it * 3 })
@@ -981,10 +981,10 @@ Output:
 >[2, 6]
 
 
-Quando a collection sendo modificada for um ```map```, há duas opções de modificação: modificar as keys e manter seus valores, ou vice-versa. Para modificar as keys, usa-se a função (mapKeys())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html]; para modificar valores, usa-se a fuunção (mapValues())[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html].
+Quando a collection sendo modificada for um ```map```, há duas opções de modificação: modificar as keys e manter seus valores, ou vice-versa. Para modificar as keys, usa-se a função [mapKeys()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html); para modificar valores, usa-se a fuunção [mapValues()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html).
 
     val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key11" to 11)
-    println(numbersMap.mapKeys { it.key.uppercase() })
+    println(numbersMap.mapKeys { it.key.uppercase() })S
     println(numbersMap.mapValues { it.value + it.key.length })
 
 Output: 
