@@ -976,7 +976,7 @@ Se a operação produzir ```null``` em certos elementos, é possível filtrar e 
 
 Output:
 
->[3, 9]
+>[3, 9]<br>
 >[2, 6]
 
 
