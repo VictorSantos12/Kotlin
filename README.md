@@ -947,13 +947,13 @@ Há diferentes formas de manipular Collections no Kotlin, e estas se dividem em:
 <h2>Transformation</h2>
 
 
-A biblioteca padrão do Kotlin fornece um conjunto de funções de extensão para transformações de collections. Estas funções criam novas collections baseadas na definição de mudanças declaradas. As operações de transformation são:
+A biblioteca padrão do Kotlin fornece um conjunto de funções de extensão para a modificação de collections. Estas funções criam novas collections baseadas na definição de mudanças declaradas. As operações de transformation são:
 
 
 <h2>Map</h2>
 
 
-O transformador <i>map</i> cria uma collection a partir do resultado da operação de uma determinada função em uma outra collection. A função lambda declarada é aplica em cada elemnto subsequente, resultando em uma nova lista com os elementos modificados, mantendo a ordem da collection original.
+O modificador <i>map</i> cria uma collection a partir do resultado da operação de uma determinada função em uma outra collection. A função lambda declarada é aplica em cada elemento subsequente, resultando em uma nova lista com os elementos modificados, mantendo a ordem da collection original.
 
 Sua forma básica é [map()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html):
 
@@ -961,13 +961,12 @@ Sua forma básica é [map()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin
     println(numbers.map { it * 3 })
     println(numbers.mapIndexed { idx, value -> value * idx })
 
-E para aplicar uma transformation que utiliza a indexação dos elementos como argumento, usa-se a função [mapIndexed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html).
+Para aplicar uma transformation que utiliza a indexação dos elementos como argumento, usa-se a função [mapIndexed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html).
 
 Output:
 
 >[3, 6, 9]
 >[0, 2, 6]
-
 
 Se a operação produzir ```null``` em certos elementos, é possível filtrar e remover tais elementos através do método [mapNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html), ou [mapIndexedNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html).
 
@@ -981,7 +980,7 @@ Output:
 >[2, 6]
 
 
-Quando a collection sendo modificada for um ```map```, há duas opções de modificação: modificar as keys e manter seus valores, ou vice-versa. Para modificar as keys, usa-se a função [mapKeys()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html); para modificar valores, usa-se a fuunção [mapValues()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html).
+Quando a collection sendo modificada for um ```map```, há duas opções de modificação: modificar as keys e manter seus valores, ou vice-versa. Para modificar as keys, usa-se a função [mapKeys()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html); para modificar valores, usa-se a função [mapValues()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html).
 
     val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key11" to 11)
     println(numbersMap.mapKeys { it.key.uppercase() })S
@@ -991,6 +990,170 @@ Output:
 
     {KEY1=1, KEY2=2, KEY3=3, KEY11=11}
     {key1=5, key2=6, key3=7, key11=16}
+
+
+<h2>Zip</h2>
+
+
+A função de modificação <i>Zip</i> consiste em criar pares a partir de elementos com as mesmas posições em ambas as collections. Na biblioteca padrão Kotlin, isso é feito pela função de extensão [zip()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html).
+
+Quando aplicada em uma collection ou array, recebendo outra collection ou array como parâmetro, a função ```zip()``` retorna uma lista de pares de objetos. Os elementos da collection receptora são os primeiros elementos nesses pares.
+
+Caso as collections possuam tamanhos distintos, o resultado do zip será o menor size; os últomos elementos da collection maior não são incluídos no resultado.
+
+A função zip também pode ser utilizada na chamada infix form ```a zip b```.
+
+    val colors = listOf("red", "brown", "grey")
+    val animals = listOf("fox", "bear", "wolf")
+    println(colors zip animals)
+    
+    val twoAnimals = listOf("fox", "bear")
+    println(colors.zip(twoAnimals))
+
+Output:
+
+>[(red, fox), (brown, bear), (grey, wolf)]<br>
+>[(red, fox), (brown, bear)]
+
+Também é possível utilizar a função zip em conjunto com uma função transformadora que recebe dois parâmetros: o elemento receptor e o elemento argumento. Neste caso, a list retornada contém os valores resultantes da função transformadora aplicada, retornando pares de elementos de ambas as collection na mesma posição:
+
+    val colors = listOf("red", "brown", "grey")
+    val animals = listOf("fox", "bear", "wolf")
+    
+    println(colors.zip(animals) { color, animal -> "The ${animal.replaceFirstChar { it.uppercase() }} is $color"})
+
+Output:
+
+>[The Fox is red, The Bear is brown, The Wolf is grey]
+
+Quando o resultado é uma lista de pares, é possível fazer o processo inverso(chamado de <i>unzipping</i>) e que cria duas listas a partir desses pares:
+
+- A primeira lista contém o primeiro elemento de cada par na lista origial
+- A segunda contém os elementos secundários.
+
+Para fazer um unzip de uma lista de pares usa-se o método [unzip()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html).
+
+    val numberPairs = listOf("one" to 1, "two" to 2, "three" to 3, "four" to 4)
+    println(numberPairs.unzip())
+
+Output:
+
+>([one, two, three, four], [1, 2, 3, 4])
+
+
+<h2>Associate</h2>
+
+
+Os modificadores de associação permitem criar maps a partir dos elementos da collection e determinados valores associados a eles. Em diferentes tipos de associação, os elementos podem ser chaves ou valores no map de associação.
+
+A função de associação básica [associateWith()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-with.html) cria um map, o qual tem como keys os elementos da collection original, tendo seus valores definidos a partir da função de modificadora declarada. Caso dois elementos sejam iguais, apenas o último permanecerá no map:
+
+    val numbers = listOf("one", "two", "three", "four")
+    println(numbers.associateWith { it.length })
+
+Output:
+
+>{one=3, two=3, three=5, four=4}
+
+Também é possível criar maps cujos valores são os elementos de uma collection, para isso usa-se a função [associateBy()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html). Ela recebe uma função que retorna a chave baseada no valor de um elemento. Caso haja duplicidade nas chaves, apenas a última permanece no map.
+
+Uma função AssociateBy() também pode ser chamada com uma função de transformação de valor:
+
+    val numbers = listOf("one", "two", "three", "four")
+    
+    println(numbers.associateBy { it.first().uppercaseChar() })
+    println(numbers.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length }))
+
+Output:
+
+>{O=one, T=three, F=four}<br>
+>{O=3, T=5, F=4}
+
+Outra forma de criar maps cujas chaves e valores são, de alguma forma, produzidos a partir dos elementos de uma collection é a função [associate()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html). Ela recebe uma função lambda que retorna um par: a chave e o valor da entrada do map correspondente.
+
+Um exemplo deste último é quando uma chave e o valor correspondente são produzidos a partir de um elemento juntos.
+
+    val names = listOf("Alice Adams", "Brian Brown", "Clara Campbell")
+    println(names.associate { name -> parseFullName(name).let { it.lastName to it.firstName } })  
+
+Output: 
+
+>{Adams=Alice, Brown=Brian, Campbell=Clara}
+
+Aqui uma função modificadora é chamada em um elemento primeiro e, em seguida, constrói um par a partir das propriedades do resultado dessa função.
+
+Observe que associate() produz objetos de curta duração que podem afetar o desempenho. Assim, seu uso deve ser considerado quando o desempenho não for crítico ou for mais preferível que outras opções.
+
+
+<h2>Flatten</h2>
+
+
+Caso seja necessário operar nested collections, é possível utilizar as funções da biblioteca padrão que fornecem acesso simples aos elementos deste tipo de função.
+
+A primeira função é [flatten()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html). Com ela é possível tratar collections de collection, por exemplo, uma List de Sets. Como resultado, temos o retorno de uma única Lista de todos os elementos das nested collections:
+
+    val numberSets = listOf(setOf(1, 2, 3), setOf(4, 5, 6), setOf(1, 2))
+    println(numberSets.flatten())
+
+Output:
+
+>[1, 2, 3, 4, 5, 6, 1, 2]
+
+
+Outra função do mesmo grupo - [flatMap()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) - provê um método flexível de precessar nested collections. Ela recebe uma função que mapeia os elementos de uma collections em uma outra. Como resultado, flatMap() retorna uma única list contendo o resultado das interações com cada set, se comportando com uma série de chamadas subsequentes da função ```map()``` e da função ```flatten()```.
+
+
+<h2>Representação de string</h2>
+
+
+Caso seja necessário recuperar o conteúdo da coleção em um formato legível, é possível transformá-las em strings através dos métodos: [joinToString()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) e [joinTo()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to.html).
+
+```joinToString()``` criar uma String única a partir dos elementos de uma collection baseando-se nos argumentos providos. ```joinTo()``` possui a mesma função, mas anexa o resultado ao objeto [Appendable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/) fornecido. 
+
+Quando chamadas com os argumentos padrão, as funções retornam o resultado semelhante à chamada de toString() na collection: uma String de representações de elementos em string separadas por vírgulas e espaços.
+
+    val numbers = listOf("one", "two", "three", "four")
+    
+    println(numbers)         
+    println(numbers.joinToString())
+    
+    val listString = StringBuffer("The list of numbers: ")
+    numbers.joinTo(listString)
+    println(listString)
+
+Output:
+
+>[one, two, three, four]<br>
+>one, two, three, four<br>
+>The list of numbers: one, two, three, four
+
+Para criar uma representação de string personalizada, é possível especificar seus parâmetros com argumentos: separator, prefix, e postfix. A string resultante começará com o prefix e terminará com o postfix. O separator virá após cada elemento, exceto o último:
+
+    val numbers = listOf("one", "two", "three", "four")    
+    println(numbers.joinToString(separator = " | ", prefix = "start: ", postfix = ": end"))
+
+Output:
+
+>start: one | two | three | four: end
+
+Para collections maiores, também é possível especificar o limite – um número de elementos que serão incluídos no resultado. Se o tamanho da collection exceder o limite, todos os outros elementos serão substituídos pelo valor do argumento ```truncated```:
+
+    val numbers = (1..100).toList()
+    println(numbers.joinToString(limit = 10, truncated = "<...>"))
+
+Output:
+
+>1, 2, 3, 4, 5, 6, 7, 8, 9, 10, <...>
+
+
+Por fim, para personalizar a representação dos próprios elementos, é preciso fornecer a função transform:
+
+    val numbers = listOf("one", "two", "three", "four")
+    println(numbers.joinToString { "Element: ${it.uppercase()}"})
+
+Output:
+
+>Element: ONE, Element: TWO, Element: THREE, Element: FOUR
 
 
 <h1>Funções</h1>
