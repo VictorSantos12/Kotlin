@@ -965,7 +965,7 @@ Para aplicar uma transformation que utiliza a indexação dos elementos como arg
 
 Output:
 
->[3, 6, 9]
+>[3, 6, 9]<br>
 >[0, 2, 6]
 
 Se a operação produzir ```null``` em certos elementos, é possível filtrar e remover tais elementos através do método [mapNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html), ou [mapIndexedNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html).
